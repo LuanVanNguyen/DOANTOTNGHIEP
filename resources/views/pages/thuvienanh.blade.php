@@ -143,7 +143,7 @@
               @foreach($tvanh as $tv)
                 <div class="gallery-item">
                   <div class="gallery-item__image image-cover">
-                    <img  src="public/storage/images/{{substr($tv->path, 14)}}" alt="{{$tv->tieude}}">
+                    <img  src="public/storage/thuvienanhs{{substr($tv->path, 26)}}" alt="{{$tv->tieude}}">
                   </div>
                   <div class="gallery-item__name" data-toggle="modal" data-target="#modalgallery">
                     {{$tv->tieude}}
@@ -189,7 +189,7 @@
                       <div class="gallery-slider owl-carousel owl-theme">
                       @foreach($tvanh as $tv)
                         <div class="gallery-image">
-                          <img  src="public/storage/images/{{substr($tv->path, 14)}}" alt="">
+                          <img  src="public/storage/thuvienanhs{{substr($tv->path, 26)}}" alt="">
                         </div>
                       @endforeach
                     </div>

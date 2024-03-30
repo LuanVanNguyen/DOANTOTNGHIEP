@@ -30,11 +30,23 @@ class QuanLyThuVienAnhController extends Controller
     }
     public function save(Request $request)
     {
-        $file = $request->file('path');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
+        // Sửa
+        // $file = $request->file('path');
+        // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data =array();
         $data['tieude']= $request->tieude;
-        $data['path']= $request->file('path')->storeAs('public/images/', $filename);
+
+        //Sua
+        // $data['path']= $request->file('path')->storeAs('public/images/', $filename);
+        if($request ->hasFile('anhdaidien')){
+            $file = $request -> file('anhdaidien');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('public/storage/thuvienanhs/',$filename);
+            $data['path']= $data['path'] = 'public/storage/thuvienanhs/' . $filename;
+
+        }
+
         $data['trangthai']= $request->trangthai;
         DB::table('thuvienanh')->insert($data);
         Session::put('message','Thêm danh mục sản phẩm thành công');

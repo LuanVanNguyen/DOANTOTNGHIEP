@@ -17,10 +17,15 @@
               <div class="form_add__name padding_y">
                 <label class="form_text" for="img">Ảnh</label> <br>
                 <!-- lấy dữ liệu ảnh của input này -->
-                <input class="form_add__input" type="text" name="path"> <br>
+                
+                <!-- Sửa ảnh -->
+
+                <!-- <input class="form_add__input" type="text" name="path"> <br> -->
                 <!-- cái này chỉ để hiện ảnh lên thôi -->
                 <div class="img_input">
-                  <input style="height : 50px;"   type="file" name="path" placeholder="Chọn ảnh" onchange="getImg(this)" class="file_input"> <br>
+                  <!-- Sửa ảnh -->
+                  <!-- <input style="height : 50px;"   type="file" name="path" placeholder="Chọn ảnh" onchange="getImg(this)" class="file_input"> <br> -->
+                  <input style="height : 50px;"   type="file" name="anhdaidien" placeholder="Chọn ảnh"  class="file_input">
                 </div>
               </div>
       

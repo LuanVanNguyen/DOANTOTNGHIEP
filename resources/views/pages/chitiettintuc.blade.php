@@ -153,7 +153,7 @@
                   {{$new->noidung}}
                   </p>
                   
-                  <img  src="public/storage/images/{{substr($new->anh, 14)}}" alt="{{$new->tieude}}" />
+                  <img  src="public/storage/images{{substr($new->anh, 14)}}" alt="{{$new->tieude}}" />
                 </div>
               
               </div>

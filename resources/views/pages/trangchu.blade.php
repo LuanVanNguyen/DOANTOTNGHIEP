@@ -250,7 +250,7 @@
                 <div class="box-blog-post">
                   <div class="box-blog-post__image image-cover">
               <a href="{{URL::to('/chitiettintuc'.$tt->id)}}"><img
-              src="public/storage/images/{{substr($tt->anh, 14)}}"
+              src="public/storage/images{{substr($tt->anh, 14)}}"
                       alt="Thiết kế đỉnh cao căn hộ 22m2 khiến ai cũng ngưỡng mộ"
                     />
                     </a>

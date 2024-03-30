@@ -147,8 +147,8 @@
                   <a href="chitiettintuc{{$tt->id}}">
                     <div class="box-blog-post__image image-cover">
                       <img
-                      src="public/storage/images/{{substr($tt->anh, 14)}}"
-                        alt="Thiết kế đỉnh cao căn hộ 22m2 khiến ai cũng ngưỡng mộ"
+                      src="public/storage/images{{substr($tt->anh, 14)}}"
+                        alt="Thiết kế đỉnh cao căn hộ 22m2 khiến ai cũng ngưỡng mộ11"
                       />
                     </div>
                     <div class="box-blog-post__date">{{$tt->thoigian}}</div>

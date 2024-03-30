@@ -50,7 +50,7 @@
                       <tr>
                         <td>{{$tt->id}}</td>
                         <td>{{$tt->tieude}}</td>
-                        <td><img class="image-avatar" src="public/storage/images/{{substr($tt->path, 14)}}" alt=""></td>
+                        <td><img class="image-avatar" src="public/storage/thuvienanhs{{substr($tt->path, 26)}}" alt=""></td>
                         <td>
                           <?php
                            if($tt->trangthai == 0)
