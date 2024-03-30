@@ -44,10 +44,10 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name_admin`, `email_admin`, `avatar_admin`, `email_verified_at`, `password_admin`, `phone_admin`, `created_at`, `updated_at`) VALUES
-(9, 'Thao Ngo', 'nhuthaophap2248@gmail.com', 'public/images/Uq4yZ4vqoakZd45KPfwJEVmNm0NlkgBNFwu9eDbt.jpg', NULL, '1234567', '0528728054', NULL, NULL),
-(10, 'Thao Ngo', 'nhuthaophap2482@gmail.com', 'public/images/98AOU8vTY9vGuUijSxKAJb6eKTFT2azWQ08wdxq6.jpg', NULL, '1234567', '0528728054', NULL, NULL),
-(11, 'Thao Ngo', 'nhuthaopha2p248@gmail.com', 'public/images/KMlntEyb49kk6WwnxO4YNjZizK835WiaEbVr0bR9.jpg', NULL, '1234567', '0528728054', NULL, NULL),
-(20, 'Thao Ngo', 'nhuthaophap248@gmail.com', 'public/images//1688189587.jpg', NULL, '1234567', '0528728054', NULL, NULL);
+(9, 'Luan Nguyen', 'nguyenvanluan200502@gmail.com', 'public/images/Uq4yZ4vqoakZd45KPfwJEVmNm0NlkgBNFwu9eDbt.jpg', NULL, '1234567', '0528728054', NULL, NULL),
+(10, 'Luan Nguyen', 'nguyenvanluan200502@gmail.com', 'public/images/98AOU8vTY9vGuUijSxKAJb6eKTFT2azWQ08wdxq6.jpg', NULL, '1234567', '0528728054', NULL, NULL),
+(11, 'Luan Nguyen', 'nguyenluana2p248@gmail.com', 'public/images/KMlntEyb49kk6WwnxO4YNjZizK835WiaEbVr0bR9.jpg', NULL, '1234567', '0528728054', NULL, NULL),
+(20, 'Luan Nguyen', 'nguyenluan248@gmail.com', 'public/images//1688189587.jpg', NULL, '1234567', '0528728054', NULL, NULL);
 
 -- --------------------------------------------------------
 
