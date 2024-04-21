@@ -50,6 +50,8 @@
             <div class="booking-form-item required">
               <label>Họ và tên</label>
               <input type="text" name="name" class="input" placeholder="Nhập họ tên" pattern="[A-Za-z\s]+"/>
+              <input type="hidden" name="userid" value="{{$userid}}">
+              <input type="hidden" name="trangthai" value="1">
             </div>
             <div class="booking-form-item required">
               <label>Email</label>

@@ -28,6 +28,11 @@ use Illuminate\Support\Facades\Session;
 </head>
 
 <body>
+  <?php
+    // echo "<pre>";
+    // print_r($result);
+    // echo "</pre>";
+  ?>
   <div class="wrapper profile-page booking-page">
     <!-- header -->
     <header class="header">
@@ -62,7 +67,7 @@ use Illuminate\Support\Facades\Session;
       <div class="siderbar">
         <div class="siderbar-group">
           <div class=" siderbar-group-1">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2xlvtxHZMPsNg7oso_FgimAtFKGcp8dU0601pGuU&s" alt="avatar" class="avatar">
+            <img src="{{URL::to('public/front/images/avatar.png')}}" alt="avatar" class="avatar">
             <div class="name">
               <strong class="name-user--name">
                 <?php
@@ -87,14 +92,14 @@ use Illuminate\Support\Facades\Session;
         <div class="siderbar-item siderbar-group3">
           <i class="far fa-table"></i>
           <span class="order">
-            <a href="{{URL::to('chitietdatban{id}')}}" class="booking-link">Thông tin đặt bàn</a>
+            <a href="{{URL::to('/chitietdatban'.$userid)}}" class="booking-link">Thông tin đặt bàn</a>
           </span>
         </div>
         <!-- đăt đồ ăn -->
         <div class="siderbar-item siderbar-group4">
           <i class="fas fa-hamburger"></i>
           <span class="food">
-            <a href="delivery-page.html" class="booking-link">Đặt đồ ăn online</a>
+            <a href="{{URL::to('/vanchuyen')}}" class="booking-link">Đặt đồ ăn online</a>
           </span>
         </div>
         <!-- sang trang đặt bàn -->
@@ -108,7 +113,7 @@ use Illuminate\Support\Facades\Session;
         <div class="siderbar-item siderbar-group5">
           <i class="fas fa-bell"></i>
           <span class="booking-link">
-            <a href="news-category.html" class="booking-link">Xem tin tức hôm nay</a>
+            <a href="{{URL::to('/tintuc')}}" class="booking-link">Xem tin tức hôm nay</a>
           </span>
         </div>
         <!-- sang thư viện ảnh -->

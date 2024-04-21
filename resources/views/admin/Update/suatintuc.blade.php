@@ -2,7 +2,13 @@
 @section('title','Thêm mới tin tức')
 @section('menu-name','Thêm mới tin tức')
 @section('body')
-
+<style>
+  .form_add__name {
+    width: inherit;
+    height: 0rem;
+    padding-top: 4.5rem;
+  }
+</style>
       <main class="main">
         <div class="container_body">
         @foreach($all as $tt)
@@ -15,17 +21,17 @@
                 <input class="form_add__input"  type="text" name="tieude" placeholder="Nhập tiêu đề" value="{{$tt->tieude}}">
               </div>
               
-              <div class="form_add__name padding_y">
+              <div class="form_add__name padding_y" >
                 <label class="form_text" for="img">Ảnh</label> <br>
                 <!-- lấy dữ liệu ảnh của input này -->
-                <input class="form_add__input" type="text" name="image"> <br>
+                <img src="{{URL::to($tt->anh)}}" width="150px" height="100px" alt="anh">
                 <!-- cái này chỉ để hiện ảnh lên thôi -->
                 <div class="img_input">
                   <input  type="file" name="anh" placeholder="Chọn ảnh" onchange="getImg(this)" class="file_input"> <br>
                 </div>
               </div>
-      
-              <div class="form_add__name pb_3rem">
+
+              <div class="form_add__name pb_3rem" >
                 <label class="form_text" for="type">Thời gian</label> <br>
                 <input class="form_add__input"  type="datetime-local" name="thoigian" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" value="{{$tt->thoigian}}">
               </div>
@@ -42,12 +48,12 @@
               <div  style="margin-top : 90px;"  class="form_add__name padding_y">
                 <label  style="padding-bottom : 25px; " class="form_text" for="name">Trạng thái</label> <br>
                 <select style="margin-left : 15px; "name="trangthai" id="">
-                    <option value="0">Ẩn</option>
-                    <option value="1">Hiển thị</option>
+                    <option value="0" {{$tt->trangthai==0?'selected':''}}>Ẩn</option>
+                    <option value="1" {{$tt->trangthai==1?'selected':''}}>Hiển thị</option>
                 </select>
               </div>
       
-              <div class="form_add__name input_btn">
+              <div class=" input_btn">
                 <button type="submit" name="btn-sub" class="custom-btn btn-12"><span>Xác nhận</span><span>Thêm</span></button>
               </div>
             </form>

@@ -63,13 +63,25 @@
                 <td>{{$tt->coso}}</td>
                 <td>{{$tt->ghichu}}</td>
                 <td>
-                  <?php
-                  if ($tt->trangthai == 0) {
-                    echo 'Chưa ăn';
-                  } else
-                    echo 'Đã ăn';
-                  ?>
-                </td>
+                          <?php
+                           if($tt->trangthai == 0)
+                              {
+                          ?>
+                            <a style="color:red;" href="{{URL::to('/unactiveDB/'.$tt->id)}}">Chưa ăn</a>
+                          <?php
+                              }else{
+                                
+                             
+
+                          ?>
+                            <a href="{{URL::to('/activeDB/'.$tt->id)}}">Đã ăn</a>
+
+                          <?php
+
+                              }
+                          ?>
+                        
+                        </td>          
                 <td>
                   <a href="#">
                     <button class="btn-6 custom-btn">Xóa</button>

@@ -147,7 +147,7 @@
                   <a href="chitiettintuc{{$tt->id}}">
                     <div class="box-blog-post__image image-cover">
                       <img
-                      src="public/storage/images{{substr($tt->anh, 14)}}"
+                      src="public/storage/tintucanhs/{{substr($tt->anh, 26)}}"
                         alt="Thiết kế đỉnh cao căn hộ 22m2 khiến ai cũng ngưỡng mộ11"
                       />
                     </div>

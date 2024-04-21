@@ -20,13 +20,13 @@
 
             <div class="form-group">
                 <label for="fullname" class="form-label">Tên đầy đủ</label>
-                <input id="fullname" name="name" type="text" placeholder="VD: Ngô Như Thảo" class="form-control">
+                <input id="fullname" name="name" type="text" placeholder="VD: Nguyễn Văn Luận" class="form-control">
                 <span class="form-message"></span>
             </div>
 
             <div class="form-group">
                 <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="text" placeholder="VD: thaongo@dgmail.com" class="form-control">
+                <input id="email" name="email" type="text" placeholder="VD: nguyenluan@dgmail.com" class="form-control">
                 <span class="form-message"></span>
             </div>
             <!-- <div class="form-group">

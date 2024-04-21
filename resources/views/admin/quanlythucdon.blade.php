@@ -29,10 +29,11 @@
 
             $message = Session::get('message');
             if($message){
-                echo '<span style="font-size:15px ; color : red;"> '.$message.'</span>';
+                echo '<span style="font-size:25px ; color : green; padding-top:25px"> '.$message.'</span>';
                 Session::put('message', null);
             }
              ?>
+            <div class="admin__data">
                   <table>
                     <thead>
                       <tr>
@@ -50,13 +51,13 @@
 
                         <td>{{$td->id}}</td>
                         <td>{{$td->tendanhmuc}}</td>
-                        <td><img class="image-avatar"  src="public/storage/images/{{substr($td->path, 14)}}" alt=""></td>
+                        <td><img class="image-avatar"  src="public/storage/thucdons/{{substr($td->path, 24)}}" alt=""></td>
                         <td>
                           <?php
                            if($td->trangthai == 0)
                               {
                           ?>
-                            <a href="{{URL::to('/unactive/'.$td->id)}}">Ngừng bán</a>
+                            <a style="color:red;" href="{{URL::to('/unactive/'.$td->id)}}">Ngừng bán</a>
                           <?php
                               }else{
                                 
@@ -87,6 +88,7 @@
 
                     </tbody>
                   </table>
+                
                 </div>
             </div>
           </div>

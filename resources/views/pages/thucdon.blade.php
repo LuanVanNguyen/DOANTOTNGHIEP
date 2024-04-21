@@ -198,7 +198,7 @@
                   <div class="menu-item-desc">
                     Đa dạng từ các thức uống đặc trưng không thể thiếu của người Việt như cafe, nước ép, cho tới các loại nước được đặc pha một cách hết sức tuyệt vời.
                   </div>
-                  <a href="/menu-detail.html" class="btn btn-primary">Xem menu</a>
+                  <a href="{{URL::to('/danhsachdouong')}}" class="btn btn-primary">Xem menu</a>
                 </div>
               </div>
             </div>

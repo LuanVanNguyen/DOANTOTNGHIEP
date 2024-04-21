@@ -55,13 +55,17 @@ class QuanLyTinTucController extends Controller
 
     public function store(Request $request, $id)
     {
-        $file = $request->file('anh');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
+
         $data = array();
         $data['tieude'] = $request->tieude;
-        $data['anh'] = $filename;
-        $request->file('anh')->storeAs('public/images/', $filename);
-        // $data['anh'] = $request->file('anh')->storeAs('public/images/', $filename);
+        if($request ->hasFile('anh')){
+            $file = $request -> file('anh');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('public/storage/tintucanhs/',$filename);
+            $data['anh'] = 'public/storage/tintucanhs/' . $filename;
+        }
+
         $data['thoigian'] = $request->thoigian;
         $data['noidung'] = $request->noidung;
         $data['ghichu'] = $request->ghichu;

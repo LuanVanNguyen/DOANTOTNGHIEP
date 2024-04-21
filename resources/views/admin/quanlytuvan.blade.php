@@ -66,7 +66,7 @@
                              
 
                           ?>
-                            <a href="{{URL::to('/activeTuVan/'.$tt->id)}}">Chưa xử lý</a>
+                            <a style="color:red;" href="{{URL::to('/activeTuVan/'.$tt->id)}}">Chưa xử lý</a>
 
                           <?php
 

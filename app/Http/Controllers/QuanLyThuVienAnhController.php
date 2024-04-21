@@ -61,11 +61,18 @@ class QuanLyThuVienAnhController extends Controller
     }
     public function store(Request $request,$id)
     {
-        $file = $request->file('path');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
+        // $file = $request->file('path');
+        // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data =array();
         $data['tieude']= $request->tieude;
-        $data['path']= $request->file('path')->storeAs('public/images/', $filename);
+        // $data['path']= $request->file('path')->storeAs('public/storage/thuvienanhs', $filename);
+        if($request ->hasFile('path')){
+            $file = $request -> file('path');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('public/storage/thuvienanhs/',$filename);
+            $data['path']= $data['path'] = 'public/storage/thuvienanhs/' . $filename;
+        }
         $data['trangthai']= $request->trangthai;
         DB::table('thuvienanh')->where('id',$id)->update($data);
         Session::put('message','Cập nhật ảnh thành công !');

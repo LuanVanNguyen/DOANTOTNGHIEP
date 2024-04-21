@@ -68,9 +68,6 @@
             <div class="box-image">
               <img src="public/front/images/menu-detail3.png" />
             </div>
-            <div class="box-image">
-              <img src="public/front/images/menu-detail1.png" />
-            </div>
           </div>
           <div class="menu-detail-wrapper--right">
             <div class="food-list">
@@ -242,27 +239,6 @@
                         @endforeach
                     </div>
                 </div>
-              </div>
-            </div>
-            <div class="food-list">
-              <div class="food-list-image">
-                <img src="public/front/images/icon-food2.png" alt="" />
-              </div>
-              <h2 class="food-list-heading">
-                <span>Đồ uống</span>
-              </h2>
-              <div class="food-list-info">
-                @foreach ($douong as $nuocuong)
-                <div class="box-food">
-                  <a href="">
-                    <div class="box-food__name">{{$nuocuong->tensp}}</div>
-                    <div class="box-food__price">{{$nuocuong->gia}} VNĐ</div>
-                    <div class="box-food__desc">
-                     {{$nuocuong->mieuta}}
-                    </div>
-                  </a>
-                </div>
-                @endforeach
               </div>
             </div>
           </div>

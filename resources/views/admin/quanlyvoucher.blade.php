@@ -59,7 +59,7 @@
                                     <?php
                                     if ($tt->trangthai == 0) {
                                     ?>
-                                        <a href="{{URL::to('/unactiveVoucher/'.$tt->id)}}">Hết hạn</a>
+                                        <a style="color:red;" href="{{URL::to('/unactiveVoucher/'.$tt->id)}}">Hết hạn</a>
                                     <?php
                                     } else {
 

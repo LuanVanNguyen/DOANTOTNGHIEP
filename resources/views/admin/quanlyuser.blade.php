@@ -59,7 +59,7 @@
                                     <?php
                                     if ($tt->trangthai == 0) {
                                     ?>
-                                        <a href="{{URL::to('/unactiveUser/'.$tt->id)}}">Ngừng hoạt động</a>
+                                        <a style="color:red;" href="{{URL::to('/unactiveUser/'.$tt->id)}}">Ngừng hoạt động</a>
                                     <?php
                                     } else {
 

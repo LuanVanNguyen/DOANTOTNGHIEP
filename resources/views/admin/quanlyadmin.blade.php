@@ -55,7 +55,7 @@
                 <td>{{$tt->id}}</td>
                 <td>{{$tt->name_admin}}</td>
                 <td>{{$tt->email_admin}}</td>
-                <td><img class="image-avatar" src="public/storage/images/{{substr($tt->avatar_admin, 14)}}" alt=""></td>
+                <td><img class="image-avatar" src="public/storage/images/{{substr($tt->avatar_admin, 22)}}" alt=""></td>
                 <td>{{$tt->phone_admin}}</td>
                 <td>{{ date('M d, Y',strtotime($tt->created_at)) }}</td>
                 <td>

@@ -53,7 +53,7 @@
                       <tr>
                         <td>{{$tt->id}}</td>
                         <td>{{$tt->tensp}}</td>
-                        <td><img class="image-avatar" src="public/storage/images/{{substr($tt->anh, 14)}}" alt=""></td>
+                        <td><img class="image-avatar" src="public/storage/sanphams/{{substr($tt->anh, 24)}}" alt=""></td>
                         <td>{{$tt->gia}}</td>
                         <td>{{$tt->mieuta}}</td>
                         <td>
@@ -75,7 +75,7 @@
                            if($tt->featured == 0)
                               {
                           ?>
-                            <a href="{{URL::to('/unactiveFood/'.$tt->id)}}">Ngừng kinh doanh</a>
+                            <a style="color:red;" href="{{URL::to('/unactiveFood/'.$tt->id)}}">Ngừng kinh doanh</a>
                           <?php
                               }else{
                                 

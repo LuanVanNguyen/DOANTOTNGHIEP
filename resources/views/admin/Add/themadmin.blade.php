@@ -36,10 +36,10 @@
                 </div>
               </div>
       
-              <div class="form_add__name">
+              <!-- <div class="form_add__name">
                 <br><label class="form_text" for="date">Ngày tạo tài khoản</label> <br>
                 <input class="form_add__input" type="text" name="created_at" placeholder="Ngày tạo tài khoản">
-              </div>    
+              </div>     -->
               <div class="form_add__name input_btn">
                 <button type="submit" name="btn-sub" class="custom-btn btn-12"><span>Xác nhận</span><span>Thêm</span></button>
               </div>

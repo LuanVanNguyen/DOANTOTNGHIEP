@@ -31,9 +31,9 @@ class QuanLyAdminController extends Controller
     public function save(Request $request)
     {
 
-        $file = $request->file('avatar_admin');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
-        
+        // $file = $request->file('avatar_admin');
+        // $filename = time() . '.' . $file->getClientOriginalExtension();
+
         // Lưu trữ ảnh trong file storage
         // $path = $file->storeAs('public/images', $filename);
 
@@ -42,9 +42,16 @@ class QuanLyAdminController extends Controller
         $data['name_admin']= $request->name_admin;
         $data['email_admin']= $request->email_admin;
         $data['password_admin']= $request->password_admin;
-        $data['avatar_admin'] = $request->file('avatar_admin')->storeAs('public/images/', $filename);
+        // $data['avatar_admin'] = $request->file('avatar_admin')->storeAs('public/images/', $filename);
+        if($request ->hasFile('avatar_admin')){
+            $file = $request -> file('avatar_admin');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('public/storage/images/',$filename);
+            $data['avatar_admin']= 'public/storage/images/' . $filename;
+        }
         $data['phone_admin']= $request->phone_admin;
-        $data['created_at']= $request->create_at;
+        $data['created_at']= date('Y-m-d H:i:s', strtotime('now'));;
         DB::table('admin')->insert($data);
         Session::put('message','Thêm Admin thành công');
     
@@ -60,8 +67,8 @@ class QuanLyAdminController extends Controller
     public function store(Request $request,$id)
     {
        
-        $file = $request->file('avatar_admin');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
+        // $file = $request->file('avatar_admin');
+        // $filename = time() . '.' . $file->getClientOriginalExtension();
         
         // Lưu trữ ảnh trong file storage
         // $path = $file->storeAs('public/images', $filename);
@@ -71,9 +78,16 @@ class QuanLyAdminController extends Controller
         $data['name_admin']= $request->name_admin;
         $data['email_admin']= $request->email_admin;
         $data['password_admin']= $request->password_admin;
-        $data['avatar_admin'] = $request->file('avatar_admin')->storeAs('public/images/', $filename);
+        // $data['avatar_admin'] = $request->file('avatar_admin')->storeAs('public/images/', $filename);
+        if($request ->hasFile('avatar_admin')){
+            $file = $request -> file('avatar_admin');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('public/storage/images/',$filename);
+            $data['avatar_admin']= 'public/storage/images/' . $filename;
+        }
         $data['phone_admin']= $request->phone_admin;
-        $data['created_at']= $request->create_at;
+        $data['created_at']= date('Y-m-d H:i:s', strtotime($request->created_at));
         DB::table('admin')->where('id',$id)->update($data);
         Session::put('message','Cập nhật Admin thành công !');
     

@@ -30,13 +30,20 @@ class QuanLyDoAnController extends Controller
     }
     public function save(Request $request)
     {
-        $file = $request->file('anh');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
+        // $file = $request->file('anh');
+        // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data = array();
         $data['tensp'] = $request->tensp;
         $data['gia'] = $request->gia;
         $data['mieuta'] = $request->mieuta;
-        $data['anh'] = $request->file('anh')->storeAs('public/images/', $filename);
+        if($request ->hasFile('anh')){
+            $file = $request -> file('anh');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('public/storage/sanphams/',$filename);
+            $data['anh']= 'public/storage/sanphams/' . $filename;
+        }
+        // $data['anh'] = $request->file('anh')->storeAs('public/images/', $filename);
         $data['tag'] = $request->tag;
         $data['danhmucmon_id'] = $request->danhmucmon_id;
 
@@ -56,13 +63,20 @@ class QuanLyDoAnController extends Controller
     }
     public function store(Request $request,$id)
     {
-        $file = $request->file('anh');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
+        // $file = $request->file('anh');
+        // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data = array();
         $data['tensp'] = $request->tensp;
         $data['gia'] = $request->gia;
         $data['mieuta'] = $request->mieuta;
-        $data['anh'] = $request->file('anh')->storeAs('public/images/', $filename);
+        if($request ->hasFile('anh')){
+            $file = $request -> file('anh');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('public/storage/sanphams/',$filename);
+            $data['anh']= 'public/storage/sanphams/' . $filename;
+        }
+        // $data['anh'] = $request->file('anh')->storeAs('public/images/', $filename);
         $data['tag'] = $request->tag;
         $data['danhmucmon_id'] = $request->danhmucmon_id;
         $data['featured'] = $request->featured;

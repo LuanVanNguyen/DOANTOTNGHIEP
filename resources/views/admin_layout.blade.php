@@ -24,8 +24,12 @@
     <link rel="stylesheet" href="public/front/css/owl.theme.default.min.css" />
     <link rel="stylesheet" href="public/front/css/home-page.css" />
     <link rel="stylesheet" href="public/front/css/admin-home-page.css">
-    <link rel="stylesheet" href="public/front/css/admin-control-page.css">
-
+    <link rel="stylesheet" href="{{asset('public/front/css/admin-control-page.css')}}">
+    <style>
+      .header{
+        justify-content: center;
+      }
+    </style>
   </head>
 
   <body>

@@ -56,7 +56,7 @@
                            if($tt->trangthai == 0)
                               {
                           ?>
-                            <a href="{{URL::to('/unactiveImages/'.$tt->id)}}">Không hiển thị</a>
+                            <a style="color:red;" href="{{URL::to('/unactiveImages/'.$tt->id)}}">Không hiển thị</a>
                           <?php
                               }else{
                                 

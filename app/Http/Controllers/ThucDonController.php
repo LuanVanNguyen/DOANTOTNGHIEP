@@ -19,6 +19,11 @@ class ThucDonController extends Controller
         $douong = sanpham::where('danhmucmon_id', 3)->get();
         return view('pages.chitietthucdon',compact('khaivi','monchinhGa','monchinhHeo','monchinhBo','monchinhPho','douong'));
     }
+    public function danhsachdouong()
+    {
+        $douong = sanpham::where('danhmucmon_id', 3)->get();
+        return view('pages.danhsachdouong',compact('douong'));
+    }
     public function thucdon()
     {
         return view('pages.thucdon');

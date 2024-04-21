@@ -28,11 +28,19 @@ class QuanLyThucDonController extends Controller
         return view('admin.Add.themthucdon');
     }
     public function save(Request $request)
-    {    $file = $request->file('path');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
+    {   
+        // $file = $request->file('path');
+        // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data = array();
         $data['tendanhmuc']= $request->tendanhmuc;
-        $data['path']= $request->file('path')->storeAs('public/images/', $filename);
+        if($request ->hasFile('path')){
+            $file = $request -> file('path');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('public/storage/thucdons/',$filename);
+            $data['path']= 'public/storage/thucdons/' . $filename;
+        }
+        // $data['path']= $request->file('path')->storeAs('public/images/', $filename);
         $data['trangthai']= $request->trangthai;
         DB::table('danhmucmon')->insert($data);
         Session::put('message','Thêm danh mục sản phẩm thành công');
@@ -48,11 +56,18 @@ class QuanLyThucDonController extends Controller
     }
     public function store(Request $request,$id)
     {
-        $file = $request->file('path');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
+        // $file = $request->file('path');
+        // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data = array();
         $data['tendanhmuc']= $request->tendanhmuc;
-        $data['path']= $request->file('path')->storeAs('public/images/', $filename);
+        // $data['path']= $request->file('path')->storeAs('public/images/', $filename);
+        if($request ->hasFile('path')){
+            $file = $request -> file('path');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('public/storage/thucdons/',$filename);
+            $data['path']= 'public/storage/thucdons/' . $filename;
+        }
         $data['trangthai']= $request->trangthai;
         DB::table('danhmucmon')->where('id',$id)->update($data);
         Session::put('message','Cập nhật danh mục món thành công !');

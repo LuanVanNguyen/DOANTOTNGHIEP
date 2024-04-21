@@ -28,6 +28,8 @@ Route::get('/thuvienanh', [Controllers\ThuVienAnhController::class,'thuvienanh']
 Route::get('/huongdan', [Controllers\HuongDanController::class,'huongdan']);
 Route::get('/lienhe', [Controllers\LienHeController::class,'lienhe']);
 Route::get('/sanpham',[Controllers\ThucDonController::class,'detail']);
+Route::get('/danhsachdouong',[Controllers\ThucDonController::class,'danhsachdouong']);
+
 Route::get('/datban',[Controllers\QuanLyDatBanController::class,'show']);
 Route::post('/savedatban',[Controllers\QuanLyDatBanController::class,'save_user']);
 Route::get('/review',[Controllers\QuanLyDanhGiaController::class,'show']);
@@ -121,6 +123,8 @@ Route::get('/activeVoucher/{id}', [Controllers\QuanLyVoucherController::class,'a
 Route::get('/quanlydatban', [Controllers\QuanLyDatBanController::class,'all']); 
 Route::get('/themdatban', [Controllers\QuanLyDatBanController::class,'add']); 
 Route::post('/luudatban', [Controllers\QuanLyDatBanController::class,'save']); 
+Route::get('/unactiveDB/{id}', [Controllers\QuanLyDatBanController::class,'unactiveDB']); 
+Route::get('/activeDB/{id}', [Controllers\QuanLyDatBanController::class,'activeDB']);
 //QuanLydanhGia
 Route::get('/quanlydanhgia', [Controllers\QuanLyDanhGiaController::class,'all']);
 Route::get('/unactiveReview/{id}', [Controllers\QuanLyDanhGiaController::class,'unactiveReview']); 

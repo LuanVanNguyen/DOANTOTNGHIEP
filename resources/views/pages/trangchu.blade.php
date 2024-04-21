@@ -180,18 +180,6 @@
               <div
                 class="customer-review-list owl-carousel owl-theme col-sm-12"
               >
-
-              @foreach($danhgia as $dg)
-                <div class="review-item">
-                  <div class="review-item__avatar">
-                    <img src="public/front/images/{{$dg->user->avatar}}" alt="{{$dg->user->name}}" />
-                  </div>
-                  <div class="review-item__content">
-                    "{{$dg->noidung}}"
-                  </div>
-                  <div class="review-item__name">{{$dg->user->name}}</div>
-                </div>
-              @endforeach
               </div>
             </div>
           </div>
@@ -250,7 +238,7 @@
                 <div class="box-blog-post">
                   <div class="box-blog-post__image image-cover">
               <a href="{{URL::to('/chitiettintuc'.$tt->id)}}"><img
-              src="public/storage/images{{substr($tt->anh, 14)}}"
+              src="public/storage/{{substr($tt->anh, 15)}}" 
                       alt="Thiết kế đỉnh cao căn hộ 22m2 khiến ai cũng ngưỡng mộ"
                     />
                     </a>

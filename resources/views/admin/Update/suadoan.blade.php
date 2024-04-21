@@ -47,7 +47,10 @@
               <div class="form_add__name padding_y">
                 <label class="form_text" for="img">Ảnh</label> <br>
                 <!-- lấy dữ liệu ảnh của input này -->
-                <input class="form_add__input" type="text" name="anh"> <br>
+                <!-- <input class="form_add__input" type="text" name="anh"> <br> -->
+                <div >
+                  <img src="{{URL::to($tt->anh)}}" width="150px" height="100px" alt="anh">
+                </div>
                 <!-- cái này chỉ để hiện ảnh lên thôi -->
                 <div class="img_input">
                   <input  type="file" name="anh" placeholder="Aa" onchange="getImg(this)" class="file_input"> <br>

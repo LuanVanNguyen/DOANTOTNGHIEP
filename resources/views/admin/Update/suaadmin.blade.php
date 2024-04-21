@@ -2,6 +2,15 @@
 @section('title','Sửa tài khoản')
 @section('menu-name','Cập nhật admin')
 @section('body')
+<style>
+  .form_add__name {
+    width: inherit;
+    height: 6rem;
+    padding-top: 10rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+</style>
 <main class="main">
         <div class="container_body">
                 @foreach($all as $tt)
@@ -29,7 +38,10 @@
               <div class="form_add__name padding_y">
                 <label class="form_text" for="img">Ảnh</label> <br>
                 <!-- lấy dữ liệu ảnh của input này -->
-                <input class="form_add__input" type="text" name="image"> <br>
+                <!-- <input class="form_add__input" type="text" name="image"> <br> -->
+                <div >
+                  <img src="{{URL::to($tt->avatar_admin)}}" width="100px" height="100px" alt="anh">
+                </div>
                 <!-- cái này chỉ để hiện ảnh lên thôi -->
                 <div class="img_input">
                   <input style="height : 50px;"  type="file" name="avatar_admin" placeholder="Aa" onchange="getImg(this)" class="file_input"> <br>
@@ -37,8 +49,7 @@
               </div>
       
               <div class="form_add__name">
-                <br><label class="form_text" for="date">Ngày tạo tài khoản</label> <br>
-                <input class="form_add__input" type="text" name="created_at" placeholder="Ngày tạo tài khoản" value="{{ date('M d, Y',strtotime($tt->created_at)) }}">
+                <input class="form_add__input" type="hidden" name="created_at" placeholder="Ngày tạo tài khoản" value="{{ date('M d, Y',strtotime($tt->created_at)) }}">
               </div>    
               <div class="form_add__name input_btn">
                 <button type="submit" name="btn-sub" class="custom-btn btn-12"><span>Xác nhận</span><span>Lưu</span></button>

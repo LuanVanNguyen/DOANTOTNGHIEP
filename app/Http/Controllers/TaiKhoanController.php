@@ -61,7 +61,13 @@ class TaiKhoanController extends Controller
 
     public function showProfile()
     {
-        return view('pages.profile');
+
+        $userid = Session::get('userid');
+        $result = DB::table('users')
+        ->join("datban","users.id","=","datban.users_id")
+        ->where("users.id",$userid)
+        ->get();
+        return view('pages.profile',compact('userid','result'));
     }
 
     public function logout(Request $request)
@@ -110,7 +116,7 @@ class TaiKhoanController extends Controller
             Session::put('message', 'Mật khẩu hiện tại không chính xác !');
             return redirect('/doimatkhau'); 
          }
-        
+
 
     }
 }

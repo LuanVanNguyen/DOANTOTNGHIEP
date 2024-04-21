@@ -30,7 +30,8 @@ class QuanLyDatBanController extends Controller
 
     public function show()
     {
-        return view('pages.datban');
+        $userid = Session::get('userid');
+        return view('pages.datban',compact('userid'));
     }
 
     public function save(Request $request){
@@ -60,30 +61,8 @@ class QuanLyDatBanController extends Controller
         $data['coso'] = $request->coso;
         $data['ghichu'] = $request->ghichu;
         $data['trangthai'] = $request->trangthai;
-
-        // try {
-        //     $data['name'] = $request->name;
-        //     $data['email'] = $request->email;
-        //     $data['sdt'] = $request->sdt;
-        //     $data['songuoi'] = $request->songuoi;
-        //     $data['thoigian'] = $request->thoigian;
-        //     $data['coso'] = $request->coso;
-        //     $data['ghichu'] = $request->ghichu;
-        //     $data['trangthai'] = $request->trangthai;
-            
-        //     // Kiểm tra tất cả các trường không được null
-        //     foreach ($data as $field) {
-        //         if ($field === null) {
-        //             throw new \Exception("Dữ liệu không hợp lệ");
-        //         }
-        //     }
-    
-        //     // Xử lý dữ liệu
-            
-        //     return response()->json(['message' => 'Success']);
-        // } catch (\Exception $e) {
-        //     return response()->json(['error' => $e->getMessage()]);
-        // }
+        $data['users_id'] = $request->userid;
+        $data['trangthai']=$request->trangthai;
 
         // hàm lấy ra tổng số bàn đã đặt trong database table đặt bàn
         function soBanDaDat($date, $coso)
@@ -111,6 +90,7 @@ class QuanLyDatBanController extends Controller
         $date = date('Y-m-d', strtotime($thoigian));
         // lay ra thong tin co so
         $cosokhachdat = $data['coso'];
+        
         // so ban con lai trang db
         $sobanconlai = soBanDaDat($date, $cosokhachdat);
 
@@ -171,5 +151,19 @@ class QuanLyDatBanController extends Controller
             // vui lòng liên hệ nhân viên chăm sóc khách hàng để được hỗ trợ về thông tin bàn đặt");</script>';
             return Redirect::to('datban')->with('error', 'Không tìm thấy thông tin đặt bàn của quý khách. Vui lòng liên hệ nhân viên chăm sóc khách hàng để được hỗ trợ về thông tin bàn đặt');
         }
+    }
+
+    
+    public function unactiveDB($id)
+    {
+        DB::table('datban')->where('id',$id)->update(['trangthai'=>1]);
+        Session::put('message','Đã đổi sang trạng thái đã ăn ');
+        return Redirect::to('/quanlydatban');
+    }
+    public function activeDB($id)
+    {
+        DB::table('datban')->where('id',$id)->update(['trangthai'=>0]);
+        Session::put('message','Đã đổi sang trạng thái chưa ăn');
+        return Redirect::to('/quanlydatban');
     }
 }

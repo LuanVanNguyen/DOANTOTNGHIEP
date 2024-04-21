@@ -52,7 +52,7 @@
                       <tr>
                         <td>{{$tt->id}}</td>
                         <td>{{$tt->tieude}}</td>
-                        <td><img class="image-avatar" src="public/storage/images{{substr($tt->anh, 14)}}" alt=""></td>
+                        <td><img class="image-avatar" src="public/storage/tintucanhs/{{substr($tt->anh, 26)}}" alt=""></td>
                         <td>{{ date('M d, Y',strtotime($tt->thoigian)) }}</td>
                         <td>{{$tt->noidung}}</td>                
                         <td>{{$tt->ghichu}}</td> 
@@ -61,7 +61,7 @@
                            if($tt->trangthai == 0)
                               {
                           ?>
-                            <a href="{{URL::to('/unactiveNew/'.$tt->id)}}">Ẩn</a>
+                            <a style="color:red;" href="{{URL::to('/unactiveNew/'.$tt->id)}}">Ẩn</a>
                           <?php
                               }else{
                                 

@@ -72,7 +72,7 @@
             ]);
             DB::table('danhmucmon')->insert([
                 [
-                    'tendanhmuc'=>'alooo',
+                    'tendanhmuc'=>'alo1',
                     'path'=>'ahihi',
                     'trangthai'=>1
                 ],
@@ -419,7 +419,7 @@
 
             ]);
         
-            DB::table('tintuc')->insert([
+            DB::table(' ')->insert([
                 [
                     'tieude'=>'Tận Hưởng Ưu Đãi Giờ Vàng Cùng Ngàn Món Ngon Tại VMMS',
                     'users_id'=>1,
@@ -519,15 +519,15 @@
                     'name_admin'=>'Tung Duc',
                     'phone_admin'=>'0336939453',
         
-                    ],
-                    [
-                        'email_admin'=>'david@gmail.com',
-                        'password_admin'=>'123456',
-                        'name_admin'=>'David Tran',
-                        'avatar_admin'=>'thaonhu.jpg',
-                        'phone_admin'=>'0336939453',
+                ],
+                [
+                    'email_admin'=>'david@gmail.com',
+                    'password_admin'=>'123456',
+                    'name_admin'=>'David Tran',
+                    'avatar_admin'=>'thaonhu.jpg',
+                    'phone_admin'=>'0336939453',
             
-                        ],
+                ],
             ]);
             DB::table('lienhe')->insert([
                 [

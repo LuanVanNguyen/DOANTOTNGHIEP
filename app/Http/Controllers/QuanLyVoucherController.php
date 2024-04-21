@@ -75,7 +75,7 @@ class QuanLyVoucherController extends Controller
         Session::put('message','Đã đổi sang trạng thái còn hạn !');
         return Redirect::to('/quanlyvoucher');
     }
-    public function activeImages($id)
+    public function activeVoucher($id)
     {
         DB::table('voucher')->where('id',$id)->update(['trangthai'=>0]);
         Session::put('message','Đã đổi sang trạng thái hết hạn');
