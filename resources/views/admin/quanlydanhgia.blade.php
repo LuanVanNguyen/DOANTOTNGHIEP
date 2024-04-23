@@ -39,7 +39,7 @@
                     @foreach($all as $dg)
                       <tr>
                         <td>{{$dg->id}}</td>
-                        <td>{{$dg->users->name}}</td>
+                        <td>{{$dg->hoten }}</td>
                         <td>{{$dg->sdt}}</td>
                         <td>{{$dg->ghichu}}</td>
                         <td>{{$dg->noidung}}</td>

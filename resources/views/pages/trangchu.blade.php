@@ -180,6 +180,17 @@
               <div
                 class="customer-review-list owl-carousel owl-theme col-sm-12"
               >
+                  @foreach($danhgia as $dg)
+                    <div class="review-item">
+                      <div class="review-item__avatar">
+                        <img src="public/front/images/avatar.png" />
+                      </div>
+                      <div class="review-item__content">
+                        "{{$dg->noidung}}"
+                      </div>
+                      <div class="review-item__name">{{$dg->hoten}}</div>
+                    </div>
+                  @endforeach
               </div>
             </div>
           </div>

@@ -51,6 +51,10 @@ class QuanLyDatBanController extends Controller
     }
 
     public function save_user(Request $request){
+        if($request->name==""||$request->email==""||$request->sdt==""||$request->thoigian==""){
+             Session::put('message', 'Vui lòng nhập đầy đủ thông tin trước khi đặt bàn!');
+             return Redirect::to('/datban'); 
+        }else{
         $data = array();
         
         $data['name'] = $request->name;
@@ -138,6 +142,7 @@ class QuanLyDatBanController extends Controller
 
             return Redirect::to('/chitietdatban' . $id);
         }
+    }
     }
 
     public function chitietdatban($id)

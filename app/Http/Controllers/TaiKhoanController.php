@@ -90,8 +90,8 @@ class TaiKhoanController extends Controller
     public function savechangepass(Request $request)
 
     {  
-        $password = $request->password;
-        $repassword= $request->repassword;
+        $password = $request->old_password;
+        $newpassword= $request->new_password;
 
         // Xác định người dùng hiện tại, ví dụ: từ session hoặc bất kỳ phương thức tùy chỉnh nào
         $userid = Session::get('userid'); // Đây chỉ là ví dụ, bạn cần xác định ID người dùng thực tế
@@ -99,13 +99,12 @@ class TaiKhoanController extends Controller
          $user = User::findOrFail($userid);
 
 
-
          if ($password == $user->password) {
-             $user->password =$repassword;
+             $user->password =$newpassword;
              $data = array();
-             $data['name']= $request->name;
+             $data['name']= $request->fullname;
              $data['email']= $request->email;
-             $data['password']= $repassword;
+             $data['password']= $newpassword;
 
              DB::table('users')->where('id',$userid)->update($data);
             

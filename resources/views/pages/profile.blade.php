@@ -120,14 +120,14 @@ use Illuminate\Support\Facades\Session;
         <div class="siderbar-item siderbar-group5">
           <i class="far fa-image-polaroid"></i>
           <span class="booking-link">
-            <a href="news-category.html" class="booking-link">Xem ảnh mới nhất</a>
+            <a href="{{URL::to('/thuvienanh')}}" class="booking-link">Xem ảnh mới nhất</a>
           </span>
         </div>
         <!-- đánh giá -->
         <div class="siderbar-item siderbar-group5">
           <i class="fas fa-comment-smile"></i>
           <span class="booking-link">
-            <a href="review-page.html" class="booking-link">Gửi đánh giá, góp ý</a>
+            <a href="{{URL::to('/review')}}" class="booking-link">Gửi đánh giá, góp ý</a>
           </span>
         </div>
         <!-- kết nối -->

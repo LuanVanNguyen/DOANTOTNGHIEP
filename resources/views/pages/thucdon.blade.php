@@ -179,7 +179,7 @@
                     cách hiện đại để cho ra đời những món ăn khiến khẩu vị thực
                     khách thăng hoa đến cung bậc cao nhất.
                   </div>
-                  <a href="{{URL::to('/sanpham')}}" class="btn btn-primary">Xem menu</a>
+                  <a href="{{URL::to('/danhsachmon')}}" class="btn btn-primary">Xem menu</a>
                 </div>
               </div>
             </div>
@@ -204,8 +204,9 @@
             </div>
           </div>
         </div>
-        <section class="form-consultation">
-          <div class="container section-py position-relative">
+        <div id="dangkytuvan" style="height: 50px;"><br></div>
+        <section class="form-consultation" >
+          <div class="container section-py position-relative" >
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-6">
                 <div class="form-consultation__heading">

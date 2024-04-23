@@ -13,7 +13,11 @@ class TrangChuController extends Controller
     public function index()
     {
         $sanphamnoibat = sanpham::where('featured', 0)->get();
-        $danhgia = danhgia::orderBy('id', 'desc')->limit(3)->get();
+        // $danhgia = danhgia::orderBy('id', 'desc')->limit(3)->get();
+        $danhgia = danhgia::where('trangthai', 1)
+        ->orderBy('id', 'desc')
+        ->limit(3)
+        ->get();
         $tintuc = tintuc::orderBy('id', 'desc')->limit(6)->get();
 
         return view('pages.trangchu', compact('sanphamnoibat', 'danhgia', 'tintuc'));

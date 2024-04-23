@@ -28,6 +28,7 @@ Route::get('/thuvienanh', [Controllers\ThuVienAnhController::class,'thuvienanh']
 Route::get('/huongdan', [Controllers\HuongDanController::class,'huongdan']);
 Route::get('/lienhe', [Controllers\LienHeController::class,'lienhe']);
 Route::get('/sanpham',[Controllers\ThucDonController::class,'detail']);
+Route::get('/danhsachmon',[Controllers\ThucDonController::class,'danhsachmon']);
 Route::get('/danhsachdouong',[Controllers\ThucDonController::class,'danhsachdouong']);
 
 Route::get('/datban',[Controllers\QuanLyDatBanController::class,'show']);

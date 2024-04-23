@@ -36,7 +36,7 @@
               <a href="{{URL::to('/trangchu')}}" class="logo">
                 <img srcset="public/front/images/logo-vmms.png" alt="logo" />
               </a>
-              <h1 class="header-title">ĐỒ UỐNG</h1>
+              <h1 class="header-title">MÓN ĂN</h1>
               <div class="header-contact">0962.180.180</div>
               <span class="menu-search">
                 <i class="fas fa-search icon-search"></i>
@@ -63,31 +63,185 @@
         <div class="menu-detail-wrapper">
           <div class="menu-detail-wrapper--left">
             <div class="box-image">
-              <img src="public/front/images/menu-detail1.png" />
+              <img src="public/front/images/menu-detail2.png" />
+            </div>
+            <div class="box-image">
+              <img src="public/front/images/menu-detail3.png" />
             </div>
           </div>
           <div class="menu-detail-wrapper--right">
             <div class="food-list">
               <div class="food-list-image">
-                <img src="public/front/images/icon-food2.png" alt="" />
+                <img src="public/front/images/icon-food1.png" alt="" />
               </div>
               <h2 class="food-list-heading">
-                <span>Đồ uống</span>
+                <span>KHAI VỊ</span>
               </h2>
               <div class="food-list-info">
-                @foreach ($douong as $nuocuong)
+
+                @foreach($khaivi as $kv)
                 <div class="box-food">
-                  <a href="">
-                    <div class="box-food__name">{{$nuocuong->tensp}}</div>
-                    <div class="box-food__price">{{$nuocuong->gia}} VNĐ</div>
+                  <a href="menu-detail.html">
+                    <div class="box-food__name">{{$kv->tensp}}</div>
+                    <div class="box-food__price">{{$kv->gia}} VNĐ</div>
                     <div class="box-food__desc">
-                     {{$nuocuong->mieuta}}
+                      {{$kv->mieuta}}
                     </div>
                   </a>
                 </div>
                 @endforeach
+
               </div>
             </div>
+            <div class="food-list">
+              <div class="food-list-image">
+                <img src="public/front/images/icon-food1.png" alt="" />
+              </div>
+              <h2 class="food-list-heading">
+                <span>MÓN CHÍNH</span>
+              </h2>
+              <ul
+                class="nav nav-pills food-list-nav"
+                id="pills-tab"
+                role="tablist"
+              >
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    data-toggle="pill"
+                    href="#food-1"
+                    role="tab"
+                    aria-selected="true"
+                    >Gà</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-toggle="pill"
+                    href="#food-2"
+                    role="tab"
+                    aria-selected="false"
+                    >Heo</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-toggle="pill"
+                    href="#food-3"
+                    role="tab"
+                    aria-selected="false"
+                    >Bò</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-toggle="pill"
+                    href="#food-4"
+                    role="tab"
+                    aria-selected="false"
+                    >Gỏi cuốn</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-toggle="pill"
+                    href="#food-5"
+                    role="tab"
+                    aria-selected="false"
+                    >Bún/Mì</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-toggle="pill"
+                    href="#food-6"
+                    role="tab"
+                    aria-selected="false"
+                    >Canh</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-toggle="pill"
+                    href="#food-7"
+                    role="tab"
+                    aria-selected="false"
+                    >Cơm</a
+                  >
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div
+                  class="tab-pane fade show active" id="food-1"role="tabpanel">
+                  <div class="food-list-info">
+                    @foreach($monchinhGa as $ga)
+                    <div class="box-food">
+                      <a href="">
+                        <div class="box-food__name">{{$ga->tensp}}</div>
+                        <div class="box-food__price">{{$ga->gia}} VNĐ</div>
+                        <div class="box-food__desc">
+                         {{$ga->mieuta}}
+                        </div>
+                      </a>
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="food-2" role="tabpanel">
+                  <div class="food-list-info">
+                  @foreach($monchinhHeo as $heo)
+                    <div class="box-food">
+                      <a href="">
+                        <div class="box-food__name">{{$heo->tensp}}</div>
+                        <div class="box-food__price">{{$heo->gia}} VNĐ</div>
+                        <div class="box-food__desc">
+                         {{$heo->mieuta}}
+                        </div>
+                      </a>
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="food-3" role="tabpanel">
+                    <div class="food-list-info">
+                    @foreach($monchinhBo as $bo)
+                        <div class="box-food">
+                        <a href="">
+                            <div class="box-food__name">{{$bo->tensp}}</div>
+                            <div class="box-food__price">{{$bo->gia}} VNĐ</div>
+                            <div class="box-food__desc">
+                            {{$bo->mieuta}}
+                            </div>
+                        </a>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="food-4" role="tabpanel">
+                    <div class="food-list-info">
+                    @foreach($monchinhPho as $pho)
+                        <div class="box-food">
+                        <a href="">
+                            <div class="box-food__name">{{$pho->tensp}}</div>
+                            <div class="box-food__price">{{$pho->gia}} VNĐ</div>
+                            <div class="box-food__desc">
+                            {{$pho->mieuta}}
+                            </div>
+                        </a>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </main>

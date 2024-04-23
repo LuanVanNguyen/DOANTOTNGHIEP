@@ -63,7 +63,7 @@
                               if($tt->danhmucmon_id == 2)
                               echo 'Món chính';
                               if($tt->danhmucmon_id == 3)
-                              echo 'Nước uống ';
+                              echo 'Đồ uống ';
 
 
                           ?>
