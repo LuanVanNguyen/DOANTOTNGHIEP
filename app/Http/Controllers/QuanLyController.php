@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
+
 class QuanLyController extends Controller
 {
+
     public function login()
     {
         return view('admin_login');
@@ -47,6 +49,4 @@ class QuanLyController extends Controller
             return Redirect::to('/admin');
 
         }
-       
-    
 }

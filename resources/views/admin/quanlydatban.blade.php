@@ -67,14 +67,14 @@
                            if($tt->trangthai == 0)
                               {
                           ?>
-                            <a style="color:red;" href="{{URL::to('/unactiveDB/'.$tt->id)}}">Chưa ăn</a>
+                            <a  href="{{URL::to('/unactiveDB/'.$tt->id)}}">Đã ăn</a>
                           <?php
                               }else{
                                 
                              
 
                           ?>
-                            <a href="{{URL::to('/activeDB/'.$tt->id)}}">Đã ăn</a>
+                            <a style="color:red;" href="{{URL::to('/activeDB/'.$tt->id)}}">Chưa ăn</a>
 
                           <?php
 
@@ -83,9 +83,9 @@
                         
                         </td>          
                 <td>
-                  <a href="#">
-                    <button class="btn-6 custom-btn">Xóa</button>
-                  </a>
+                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" href="{{URL::to('/xoadatban'.$tt->id)}}">
+                      <button class="btn-6 custom-btn">Xóa</button>
+                    </a>
                 </td>
               </tr>
               @endforeach

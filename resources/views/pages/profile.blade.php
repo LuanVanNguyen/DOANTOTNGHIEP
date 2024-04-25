@@ -45,7 +45,7 @@ use Illuminate\Support\Facades\Session;
             <a href="{{URL::to('/trangchu')}}" class="logo">
               <img srcset="public/front/images/logo-vmms.png" alt="logo" />
             </a>
-            <h1 class="header-title">Hồ sơ cá nhân !</h1>
+            <h1 class="header-title">Hồ sơ cá nhân</h1>
             <div class="header-contact">0962.180.180</div>
             <span class="menu-search">
               <i class="fas fa-search icon-search" style="position: relative;"></i>

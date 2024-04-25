@@ -17,6 +17,7 @@ use App\Http\Controllers\Controller;
 //Front-End
 Route::get('/',[Controllers\TrangChuController::class,'index']);
 Route::get('/trangchu',[Controllers\TrangChuController::class,'index']);
+//Test mail
 
 
 Route::get('/thucdon', [Controllers\ThucDonController::class,'thucdon']);
@@ -32,6 +33,7 @@ Route::get('/danhsachmon',[Controllers\ThucDonController::class,'danhsachmon']);
 Route::get('/danhsachdouong',[Controllers\ThucDonController::class,'danhsachdouong']);
 
 Route::get('/datban',[Controllers\QuanLyDatBanController::class,'show']);
+Route::get('/suadatban{id}', [Controllers\QuanLyDatBanController::class,'suadatban']);
 Route::post('/savedatban',[Controllers\QuanLyDatBanController::class,'save_user']);
 Route::get('/review',[Controllers\QuanLyDanhGiaController::class,'show']);
 Route::post('/luureview',[Controllers\QuanLyDanhGiaController::class,'luureview']);
@@ -124,6 +126,9 @@ Route::get('/activeVoucher/{id}', [Controllers\QuanLyVoucherController::class,'a
 Route::get('/quanlydatban', [Controllers\QuanLyDatBanController::class,'all']); 
 Route::get('/themdatban', [Controllers\QuanLyDatBanController::class,'add']); 
 Route::post('/luudatban', [Controllers\QuanLyDatBanController::class,'save']); 
+Route::get('/xoadatban{id}', [Controllers\QuanLyDatBanController::class,'xoadatban']);
+Route::get('/huydatban{id}', [Controllers\QuanLyDatBanController::class,'huydatban']);
+Route::post('/update-datban{id}', [Controllers\QuanLyDatBanController::class,'update_datban']);
 Route::get('/unactiveDB/{id}', [Controllers\QuanLyDatBanController::class,'unactiveDB']); 
 Route::get('/activeDB/{id}', [Controllers\QuanLyDatBanController::class,'activeDB']);
 //QuanLydanhGia
