@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 08, 2023 at 05:33 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Máy chủ: 127.0.0.1:4306
+-- Thời gian đã tạo: Th4 25, 2024 lúc 11:02 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `vmms2_project`
+-- Cơ sở dữ liệu: `vmms2_projec`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Cấu trúc bảng cho bảng `admin`
 --
 
 CREATE TABLE `admin` (
@@ -40,19 +40,17 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `admin`
+-- Đang đổ dữ liệu cho bảng `admin`
 --
 
 INSERT INTO `admin` (`id`, `name_admin`, `email_admin`, `avatar_admin`, `email_verified_at`, `password_admin`, `phone_admin`, `created_at`, `updated_at`) VALUES
-(9, 'Luan Nguyen', 'nguyenvanluan200502@gmail.com', 'public/images/Uq4yZ4vqoakZd45KPfwJEVmNm0NlkgBNFwu9eDbt.jpg', NULL, '1234567', '0528728054', NULL, NULL),
-(10, 'Luan Nguyen', 'nguyenvanluan200502@gmail.com', 'public/images/98AOU8vTY9vGuUijSxKAJb6eKTFT2azWQ08wdxq6.jpg', NULL, '1234567', '0528728054', NULL, NULL),
-(11, 'Luan Nguyen', 'nguyenluana2p248@gmail.com', 'public/images/KMlntEyb49kk6WwnxO4YNjZizK835WiaEbVr0bR9.jpg', NULL, '1234567', '0528728054', NULL, NULL),
-(20, 'Luan Nguyen', 'nguyenluan248@gmail.com', 'public/images//1688189587.jpg', NULL, '1234567', '0528728054', NULL, NULL);
+(24, 'Tung Duc', 'admin@gmail.com', 'public/storage/images/1713599600.jpg', NULL, '123456', '0365048804', '2024-04-19 17:00:00', NULL),
+(25, 'Luan', 'nguyenluan200502@gmail.com', 'public/storage/images/1713599873.png', NULL, '123456', '0964156867', '2024-04-19 17:00:00', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coso`
+-- Cấu trúc bảng cho bảng `coso`
 --
 
 CREATE TABLE `coso` (
@@ -65,7 +63,7 @@ CREATE TABLE `coso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `coso`
+-- Đang đổ dữ liệu cho bảng `coso`
 --
 
 INSERT INTO `coso` (`id`, `tencoso`, `diachi`, `dienthoai`, `tongsoban`, `trangthai`) VALUES
@@ -76,7 +74,7 @@ INSERT INTO `coso` (`id`, `tencoso`, `diachi`, `dienthoai`, `tongsoban`, `trangt
 -- --------------------------------------------------------
 
 --
--- Table structure for table `danhgia`
+-- Cấu trúc bảng cho bảng `danhgia`
 --
 
 CREATE TABLE `danhgia` (
@@ -93,20 +91,18 @@ CREATE TABLE `danhgia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `danhgia`
+-- Đang đổ dữ liệu cho bảng `danhgia`
 --
 
 INSERT INTO `danhgia` (`id`, `users_id`, `hoten`, `sdt`, `ghichu`, `noidung`, `thoigian`, `trangthai`, `created_at`, `updated_at`) VALUES
-(1, 1, NULL, NULL, 'nothing', 'Nhân viên phục vụ nhiệt tình, tôi rất hài hòng , món ăn thì ngon vô địch !!!', '00:00:00', 1, NULL, NULL),
-(2, 2, NULL, NULL, 'nothing', 'Nhân viên phục vụ nhiệt tình, món ăn thì ngon bổ rẻ !!!', '00:00:00', 1, NULL, NULL),
-(3, 3, NULL, NULL, 'nothing', 'Giá cả phải chăng, tôi rất cực kỳ hài lòng, món ăn thì ngon vô địch !!!', '00:00:00', 1, NULL, NULL),
-(4, 2, NULL, NULL, 'nothing', 'Nhân viên thân thiện nhiệt tình , món ăn thì ngon vô địch !!!', '00:00:00', 0, NULL, NULL),
-(5, 1, NULL, NULL, 'nothing', 'Nhân viên phục vụ nhiệt tình, tôi rất hài hòng , món ăn thì ngon vô địch !!!', '00:00:00', 1, NULL, NULL);
+(44, 22, 'Luan', '0964156877', NULL, 'Nhân viên phục vụ nhiệt tình, tôi rất hài hòng , món ăn thì ngon vô địch !!!', NULL, 1, NULL, NULL),
+(45, 22, 'Tùng Đức', '0964156877', NULL, '\'Nhân viên phục vụ nhiệt tình, món ăn thì ngon bổ rẻ !!!\'', NULL, 1, NULL, NULL),
+(46, 22, 'Phương Thảo', '0964156877', NULL, '\'Nhân viên phục vụ nhiệt tình, món ăn thì ngon bổ rẻ !!!\'', NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `danhmucmon`
+-- Cấu trúc bảng cho bảng `danhmucmon`
 --
 
 CREATE TABLE `danhmucmon` (
@@ -119,18 +115,18 @@ CREATE TABLE `danhmucmon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `danhmucmon`
+-- Đang đổ dữ liệu cho bảng `danhmucmon`
 --
 
 INSERT INTO `danhmucmon` (`id`, `tendanhmuc`, `path`, `trangthai`, `created_at`, `updated_at`) VALUES
-(1, 'Khai vị', 'public/images//1688399151.png', 1, NULL, NULL),
-(2, 'Món chính', 'public/images//1688399167.png', 1, NULL, NULL),
-(3, 'Đồ uống', 'public/images//1688399186.png', 1, NULL, NULL);
+(1, 'Khai vị', 'public/storage/thucdons/1713600999.png', 1, NULL, NULL),
+(2, 'Món chính', 'public/storage/thucdons/1713601330.png', 1, NULL, NULL),
+(3, 'Đồ uống', 'public/storage/thucdons/1713601338.png', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datban`
+-- Cấu trúc bảng cho bảng `datban`
 --
 
 CREATE TABLE `datban` (
@@ -150,83 +146,28 @@ CREATE TABLE `datban` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `datban`
+-- Đang đổ dữ liệu cho bảng `datban`
 --
 
 INSERT INTO `datban` (`id`, `users_id`, `name`, `email`, `sdt`, `songuoi`, `thoigian`, `coso`, `ghichu`, `trangthai`, `soban`, `created_at`, `updated_at`) VALUES
-(1, 1, '', 'nhuthao@gmail.com', '0336939453', 2, '00:00:00', 'Cơ sở 1', 'Tôi có thể ngồi được một chỗ có không gian ngoài trời không', 1, 19, NULL, NULL),
-(2, 2, '', 'longgay@gmail.com', '0336939453', 4, '00:00:00', 'CS01', 'Tôi có thể ngồi một chỗ tĩnh lặng chút được không?', 1, 2, NULL, NULL),
-(3, 3, '', 'huyanhnguyen@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể mang thức ăn bên ngoài vào không?', 1, 2, NULL, NULL),
-(4, 4, '', 'ductran@gmail.com', '0336939453', 1, '00:00:00', 'CS01', 'Tôi có thể có một chỗ yên tĩnh để chill không', 1, NULL, NULL, NULL),
-(5, 1, '', 'nhuthao@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể ngồi được một chỗ có không gian ngoài trời không', 1, NULL, NULL, NULL),
-(6, 2, '', 'longgay@gmail.com', '0336939453', 4, '00:00:00', 'CS01', 'Tôi có thể ngồi một chỗ tĩnh lặng chút được không?', 1, NULL, NULL, NULL),
-(7, 3, '', 'huyanhnguyen@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể mang thức ăn bên ngoài vào không?', 1, NULL, NULL, NULL),
-(8, 4, '', 'ductran@gmail.com', '0336939453', 1, '00:00:00', 'CS01', 'Tôi có thể có một chỗ yên tĩnh để chill không', 1, NULL, NULL, NULL),
-(9, 1, '', 'nhuthao@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể ngồi được một chỗ có không gian ngoài trời không', 1, NULL, NULL, NULL),
-(10, 2, '', 'longgay@gmail.com', '0336939453', 4, '00:00:00', 'CS01', 'Tôi có thể ngồi một chỗ tĩnh lặng chút được không?', 1, NULL, NULL, NULL),
-(11, 3, '', 'huyanhnguyen@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể mang thức ăn bên ngoài vào không?', 1, NULL, NULL, NULL),
-(12, 4, '', 'ductran@gmail.com', '0336939453', 1, '00:00:00', 'CS01', 'Tôi có thể có một chỗ yên tĩnh để chill không', 1, NULL, NULL, NULL),
-(13, 1, '', 'nhuthao@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể ngồi được một chỗ có không gian ngoài trời không', 1, NULL, NULL, NULL),
-(14, 2, '', 'longgay@gmail.com', '0336939453', 4, '00:00:00', 'CS01', 'Tôi có thể ngồi một chỗ tĩnh lặng chút được không?', 1, NULL, NULL, NULL),
-(15, 3, '', 'huyanhnguyen@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể mang thức ăn bên ngoài vào không?', 1, NULL, NULL, NULL),
-(16, 4, '', 'ductran@gmail.com', '0336939453', 1, '00:00:00', 'CS01', 'Tôi có thể có một chỗ yên tĩnh để chill không', 1, NULL, NULL, NULL),
-(17, 1, '', 'nhuthao@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể ngồi được một chỗ có không gian ngoài trời không', 1, NULL, NULL, NULL),
-(18, 2, '', 'longgay@gmail.com', '0336939453', 4, '00:00:00', 'CS01', 'Tôi có thể ngồi một chỗ tĩnh lặng chút được không?', 1, NULL, NULL, NULL),
-(19, 3, '', 'huyanhnguyen@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể mang thức ăn bên ngoài vào không?', 1, NULL, NULL, NULL),
-(20, 4, '', 'ductran@gmail.com', '0336939453', 1, '00:00:00', 'CS01', 'Tôi có thể có một chỗ yên tĩnh để chill không', 1, NULL, NULL, NULL),
-(21, 1, '', 'nhuthao@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể ngồi được một chỗ có không gian ngoài trời không', 1, NULL, NULL, NULL),
-(22, 2, '', 'longgay@gmail.com', '0336939453', 4, '00:00:00', 'CS01', 'Tôi có thể ngồi một chỗ tĩnh lặng chút được không?', 1, NULL, NULL, NULL),
-(23, 3, '', 'huyanhnguyen@gmail.com', '0336939453', 2, '00:00:00', 'CS01', 'Tôi có thể mang thức ăn bên ngoài vào không?', 1, NULL, NULL, NULL),
-(24, 4, '', 'ductran@gmail.com', '0336939453', 1, '00:00:00', 'CS01', 'Tôi có thể có một chỗ yên tĩnh để chill không', 1, NULL, NULL, NULL),
-(26, NULL, 'Thao Nhu Ngo', 'nhuthaophap248@gmail.com', '02385784', 10, '13:29:00', 'CS2', 'nice', NULL, NULL, NULL, NULL),
-(27, NULL, 'Tùng Lâm', 'tung@gmail.com', '02385784', 2, '05:33:00', 'CS2', 'mom mom', NULL, NULL, NULL, NULL),
-(28, NULL, '...thao vy', 'nhuthaophap248@gmail.com', '023857843r5665', 15, '19:51:00', 'CS1', NULL, NULL, NULL, NULL, NULL),
-(29, NULL, 'Thao Ngo', 'phap248@gmail.com', '03369393453', 2, '02:54:00', 'CS4', 'nice', NULL, NULL, NULL, NULL),
-(30, NULL, 'ngothao', 'nhuthaophap248@gmail.com', '023857843r5665', 15, '02:55:00', 'CS3', NULL, NULL, NULL, NULL, NULL),
-(31, NULL, 'Linh Nguyễn', 'linh@gmail.com', '03369393453', 10, '06:24:00', 'CS2', 'nice', NULL, NULL, NULL, NULL),
-(32, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '02385784', 2, '04:05:00', 'CS2', 'a', NULL, NULL, NULL, NULL),
-(33, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '02385784', 2, '04:05:00', 'CS2', 'a', NULL, NULL, NULL, NULL),
-(34, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(35, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(36, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(37, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(38, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(39, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(40, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(41, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(42, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(43, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(44, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(45, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 2, '00:10:00', 'CS3', 'a', NULL, NULL, NULL, NULL),
-(46, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 10, '04:49:00', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(47, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '03369393453', 181, '04:49:00', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(48, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '023857843r5665', 10, '18:51:00', 'Cơ sở 1', 'a', NULL, NULL, NULL, NULL),
-(49, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '023857843r5665', 1, '18:51:00', 'Cơ sở 1', 'a', NULL, NULL, NULL, NULL),
-(50, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '023857843r5665', 1, '18:51:00', 'Cơ sở 1', 'a', NULL, NULL, NULL, NULL),
-(51, NULL, 'Thao Ngo2', 'nhuthaophap248@gmail.com', '0238578432', 1, '07:39:00', 'Cơ sở 2', 'aa', NULL, NULL, NULL, NULL),
-(52, NULL, 'ngothao', 'nhuthaophap248@gmail.com', '0336939453', 15, '11:09:00', 'Cơ sở 2', 'g', NULL, NULL, NULL, NULL),
-(53, NULL, 'ngothao', 'nhuthaophap248@gmail.com', '0336939453', 15, '11:09:00', 'Cơ sở 2', 'g', NULL, NULL, NULL, NULL),
-(54, NULL, 'ngothao', 'nhuthaophap248@gmail.com', '0336939453', 15, '2023-07-05T11:09', 'Cơ sở 2', 'g', NULL, NULL, NULL, NULL),
-(55, NULL, 'ngothao2', 'nhuthaophap248@gmail.com', '0336939453', 15, '2023-07-05T11:09', 'Cơ sở 2', 'g', NULL, NULL, NULL, NULL),
-(56, NULL, '...thao vy', 'nhuthaophap248@gmail.com', '0336939453', 1, '2023-07-06T05:05', 'Cơ sở 2', NULL, NULL, NULL, NULL, NULL),
-(57, NULL, '...thao vy', 'nhuthaophap248@gmail.com', '0336939453', 1, '2023-07-06T05:05', 'Cơ sở 2', NULL, NULL, NULL, NULL, NULL),
-(58, NULL, '...vuta', 'nhuthaophap248@gmail.com', '0238578432', 15, '2023-06-26T15:21', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(59, NULL, '...vuta', 'nhuthaophap248@gmail.com', '0238578432', 15, '2023-06-26T15:21', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(60, NULL, '...vuta', 'nhuthaophap248@gmail.com', '0238578432', 15, '2023-06-26T15:21', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(61, NULL, 'Thao Nhu', 'nhuthaophap248@gmail.com', '0238578432', 1, '2023-07-05T15:30', 'Cơ sở 3', 'a', NULL, NULL, NULL, NULL),
-(62, NULL, 'Thao Ngo2', 'nhuthaophap248@gmail.com', '0238578432', 10, '2023-07-05T18:30', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(63, NULL, 'Thao Ngo2', 'nhuthaophap248@gmail.com', '0238578432', 10, '2023-07-05T18:30', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(64, NULL, 'Thao Ngo2', 'nhuthaophap248@gmail.com', '0238578432', 10, '2023-07-05T18:30', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(65, NULL, 'Thao Ngo2', 'nhuthaophap248@gmail.com', '0238578432', 10, '2023-07-05T18:30', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(66, NULL, 'Thao Ngo2', 'nhuthaophap248@gmail.com', '0238578432', 10, '2023-07-05T18:30', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(67, NULL, 'Thao Ngo22', 'nhuthaophap248@gmail.com', '0238578432', 10, '2023-07-05T18:30', 'Cơ sở 2', 'a', NULL, NULL, NULL, NULL),
-(68, NULL, 'Thao Ngo222', 'nhuthaophap248@gmail.com', '03369393453', 10, '2023-07-05T21:49', 'Cơ sở 1', '2', NULL, NULL, NULL, NULL),
-(69, NULL, 'Thao Ngo', 'nhuthaophap248@gmail.com', '0336939453', 1, '2023-08-23T04:52', 'Cơ sở 1', 'nice', NULL, NULL, NULL, NULL);
+(72, 21, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 5, '2024-04-25T23:01', 'Cơ sở 2', 'test1', 1, NULL, NULL, NULL),
+(73, 22, 'Ta Van Tu', 'nhuthaophap2248@gmail.com', '0346504990', 4, '2024-04-24T22:36', 'Cơ sở 1', NULL, 1, 1, NULL, NULL),
+(74, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 2, '2024-04-25T22:43', 'Cơ sở 2', 'aaa', 1, NULL, NULL, NULL),
+(75, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 2, '2024-04-25T22:43', 'Cơ sở 2', 'aaa', 1, NULL, NULL, NULL),
+(76, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-19T00:12', 'Cơ sở 1', NULL, 1, NULL, NULL, NULL),
+(77, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-19T00:12', 'Cơ sở 1', NULL, 1, NULL, NULL, NULL),
+(78, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-12T21:27', 'Cơ sở 1', NULL, 0, NULL, NULL, NULL),
+(79, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-25T23:46', 'Cơ sở 1', 'test co so 1', 1, 3, NULL, NULL),
+(81, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-26T00:29', 'Cơ sở 2', NULL, 1, 3, NULL, NULL),
+(82, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-05-09T00:29', 'Cơ sở 1', 'aaa', 1, 3, NULL, NULL),
+(84, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-26T00:44', 'Cơ sở 1', NULL, 1, 3, NULL, NULL),
+(85, 22, 'Nguyen Van Tu', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-25T01:04', 'Cơ sở 1', NULL, 1, 3, NULL, NULL),
+(86, 22, 'Nguyen Van Hieu', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-25T01:04', 'Cơ sở 1', NULL, 1, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lienhe`
+-- Cấu trúc bảng cho bảng `lienhe`
 --
 
 CREATE TABLE `lienhe` (
@@ -240,7 +181,7 @@ CREATE TABLE `lienhe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `lienhe`
+-- Đang đổ dữ liệu cho bảng `lienhe`
 --
 
 INSERT INTO `lienhe` (`id`, `tieude`, `diachi`, `giomo`, `dienthoai`, `created_at`, `updated_at`) VALUES
@@ -257,7 +198,7 @@ INSERT INTO `lienhe` (`id`, `tieude`, `diachi`, `giomo`, `dienthoai`, `created_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Cấu trúc bảng cho bảng `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -267,7 +208,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Đang đổ dữ liệu cho bảng `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -288,7 +229,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Cấu trúc bảng cho bảng `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -300,7 +241,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sampham`
+-- Cấu trúc bảng cho bảng `sampham`
 --
 
 CREATE TABLE `sampham` (
@@ -317,60 +258,41 @@ CREATE TABLE `sampham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `sampham`
+-- Đang đổ dữ liệu cho bảng `sampham`
 --
 
 INSERT INTO `sampham` (`id`, `danhmucmon_id`, `tensp`, `gia`, `mieuta`, `anh`, `tag`, `featured`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Cánh gà sốt me chua cay', 99000, 'Fried chicken wings, tamarind sauce', 'public/images//1688279329.png', 'Gà', 1, NULL, NULL),
-(2, 1, 'Cánh gà sóc tỏi ớt', 98000, 'Fried chiken wings, chili, garlic', '', '', 1, NULL, NULL),
-(3, 1, 'Bò lá lốt', 108000, 'Grilled marinated beef wrapped lalot leaves, herbs', '', '', 1, NULL, NULL),
-(4, 1, 'Chạo tôm bó mía', 118, 'Homemade sugarcane shrimps skewers, herbs', '', '', 1, NULL, NULL),
-(5, 2, 'Gà hấp mắm nhĩ', 98, 'Steamed chicken with fish, sauce, mung bean sticky rice', '', 'Gà', 1, NULL, NULL),
-(6, 2, 'Cánh gà sốt me', 549, 'Fried chicken wings, tamarind sauce', '', 'Gà', 1, NULL, NULL),
-(7, 2, 'Gà lên mâm', 300, 'Shredded chicken with herbs, spicy grilled chicken', '', 'Gà', 1, NULL, NULL),
-(8, 2, 'Gà nướng ống tre', 320, 'Grilled chicken in bamboo tube, wild herbs', '', 'Gà', 1, NULL, NULL),
-(9, 2, 'Gà hầm thuốc bắc', 250000, 'Wild herbs, ginger, lotus seeds', '', 'Gà', 0, NULL, NULL),
-(10, 2, 'Thịt kho tộ', 98000, 'Thịt ba chỉ hoàng đế', 'public/images//1688310866.png', 'Heo', 1, NULL, NULL),
-(11, 2, 'Thịt ba chỉ luộc', 600000, 'Thịt đều lạc mỡ', 'public/images//1688310739.png', 'Heo', 1, NULL, NULL),
-(12, 2, 'Thịt heo giả cầy', 100, 'Thịt hầm nước 10h', '', 'Heo', 1, NULL, NULL),
-(13, 2, 'Bò lá lốt', 189, 'Grilled marinated beef wrapped lalot leaves, herbs', '', 'Bò', 1, NULL, NULL),
-(14, 2, 'Bò Bít Tết', 189, 'Grilled marinated beef wrapped lalot leaves, herbs', '', 'Bò', 1, NULL, NULL),
-(15, 2, 'Bò Sốt vang', 189, 'Quế, hồi hương, Nho, Rượu', '', 'Bò', 1, NULL, NULL),
-(16, 2, 'Bún đâu mắm tôm', 50, 'Bún, chả cốm, chân giò, đậu phụ rán', '', 'Bún/Phở', 1, NULL, NULL),
-(17, 2, 'Phở gà', 189, 'Sợi phở, quế, rau mùi, ức gà', '', 'Bún/Phở', 1, NULL, NULL),
-(18, 2, 'Phở/Bún Mọc', 189000, 'Thịt băm mọc nhĩ, rau sống', '', 'Bún/Phở', 0, NULL, NULL),
-(19, 2, 'Bún Chả', 189, 'Thịt nướng, rau dưa, ớt, rau sống', '', 'Bún/Phở', 1, NULL, NULL),
-(20, 2, 'Bún Cá', 50, 'Cá, rau sống, nước thịt hầm', '', 'Bún/Phở', 1, NULL, NULL),
-(21, 3, 'Nước dừa tươi', 30, 'Fresh coconut', '', 'Đồ Lạnh', 1, NULL, NULL),
-(22, 3, 'Nước cam tươi', 30, 'Fresh squeezed orange juice', '', 'Đồ Lạnh', 1, NULL, NULL),
-(23, 3, 'Ginger minosa', 30, 'Lime, cucumber, ginger, soda', '', 'Đồ Lạnh', 1, NULL, NULL),
-(24, 3, 'Trà nhiệt đới', 30, 'Mango, passion fruit, honey', '', 'Đồ Nóng', 1, NULL, NULL),
-(25, 3, 'Concha y Toro', 30, 'Reservado Cabernet Sauvignon - Chile', '', 'Đồ Nóng', 1, NULL, NULL),
-(26, 3, 'Trà hoa nhài nóng', 30, 'Hoa nhài, long cúc, nhân sâm Trung', '', 'Đồ Nóng', 1, NULL, NULL),
-(27, 3, 'Trà long cúc', 40, 'Hoa cúc, linh chi, sâm Hàn', '', 'Đồ Nóng', 1, NULL, NULL),
-(28, 3, 'Trà nhài long nhãn', 45, 'Hoa nhài, hoa đậu biếc sấy khô, nhãn long hàm', '', 'Đồ Nóng', 1, NULL, NULL),
-(51, 3, 'Ginger minosa', 30, 'Lime, cucumber, ginger, soda', '', 'Đồ Lạnh', 1, NULL, NULL),
-(52, 3, 'Trà nhiệt đới', 30, 'Mango, passion fruit, honey', '', 'Đồ Nóng', 1, NULL, NULL),
-(53, 3, 'Concha y Toro', 30, 'Reservado Cabernet Sauvignon - Chile', '', 'Đồ Nóng', 1, NULL, NULL),
-(54, 3, 'Trà hoa nhài nóng', 30, 'Hoa nhài, long cúc, nhân sâm Trung', '', 'Đồ Nóng', 1, NULL, NULL),
-(55, 3, 'Trà long cúc', 40, 'Hoa cúc, linh chi, sâm Hàn', '', 'Đồ Nóng', 1, NULL, NULL),
-(56, 3, 'Trà nhài long nhãn', 45, 'Hoa nhài, hoa đậu biếc sấy khô, nhãn long hàm', '', 'Đồ Nóng', 1, NULL, NULL),
-(113, 2, 'Gà luộc nguyên con (1con)', 250000, 'Gà dai nguyên con 2kg5', '', 'Gà', 1, NULL, NULL),
-(114, 2, 'Bò sốt me', 189000, 'Bò sốt me rừng Cao Nguyên', '', 'Bò', 0, NULL, NULL),
-(115, 1, 'Cánh gà sốt me', 98, 'Fried chicken wings, tamarind sauce', '', '', 1, NULL, NULL),
-(116, 1, 'Cánh gà sóc tỏi ớt', 98, 'Fried chiken wings, chili, garlic', '', '', 1, NULL, NULL),
-(117, 1, 'Bò lá lốt', 108, 'Grilled marinated beef wrapped lalot leaves, herbs', '', '', 1, NULL, NULL),
-(118, 1, 'Chạo tôm bó mía', 118, 'Homemade sugarcane shrimps skewers, herbs', '', '', 1, NULL, NULL),
-(119, 2, 'Gà hấp mắm nhĩ', 98, 'Steamed chicken with fish, sauce, mung bean sticky rice', '', 'Gà', 1, NULL, NULL),
-(120, 2, 'Cánh gà sốt me', 549, 'Fried chicken wings, tamarind sauce', '', 'Gà', 1, NULL, NULL),
-(121, 2, 'Gà lên mâm', 300, 'Shredded chicken with herbs, spicy grilled chicken', '', 'Gà', 1, NULL, NULL),
-(123, 2, 'Gà hầm thuốc bắc', 250, 'Wild herbs, ginger, lotus seeds', '', 'Gà', 1, NULL, NULL),
-(124, 2, 'Thịt kho tộ', 98, 'Thịt ba chỉ hoàng đế', '', 'Heo', 1, NULL, NULL),
+(1, 1, 'Cánh gà sốt me chua cay', 99000, 'Fried chicken wings, tamarind sauce', 'public/storage/sanphams/1713621631.jpg', 'Gà', 1, NULL, NULL),
+(2, 1, 'Cánh gà sốt tỏi ớt', 98000, 'Fried chiken wings, chili, garlic', 'public/storage/sanphams/1713621775.png', 'Gà', 0, NULL, NULL),
+(3, 1, 'Bò lá lốt', 108000, 'Grilled marinated beef wrapped lalot leaves, herbs', 'public/storage/sanphams/1713621796.webp', 'Bò', 1, NULL, NULL),
+(4, 1, 'Chạo bò bó mía', 118, 'Homemade sugarcane shrimps skewers, herbs', 'public/storage/sanphams/1713621870.jpeg', 'Bò', 1, NULL, NULL),
+(5, 1, 'Gà hấp mắm nhĩ', 98, 'Steamed chicken with fish, sauce, mung bean sticky rice', 'public/storage/sanphams/1713621887.jpg', 'Gà', 1, NULL, NULL),
+(6, 1, 'Cánh gà sốt me', 549, 'Fried chicken wings, tamarind sauce', 'public/storage/sanphams/1713621902.png', 'Gà', 1, NULL, NULL),
+(7, 1, 'Gà lên mâm', 300, 'Shredded chicken with herbs, spicy grilled chicken', 'public/storage/sanphams/1713621913.jpg', 'Gà', 1, NULL, NULL),
+(8, 1, 'Gà nướng ống tre', 320, 'Grilled chicken in bamboo tube, wild herbs', 'public/storage/sanphams/1713623326.jpg', 'Gà', 1, NULL, NULL),
+(9, 1, 'Gà hầm thuốc bắc', 250000, 'Wild herbs, ginger, lotus seeds', 'public/storage/sanphams/1713622014.jpg', 'Gà', 1, NULL, NULL),
+(10, 1, 'Thịt kho tộ', 98000, 'Thịt ba chỉ hoàng đế', 'public/storage/sanphams/1713622029.jpg', 'Heo', 1, NULL, NULL),
+(11, 1, 'Thịt ba chỉ luộc', 600000, 'Thịt đều lạc mỡ', 'public/storage/sanphams/1713623342.jpg', 'Heo', 1, NULL, NULL),
+(12, 1, 'Thịt heo giả cầy', 100, 'Thịt hầm nước 10h', 'public/storage/sanphams/1713622145.png', 'Heo', 1, NULL, NULL),
+(13, 1, 'Bò lá lốt', 189, 'Grilled marinated beef wrapped lalot leaves, herbs', 'public/storage/sanphams/1713622162.webp', 'Bò', 1, NULL, NULL),
+(14, 1, 'Bò Bít Tết', 189, 'Grilled marinated beef wrapped lalot leaves, herbs', 'public/storage/sanphams/1713622185.jpg', 'Bò', 1, NULL, NULL),
+(15, 1, 'Bò Sốt vang', 189, 'Quế, hồi hương, Nho, Rượu', 'public/storage/sanphams/1713622198.jpg', 'Bò', 1, NULL, NULL),
+(16, 1, 'Bún đâu mắm tôm', 50, 'Bún, chả cốm, chân giò, đậu phụ rán', 'public/storage/sanphams/1713622212.jpg', 'Bún/Phở', 1, NULL, NULL),
+(17, 1, 'Phở gà', 189, 'Sợi phở, quế, rau mùi, ức gà', 'public/storage/sanphams/1713622235.jpg', 'Bún/Phở', 1, NULL, NULL),
+(18, 1, 'Phở/Bún Mọc', 189000, 'Thịt băm mọc nhĩ, rau sống', 'public/storage/sanphams/1713622262.jpg', 'Bún/Phở', 1, NULL, NULL),
+(19, 1, 'Bún Chả', 189, 'Thịt nướng, rau dưa, ớt, rau sống', 'public/storage/sanphams/1713622296.jpg', 'Bún/Phở', 1, NULL, NULL),
+(20, 1, 'Bún Cá', 50, 'Cá, rau sống, nước thịt hầm', 'public/storage/sanphams/1713622310.png', 'Bún/Phở', 1, NULL, NULL),
+(21, 3, 'Nước dừa tươi', 30, 'Fresh coconut', 'public/storage/sanphams/1713622345.jpg', 'Đồ Lạnh', 1, NULL, NULL),
+(22, 3, 'Nước cam tươi', 30, 'Fresh squeezed orange juice', 'public/storage/sanphams/1713622361.jpg', 'Đồ Lạnh', 1, NULL, NULL),
+(23, 3, 'Ginger minosa', 30, 'Lime, cucumber, ginger, soda', 'public/storage/sanphams/1713622386.jpg', 'Đồ Lạnh', 1, NULL, NULL),
+(24, 3, 'Trà nhiệt đới', 30, 'Mango, passion fruit, honey', 'public/storage/sanphams/1713622408.png', 'Đồ Nóng', 1, NULL, NULL),
+(25, 3, 'Concha y Toro', 30, 'Reservado Cabernet Sauvignon - Chile', 'public/storage/sanphams/1713622424.jpg', 'Đồ Nóng', 1, NULL, NULL),
+(26, 3, 'Trà hoa nhài nóng', 30, 'Hoa nhài, long cúc, nhân sâm Trung', 'public/storage/sanphams/1713622438.jpeg', 'Đồ Nóng', 1, NULL, NULL),
+(27, 3, 'Trà long cúc', 40, 'Hoa cúc, linh chi, sâm Hàn', 'public/storage/sanphams/1713622476.jpg', 'Đồ Nóng', 1, NULL, NULL),
+(28, 3, 'Trà nhài long nhãn', 45, 'Hoa nhài, hoa đậu biếc sấy khô, nhãn long hàm', 'public/storage/sanphams/1713622491.jpg', 'Đồ Nóng', 1, NULL, NULL),
 (125, 2, 'Thịt ba chỉ luộc', 60, 'Thịt đều lạc mỡ', '', 'Heo', 1, NULL, NULL),
 (126, 2, 'Thịt heo giả cầy', 100, 'Thịt hầm nước 10h', '', 'Heo', 1, NULL, NULL),
-(127, 2, 'Bò lá lốt', 189, 'Grilled marinated beef wrapped lalot leaves, herbs', '', 'Bò', 1, NULL, NULL),
 (128, 2, 'Bò Bít Tết', 189, 'Grilled marinated beef wrapped lalot leaves, herbs', '', 'Bò', 1, NULL, NULL),
-(129, 2, 'Bò Sốt vang', 189, 'Quế, hồi hương, Nho, Rượu', '', 'Bò', 1, NULL, NULL),
 (130, 2, 'Bún đâu mắm tôm', 50, 'Bún, chả cốm, chân giò, đậu phụ rán', '', 'Bún/Phở', 1, NULL, NULL),
 (131, 2, 'Phở gà', 189, 'Sợi phở, quế, rau mùi, ức gà', '', 'Bún/Phở', 1, NULL, NULL),
 (132, 2, 'Phở/Bún Mọc', 189, 'Thịt băm mọc nhĩ, rau sống', '', 'Bún/Phở', 1, NULL, NULL),
@@ -383,40 +305,18 @@ INSERT INTO `sampham` (`id`, `danhmucmon_id`, `tensp`, `gia`, `mieuta`, `anh`, `
 (139, 3, 'Concha y Toro', 30, 'Reservado Cabernet Sauvignon - Chile', '', 'Đồ Nóng', 1, NULL, NULL),
 (140, 3, 'Trà hoa nhài nóng', 30, 'Hoa nhài, long cúc, nhân sâm Trung', '', 'Đồ Nóng', 1, NULL, NULL),
 (141, 3, 'Trà long cúc', 40, 'Hoa cúc, linh chi, sâm Hàn', '', 'Đồ Nóng', 1, NULL, NULL),
-(142, 3, 'Trà nhài long nhãn', 45, 'Hoa nhài, hoa đậu biếc sấy khô, nhãn long hàm', '', 'Đồ Nóng', 1, NULL, NULL),
 (143, 1, 'Cánh gà sốt me', 98, 'Fried chicken wings, tamarind sauce', '', '', 1, NULL, NULL),
 (144, 1, 'Cánh gà sóc tỏi ớt', 98, 'Fried chiken wings, chili, garlic', '', '', 1, NULL, NULL),
 (145, 1, 'Bò lá lốt', 108, 'Grilled marinated beef wrapped lalot leaves, herbs', '', '', 1, NULL, NULL),
 (146, 1, 'Chạo tôm bó mía', 118, 'Homemade sugarcane shrimps skewers, herbs', '', '', 1, NULL, NULL),
 (147, 2, 'Gà hấp mắm nhĩ', 98, 'Steamed chicken with fish, sauce, mung bean sticky rice', '', 'Gà', 1, NULL, NULL),
 (148, 2, 'Cánh gà sốt me', 549, 'Fried chicken wings, tamarind sauce', '', 'Gà', 1, NULL, NULL),
-(149, 2, 'Gà lên mâm', 300, 'Shredded chicken with herbs, spicy grilled chicken', '', 'Gà', 1, NULL, NULL),
-(150, 2, 'Gà nướng ống tre', 320, 'Grilled chicken in bamboo tube, wild herbs', '', 'Gà', 1, NULL, NULL),
-(151, 2, 'Gà hầm thuốc bắc', 250, 'Wild herbs, ginger, lotus seeds', '', 'Gà', 1, NULL, NULL),
-(152, 2, 'Thịt kho tộ', 98, 'Thịt ba chỉ hoàng đế', '', 'Heo', 1, NULL, NULL),
-(153, 2, 'Thịt ba chỉ luộc', 60, 'Thịt đều lạc mỡ', '', 'Heo', 1, NULL, NULL),
-(154, 2, 'Thịt heo giả cầy', 100, 'Thịt hầm nước 10h', '', 'Heo', 1, NULL, NULL),
-(155, 2, 'Bò lá lốt', 189, 'Grilled marinated beef wrapped lalot leaves, herbs', '', 'Bò', 1, NULL, NULL),
-(156, 2, 'Bò Bít Tết', 189, 'Grilled marinated beef wrapped lalot leaves, herbs', '', 'Bò', 1, NULL, NULL),
-(157, 2, 'Bò Sốt vang', 189, 'Quế, hồi hương, Nho, Rượu', '', 'Bò', 1, NULL, NULL),
-(158, 2, 'Bún đâu mắm tôm', 50, 'Bún, chả cốm, chân giò, đậu phụ rán', '', 'Bún/Phở', 1, NULL, NULL),
-(159, 2, 'Phở gà', 189, 'Sợi phở, quế, rau mùi, ức gà', '', 'Bún/Phở', 1, NULL, NULL),
-(160, 2, 'Phở/Bún Mọc', 189, 'Thịt băm mọc nhĩ, rau sống', '', 'Bún/Phở', 1, NULL, NULL),
-(161, 2, 'Bún Chả', 189, 'Thịt nướng, rau dưa, ớt, rau sống', '', 'Bún/Phở', 1, NULL, NULL),
-(162, 2, 'Bún Cá', 50, 'Cá, rau sống, nước thịt hầm', '', 'Bún/Phở', 1, NULL, NULL),
-(163, 3, 'Nước dừa tươi', 30, 'Fresh coconut', '', 'Đồ Lạnh', 1, NULL, NULL),
-(164, 3, 'Nước cam tươi', 30, 'Fresh squeezed orange juice', '', 'Đồ Lạnh', 1, NULL, NULL),
-(165, 3, 'Ginger minosa', 30, 'Lime, cucumber, ginger, soda', '', 'Đồ Lạnh', 1, NULL, NULL),
-(166, 3, 'Trà nhiệt đới', 30, 'Mango, passion fruit, honey', '', 'Đồ Nóng', 1, NULL, NULL),
-(167, 3, 'Concha y Toro', 30, 'Reservado Cabernet Sauvignon - Chile', '', 'Đồ Nóng', 1, NULL, NULL),
-(168, 3, 'Trà hoa nhài nóng', 30, 'Hoa nhài, long cúc, nhân sâm Trung', '', 'Đồ Nóng', 1, NULL, NULL),
-(169, 3, 'Trà long cúc', 40, 'Hoa cúc, linh chi, sâm Hàn', '', 'Đồ Nóng', 1, NULL, NULL),
-(170, 3, 'Trà nhài long nhãn', 45, 'Hoa nhài, hoa đậu biếc sấy khô, nhãn long hàm', '', 'Đồ Nóng', 1, NULL, NULL);
+(149, 2, 'Gà lên mâm', 300, 'Shredded chicken with herbs, spicy grilled chicken', '', 'Gà', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `thuvienanh`
+-- Cấu trúc bảng cho bảng `thuvienanh`
 --
 
 CREATE TABLE `thuvienanh` (
@@ -429,25 +329,21 @@ CREATE TABLE `thuvienanh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `thuvienanh`
+-- Đang đổ dữ liệu cho bảng `thuvienanh`
 --
 
 INSERT INTO `thuvienanh` (`id`, `tieude`, `path`, `trangthai`, `created_at`, `updated_at`) VALUES
-(1, 'KHÔNG GIAN', 'public/images//1688226421.jpg', 1, NULL, NULL),
-(11, 'KHÔNG GIAN', 'public/images//1688800965.jpg', 1, NULL, NULL),
-(12, 'KHÔNG GIAN', 'public/images//1688800977.jpg', 1, NULL, NULL),
-(14, 'KHÔNG GIAN', 'public/images//1688800991.png', 1, NULL, NULL),
-(15, 'KHÔNG GIAN', 'public/images//1688801003.jpg', 1, NULL, NULL),
-(17, 'KHÔNG GIAN', 'public/images//1688801029.png', 1, NULL, NULL),
-(18, 'KHÔNG GIAN', 'public/images//1688801041.jpg', 1, NULL, NULL),
-(19, 'KHÔNG GIAN', 'public/images//1688801063.jpg', 1, NULL, NULL),
-(20, 'KHÔNG GIAN', 'public/images//1688801087.png', 1, NULL, NULL),
-(37, 'KHU BẾP', 'public/images/RQZ6uooOHSYvo4Gu9UQSInhMuc7NGzgrVRA1lhzW.jpg', 1, NULL, NULL);
+(49, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1713510662.jpg', 1, NULL, NULL),
+(50, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1711355326.jpg', 1, NULL, NULL),
+(51, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1713510682.jpg', 1, NULL, NULL),
+(52, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1713510694.jpg', 1, NULL, NULL),
+(53, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1713510711.jpg', 1, NULL, NULL),
+(54, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1713510730.jpg', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tintuc`
+-- Cấu trúc bảng cho bảng `tintuc`
 --
 
 CREATE TABLE `tintuc` (
@@ -463,24 +359,21 @@ CREATE TABLE `tintuc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `tintuc`
+-- Đang đổ dữ liệu cho bảng `tintuc`
 --
 
 INSERT INTO `tintuc` (`id`, `tieude`, `anh`, `thoigian`, `noidung`, `ghichu`, `trangthai`, `created_at`, `updated_at`) VALUES
-(1, 'Tận Hưởng Ưu Đãi Giờ Vàng Cùng Ngàn Món Ngon Tại VMMS', 'public/images//1688801742.png', '18:39:00', 'Cùng hội ngộ sum vầy những ngày đầu năm trong không gian hiện đại, mang dấu ấn...', NULL, 1, NULL, NULL),
-(2, 'Hướng dẫn cách làm cua cà ri kiểu Ấn Độ mới lạ cực ngon', 'public/images//1688801783.jpg', '08:37:00', 'Cà ri một món ăn hấp dẫn có xuất xứ từ Ấn Độ đã được biến tấu thành nhiều món độc...', NULL, 1, NULL, NULL),
-(20, 'Hướng dẫn cách làm cua cà ri kiểu Ấn Độ mới lạ cực ngon', 'public/images//1688802208.jpg', '2023-07-19T18:43', 'Cà ri một món ăn hấp dẫn có xuất xứ từ Ấn Độ đã được biến tấu thành nhiều món độc...', NULL, 1, NULL, NULL),
-(28, 'Tái hiện mâm cơm truyền thống trong set ẩm thực mới', 'public/images//1688802189.png', '2023-08-01T16:43', 'Bếp trưởng VMMS kết hợp với các đầu bếp khác đã cùng nhau cải biên lại các món ăn...', NULL, 1, NULL, NULL),
-(32, 'Hướng dẫn cách làm cua cà ri kiểu Ấn Độ mới lạ cực ngon', 'public/images//1688802173.png', '2023-06-07T16:44', 'Cà ri một món ăn hấp dẫn có xuất xứ từ Ấn Độ đã được biến tấu thành nhiều món độc...', NULL, 1, NULL, NULL),
-(33, 'VMMS đón chào quý khách với công suất tối đa', 'public/images//1688802153.jpg', '2023-06-30T19:40', 'VMMS đã quay trở lại đón tiếp các khách hàng ở tất cả các chi nhánh trên địa bàn Hà...', NULL, 1, NULL, NULL),
-(34, 'Tái hiện mâm cơm truyền thống trong set ẩm thực mới', 'public/images//1688802129.png', '2023-06-01T20:41', 'Bếp trưởng VMMS kết hợp với các đầu bếp khác đã cùng nhau cải biên lại các món ăn...', NULL, 1, NULL, NULL),
-(35, 'VMMS Trần Nhân Tông - Chúc mừng khai trương cơ sở mới', 'public/images//1688801991.png', '2023-06-27T18:40', 'Hệ thống nhà hàng VMMS vừa khai trương cơ sở mới tại số 99 Trần Nhân Tông, Hai Bà...', NULL, 1, NULL, NULL),
-(37, 'Giam gia duy nhat ngay hom nay tai chi nhasnh  vMMS1 Ha noi', 'public/images//1688802276.png', '2023-07-26T17:44', 'Nhà hàng bạn có đồ chay không?', NULL, 1, NULL, NULL);
+(1, 'Tận Hưởng Ưu Đãi Giờ Vàng Cùng Ngàn Món Ngon Tại VMMS', 'public/storage/tintucanhs/1713534333.png', '2024-04-18T20:33', 'Cùng hội ngộ sum vầy những ngày đầu năm trong không gian hiện đại, mang dấu ấn...', NULL, 1, NULL, NULL),
+(2, 'Hướng dẫn cách làm cua cà ri kiểu Ấn Độ mới lạ cực ngon', 'public/storage/tintucanhs/1713536251.png', '2024-04-12T21:17', 'Cà ri một món ăn hấp dẫn có xuất xứ từ Ấn Độ đã được biến tấu thành nhiều món độc...', NULL, 1, NULL, NULL),
+(28, 'Tái hiện mâm cơm truyền thống trong set ẩm thực mới', 'public/storage/tintucanhs/1713536453.png', '2023-08-01T16:43', 'Bếp trưởng VMMS kết hợp với các đầu bếp khác đã cùng nhau cải biên lại các món ăn...', NULL, 1, NULL, NULL),
+(33, 'VMMS đón chào quý khách với công suất tối đa', 'public/storage/tintucanhs/1713536501.png', '2023-06-30T19:40', 'VMMS đã quay trở lại đón tiếp các khách hàng ở tất cả các chi nhánh trên địa bàn Hà...', NULL, 1, NULL, NULL),
+(35, 'VMMS Trần Nhân Tông - Chúc mừng khai trương cơ sở mới', 'public/storage/tintucanhs/1713536533.png', '2023-06-27T18:40', 'Hệ thống nhà hàng VMMS vừa khai trương cơ sở mới tại số 99 Trần Nhân Tông, Hai Bà...', NULL, 1, NULL, NULL),
+(37, 'Giam gia duy nhat ngay hom nay tai chi nhasnh  vMMS1 Ha noi', 'public/storage/tintucanhs/1713536607.jpg', '2023-07-26T17:44', 'Nhà hàng bạn có đồ chay không?', NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tuvan`
+-- Cấu trúc bảng cho bảng `tuvan`
 --
 
 CREATE TABLE `tuvan` (
@@ -496,16 +389,16 @@ CREATE TABLE `tuvan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `tuvan`
+-- Đang đổ dữ liệu cho bảng `tuvan`
 --
 
 INSERT INTO `tuvan` (`id`, `users_id`, `hoten`, `sdt`, `diachi`, `noidung`, `trangthai`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Thao Duc Hong', '0238578432', '46 Phương Mai, Đống đa, Hà nội', 'Khomg gi ngon bang VMMS2', 0, NULL, NULL);
+(2, NULL, 'nguyen van luan', '0964156877', 'ha noi', 'dat', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -522,18 +415,17 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `avatar`, `trangthai`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Thao Ngo', 'nhuthao@gmail.com', 'thaonhu.jpg', 1, NULL, '123456', NULL, NULL, NULL),
-(2, 'Tung Duc', 'tungducctran7825345238@gmail.com', 'tungduc.jpg', 1, NULL, '111111', NULL, NULL, NULL),
-(3, 'Thap Vu', 'vuthapp67136584@gmail.com', 'avatar.png', 1, NULL, '111111', '1', NULL, NULL);
+(21, 'Nguyen Van Luan', 'nguyenluan2kk2@gmail.com', NULL, 1, NULL, '1234567', NULL, NULL, NULL),
+(22, 'Luan', 'nguyenluan200502@gmail.com', NULL, 1, NULL, '12345678', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `voucher`
+-- Cấu trúc bảng cho bảng `voucher`
 --
 
 CREATE TABLE `voucher` (
@@ -547,172 +439,172 @@ CREATE TABLE `voucher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `voucher`
+-- Đang đổ dữ liệu cho bảng `voucher`
 --
 
 INSERT INTO `voucher` (`id`, `ma`, `giam`, `toithieusonguoi`, `hsd`, `trangthai`, `ghichu`) VALUES
-(1, 'SIEUNGON', 5, 4, '2023-09-09 00:25:00', 0, NULL);
+(1, 'SIEUNGON', 5, 4, '2023-09-09 00:25:00', 1, NULL);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `admin`
+-- Chỉ mục cho bảng `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `coso`
+-- Chỉ mục cho bảng `coso`
 --
 ALTER TABLE `coso`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `danhgia`
+-- Chỉ mục cho bảng `danhgia`
 --
 ALTER TABLE `danhgia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `danhmucmon`
+-- Chỉ mục cho bảng `danhmucmon`
 --
 ALTER TABLE `danhmucmon`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `datban`
+-- Chỉ mục cho bảng `datban`
 --
 ALTER TABLE `datban`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `lienhe`
+-- Chỉ mục cho bảng `lienhe`
 --
 ALTER TABLE `lienhe`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `migrations`
+-- Chỉ mục cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sampham`
+-- Chỉ mục cho bảng `sampham`
 --
 ALTER TABLE `sampham`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `thuvienanh`
+-- Chỉ mục cho bảng `thuvienanh`
 --
 ALTER TABLE `thuvienanh`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tintuc`
+-- Chỉ mục cho bảng `tintuc`
 --
 ALTER TABLE `tintuc`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tuvan`
+-- Chỉ mục cho bảng `tuvan`
 --
 ALTER TABLE `tuvan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `voucher`
+-- Chỉ mục cho bảng `voucher`
 --
 ALTER TABLE `voucher`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `coso`
+-- AUTO_INCREMENT cho bảng `coso`
 --
 ALTER TABLE `coso`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `danhgia`
+-- AUTO_INCREMENT cho bảng `danhgia`
 --
 ALTER TABLE `danhgia`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT for table `danhmucmon`
+-- AUTO_INCREMENT cho bảng `danhmucmon`
 --
 ALTER TABLE `danhmucmon`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `datban`
+-- AUTO_INCREMENT cho bảng `datban`
 --
 ALTER TABLE `datban`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
--- AUTO_INCREMENT for table `lienhe`
+-- AUTO_INCREMENT cho bảng `lienhe`
 --
 ALTER TABLE `lienhe`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `sampham`
+-- AUTO_INCREMENT cho bảng `sampham`
 --
 ALTER TABLE `sampham`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
--- AUTO_INCREMENT for table `thuvienanh`
+-- AUTO_INCREMENT cho bảng `thuvienanh`
 --
 ALTER TABLE `thuvienanh`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT for table `tintuc`
+-- AUTO_INCREMENT cho bảng `tintuc`
 --
 ALTER TABLE `tintuc`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT for table `tuvan`
+-- AUTO_INCREMENT cho bảng `tuvan`
 --
 ALTER TABLE `tuvan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `voucher`
+-- AUTO_INCREMENT cho bảng `voucher`
 --
 ALTER TABLE `voucher`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
