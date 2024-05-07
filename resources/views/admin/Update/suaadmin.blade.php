@@ -28,7 +28,7 @@
       
               <div class="form_add__name">
                 <label class="form_text" for="pass">Mật Khẩu</label> <br>
-                <input style="height : 50px;" class="form_add__input" type="text" name="password_admin" placeholder="Nhập mật khẩu" value="{{$tt->password_admin}}">
+                <input style="height : 50px;" class="form_add__input" type="password" name="password_admin" placeholder="Nhập mật khẩu">
               </div>
               <div class="form_add__name pb_3rem">
                 <label class="form_text" for="type">Số điện thoại</label> <br>

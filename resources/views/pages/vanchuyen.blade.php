@@ -74,13 +74,6 @@
                     </div>
                     <div class="delivery-item__name">Đặt món ăn qua Now</div>
                   </a>
-
-                  <a href="https://baemin.vn/" class="delivery-item">
-                    <div class="delivery-item__image">
-                      <img src="public/front/images/logo-beamin.jpg" alt="" />
-                    </div>
-                    <div class="delivery-item__name">Đặt món ăn qua Baemin</div>
-                  </a>
                   <a href="https://www.foody.vn/ha-noi" class="delivery-item">
                     <div class="delivery-item__image">
                       <img src="public/front/images/logo-foody.vn.jpg" alt="" />

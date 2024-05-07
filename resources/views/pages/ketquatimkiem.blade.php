@@ -34,12 +34,12 @@
               <span class="menu-bars">
                 <i class="far fa-bars"></i>
               </span>
-              <a href="/" class="logo">
+              <a href="{{URL::to('/trangchu')}}" class="logo">
                 <img srcset="public/front/images/logo-vmms.png" alt="logo" />
               </a>
               <h1 class="header-title">KẾT QUẢ</h1>
               <div class="header-contact">0962.180.180</div>
-              <span class="menu-search">
+              <!-- <span class="menu-search">
                 <i class="fas fa-search icon-search"></i>
                 <form action="" class="search-mobile">
                   <input type="search" name="" placeholder="Nhập tìm kiếm..." />
@@ -51,7 +51,7 @@
                     <i class="far fa-search"></i>
                   </button>
                 </form>
-              </span>
+              </span> -->
             </div>
           </div>
         </div>
@@ -59,22 +59,32 @@
 
       <!-- KẾT QUẢ TÌM KIÊM TRẢ VỀ -->
       <main class="main">
+      <?php
+
+          use Illuminate\Support\Facades\Session;
+
+          $message = Session::get('message');
+          if ($message) {
+            echo '<span style="font-size:25px ; color : red; display:flex;justify-content: center;padding-top:3rem;"> ' . $message . '</span>';
+            Session::put('message', null);
+          }
+      ?>
+
         <div class="container_body">
 
           <div class="content">
-        
               <div class="admin__control">
-                
+
                 <div class="admin__data">
                   <table>
                     <thead>
                       <tr>
-                        <td>id</td>
-                        <td>tên</td>
-                        <td>ảnh</td>
-                        <td>đơn giá</td>
-                        <td>trạng thái</td>
-                        <td>ghi chú</td>
+                        <td>Id</td>
+                        <td>Tên</td>
+                        <td>Ảnh</td>
+                        <td>Đơn giá</td>
+                        <td>Trạng thái</td>
+                        <td>Miêu tả</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -82,7 +92,7 @@
                       <tr>
                         <td>{{$re->id}}</td>
                         <td>{{$re->tensp}}</td>
-                        <td><img class="image-avatar"  src="public/storage/images/1688399151.png" alt=""></td>
+                        <td><img class="image-avatar"  src="{{$re->anh}}" alt=""></td>
                         <td>{{$re->gia}}</td>
                         <td>
                           <?php
@@ -104,7 +114,7 @@
                           ?>
                         
                         </td>                
-                        <td>nước dừa tươi, rất tươi</td> 
+                        <td>{{$re->mieuta}}</td> 
                       </tr> 
                       @endforeach              
           

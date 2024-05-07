@@ -55,55 +55,117 @@
                   Session::put('message', null);
           }
           ?>
-          <form action="{{URL::to('/savedatban')}}" method="post" id="form-2">
-            @csrf
-            <div class="booking-form-item required form-group">
-              <label>Họ và tên</label>
-              <input id="fullname" type="text" name="name" class="input form-control"  placeholder="Nhập họ tên" pattern="[A-Za-z\s]+"  />
-              <span class="form-message"></span>
-              <input type="hidden" name="userid" value="{{$userid}}">
-              <input type="hidden" name="trangthai" value="1">
-            </div>
-            <div class="booking-form-item required form-group">
-              <label>Email</label>
-              <input id="email" type="email" name="email" class="input form-control" placeholder="Nhập email" />
-              <span class="form-message"></span>
-            </div>
-            <div class="booking-form-item required form-group">
-              <label>Số điện thoại</label>
-                <input id="phone" name="sdt" type="tel" class="input form-control" pattern="[0-9]{10,12}" placeholder="+84"  />
-                <span class="form-message"></span>
-            </div>
-            <div class="booking-form-item required form-group">
-              <label>Số khách</label>
-              <input id="number" name="songuoi" type="text" class="input form-control" placeholder="Nhập số người " pattern="[0-9]{1,3}" />
-              <span class="form-message"></span>
-            </div>
-            <div class="booking-form-item required form-group">
-              <label>Thời gian</label>
-              <input id="time" name="thoigian" type="datetime-local" class="input form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" />
-              <span class="form-message"></span>
-            </div>
-            <div class="booking-form-item required form-group">
-              <label>Nhà hàng</label>
-              <select id="coso" name="coso" class="form-control">
-                <option value="Cơ sở 1">Cơ sở 1</option>
-                <option value="Cơ sở 2">Cơ sở 2</option>
-                <option value="Cơ sở 3">Cơ sở 3</option>
-              </select>
-              <span class="form-message"></span>
-            </div>
-            <div class="booking-form-item required">
-              <label>Ghi chú</label>
-              <textarea name="ghichu" id="" placeholder="Aa"></textarea>
-            </div>
+          <?php
+              $username = Session::get('username');
+              if ($username) {
+                  // Người dùng đã đăng nhập
+                  ?>
+                    <form action="{{URL::to('/savedatban')}}" method="post" id="form-2">
+                      @csrf
+                      <div class="booking-form-item form-group">
+                        <label>Họ và tên</label>
+                        <input id="fullname" type="text" name="name" class="input form-control"  placeholder="Nhập họ tên"/>
+                        <span class="form-message"></span>
+                        <input type="hidden" name="userid" value="{{$userid}}">
+                        <input type="hidden" name="trangthai" value="1">
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Email</label>
+                        <input id="email" type="email" name="email" class="input form-control" placeholder="Nhập email" />
+                        <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Số điện thoại</label>
+                          <input id="phone" name="sdt" type="tel" class="input form-control" pattern="[0-9]{10,12}" placeholder="+84"  />
+                          <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Số khách</label>
+                        <input id="number" name="songuoi" type="text" class="input form-control" placeholder="Nhập số người " pattern="[0-9]{1,3}" />
+                        <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Thời gian</label>
+                        <input id="time" name="thoigian" type="datetime-local" class="input form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" />
+                        <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Nhà hàng</label>
+                        <select id="coso" name="coso" class="form-control">
+                          <option value="Cơ sở 1">Cơ sở 1</option>
+                          <option value="Cơ sở 2">Cơ sở 2</option>
+                          <option value="Cơ sở 3">Cơ sở 3</option>
+                        </select>
+                        <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required">
+                        <label>Ghi chú</label>
+                        <textarea name="ghichu" id="" placeholder="Aa"></textarea>
+                      </div>
 
-            <div class="booking-form-item required">
-              <button type="submit" class="btn btn-primary btn-submit">
-                Đặt bàn ngay
-              </button>
-            </div>
-          </form>
+                      <div class="booking-form-item required">
+                        <button type="submit" class="btn btn-primary btn-submit">
+                          Đặt bàn ngay
+                        </button>
+                      </div>
+                    </form>
+                  <?php
+              } else {
+                  // Người dùng chưa đăng nhập
+                  ?>
+                    <form action="{{URL::to('/dangnhap')}}" method="get" id="form-2">
+                      @csrf
+                      <div class="booking-form-item form-group">
+                        <label>Họ và tên</label>
+                        <input id="fullname" type="text" name="name" class="input form-control"  placeholder="Nhập họ tên"/>
+                        <input name="notlogin_datban" type="hidden"/>
+                        <span class="form-message"></span>
+                        <input type="hidden" name="userid" value="{{$userid}}">
+                        <input type="hidden" name="trangthai" value="1">
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Email</label>
+                        <input id="email" type="email" name="email" class="input form-control" placeholder="Nhập email" />
+                        <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Số điện thoại</label>
+                          <input id="phone" name="sdt" type="tel" class="input form-control" pattern="[0-9]{10,12}" placeholder="+84"  />
+                          <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Số khách</label>
+                        <input id="number" name="songuoi" type="text" class="input form-control" placeholder="Nhập số người " pattern="[0-9]{1,3}" />
+                        <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Thời gian</label>
+                        <input id="time" name="thoigian" type="datetime-local" class="input form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" />
+                        <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required form-group">
+                        <label>Nhà hàng</label>
+                        <select id="coso" name="coso" class="form-control">
+                          <option value="Cơ sở 1">Cơ sở 1</option>
+                          <option value="Cơ sở 2">Cơ sở 2</option>
+                          <option value="Cơ sở 3">Cơ sở 3</option>
+                        </select>
+                        <span class="form-message"></span>
+                      </div>
+                      <div class="booking-form-item required">
+                        <label>Ghi chú</label>
+                        <textarea name="ghichu" id="" placeholder="Aa"></textarea>
+                      </div>
+
+                      <div class="booking-form-item required">
+                        <button type="submit" class="btn btn-primary btn-submit">
+                          Đặt bàn ngay
+                        </button>
+                      </div>
+                    </form>
+                  <?php
+              }
+          ?>
         </div>
       </div>
     </main>

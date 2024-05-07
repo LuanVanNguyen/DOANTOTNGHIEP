@@ -73,7 +73,7 @@
             @csrf
             <div class="booking-form-item required form-group">
               <label>Họ và tên</label>
-              <input id="fullname" type="text" name="name" class="input form-control"  placeholder="Nhập họ tên" pattern="[A-Za-z\s]+" value="{{$datban->name}}" />
+              <input id="fullname" type="text" name="name" class="input form-control"  placeholder="Nhập họ tên" value="{{$datban->name}}" />
               <span class="form-message"></span>
               <input type="hidden" name="userid" value="{{$userid}}">
               <input type="hidden" name="trangthai" value="1">

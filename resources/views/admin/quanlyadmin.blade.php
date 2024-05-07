@@ -8,8 +8,9 @@
     <div class="content">
       <div class="admin">
         <div class="admin__control__search">
-          <form action="search" class="form-search">
-            <input type="text" name ="search" placeholder="Nhập gì đó để tìm kiếm ..." />
+          <form action="{{URL::to('/timkiem-admin')}}" method="POST" class="form-search">
+          @csrf
+            <input type="search" name ="inputSearch" placeholder="Nhập gì đó để tìm kiếm ..." />
             <button type="submit">Tìm kiếm</button>
           </form>
         </div>
@@ -19,19 +20,25 @@
           <span>
             <a href="{{URL::to('/quanlyuser')}}" class="link_add">Danh sách User </a>
           </span>
+          @if($email_admin=='admin@gmail.com')
           <span>
             <a href="{{URL::to('/themadmin')}}" class="link_add">Thêm mới</a>
           </span>
+          @endif
         </div>
         <?php
 
-        use Illuminate\Support\Facades\Session;
+            use Illuminate\Support\Facades\Session;
 
-        $message = Session::get('message');
-        if ($message) {
-          echo '<span style="font-size:25px ; color : green;"> ' . $message . '</span>';
-          Session::put('message', null);
-        }
+            $message = Session::get('message');
+            $error = Session::get('error');
+            if($error){
+                echo '<span style="font-size:25px ; color : red;"> '.$error.'</span>';
+                Session::put('error', null);
+            }elseif($message){
+            echo '<span style="font-size:25px ; color : green;"> '.$message.'</span>';
+            Session::put('message', null);
+            }
         ?>
         <div class="admin__data">
           <table>
@@ -59,14 +66,26 @@
                 <td>{{$tt->phone_admin}}</td>
                 <td>{{ date('M d, Y',strtotime($tt->created_at)) }}</td>
                 <td>
+                @if ($email_admin == "admin@gmail.com")
                   <a href="{{URL::to('/suaadmin'.$tt->id)}}">
                     <button class="btn-6 custom-btn">Sửa</button>
                   </a>
+                @elseif($tt->id == $id_admin)
+                  <a href="{{URL::to('/suaadmin'.$tt->id)}}">
+                    <button class="btn-6 custom-btn">Sửa</button>
+                  </a>
+                @endif
                 </td>
                 <td>
-                  <a onclick="return confirm('Bạn có chắc chắn muốn xóa Admin này?')" href="{{URL::to('/xoaadmin'.$tt->id)}}">
+                @if ($email_admin == "admin@gmail.com")
+                <a onclick="return confirm('Bạn có chắc chắn muốn xóa Admin này?')" href="{{URL::to('/xoaadmin'.$tt->id)}}">
                     <button class="btn-6 custom-btn">Xóa</button>
-                </td>
+                  </a>
+                @elseif($tt->id == $id_admin)
+                <a onclick="return confirm('Bạn có chắc chắn muốn xóa Admin này?')" href="{{URL::to('/xoaadmin'.$tt->id)}}">
+                    <button class="btn-6 custom-btn">Xóa</button>
+                  </a>
+                @endif
                 </a>
               </tr>
               @endforeach

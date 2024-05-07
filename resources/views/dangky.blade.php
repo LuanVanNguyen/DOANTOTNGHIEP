@@ -17,16 +17,26 @@
             <p class="desc">Trở thành thành viên của VMMS để nhận vô vàn ưu đãi bạn nhé ❤️</p>
 
             <div class="spacer"></div>
+            <?php
 
+            use Illuminate\Support\Facades\Session;
+
+            $error = Session::get('error');
+            if ($error) {
+                echo '<span style="font-size:15px ; color : red; text-align:center; display:flex;justify-content: center; margin: 16px 0;"> ' . $error . '</span>';
+                Session::put('error', null);
+            }
+            ?>
             <div class="form-group">
                 <label for="fullname" class="form-label">Tên đầy đủ</label>
                 <input id="fullname" name="name" type="text" placeholder="VD: Nguyễn Văn Luận" class="form-control">
                 <span class="form-message"></span>
+                <input name="trangthai" value="1" type="hidden">
             </div>
 
             <div class="form-group">
                 <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="text" placeholder="VD: nguyenluan@dgmail.com" class="form-control">
+                <input id="email" name="email" type="text" placeholder="VD: nguyenluan@gmail.com" class="form-control">
                 <span class="form-message"></span>
             </div>
             <!-- <div class="form-group">

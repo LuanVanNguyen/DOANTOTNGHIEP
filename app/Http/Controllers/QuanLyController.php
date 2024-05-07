@@ -30,11 +30,12 @@ class QuanLyController extends Controller
 
         $email = $request->email_admin;
         $password = $request->password_admin;
-        $result = DB::table('admin')->where('email_admin', $email)->where('password_admin', $password)->first();
-        if($result)
+        $result = DB::table('admin')->where('email_admin', $email)->first();
+        if($result && password_verify($password,$result->password_admin))
         {
             Session::put('name_admin',$result->name_admin);
             Session::put('id',$result->id);
+            Session::put('email_admin',$result->email_admin);
             return Redirect::to('/dashboard');
         }else
         {

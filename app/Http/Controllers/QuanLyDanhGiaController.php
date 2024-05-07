@@ -27,18 +27,22 @@ class QuanLyDanhGiaController extends Controller{
         return view('pages.review');
     }
     public function luureview(Request $request){
-        $userid = Session::get('userid');
+        if($request->hoten==""||$request->sdt==""||$request->noidung==""){
+            return back()->with('error', 'Bạn cần điền đầy đủ thông tin trước khi gủi đánh giá!');
+        }else{
+            $userid = Session::get('userid');
 
-        $data = array();
-        $data['users_id'] =  $userid;
-        $data['hoten'] = $request->hoten;
-        $data['sdt'] = $request->sdt;
-        $data['noidung'] = $request->noidung;
-
-        DB::table('danhgia')->insert($data);
-        Session::put('message', 'Chúng tôi đã nhận được đánh giá của bạn về nhà hàng chúng tôi. Cảm ơn bạn ');
-
-        return Redirect::to('/profile');
+            $data = array();
+            $data['users_id'] =  $userid;
+            $data['hoten'] = $request->hoten;
+            $data['sdt'] = $request->sdt;
+            $data['noidung'] = $request->noidung;
+    
+            DB::table('danhgia')->insert($data);
+            Session::put('message', 'Chúng tôi đã nhận được đánh giá của bạn về nhà hàng chúng tôi. Cảm ơn bạn ');
+    
+            return Redirect::to('/profile');
+        }
     }
 
     public function del($id)

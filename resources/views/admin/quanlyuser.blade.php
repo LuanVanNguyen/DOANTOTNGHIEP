@@ -8,8 +8,9 @@
         <div class="content">
             <div class="admin">
                 <div class="admin__control__search">
-                    <form action="" class="form-search">
-                        <input type="text" placeholder="Nhập gì đó để tìm kiếm ..." />
+                    <form action="{{URL::to('/timkiem-user')}}" method="POST" class="form-search">
+                        @csrf
+                        <input type="search" name="inputSearch" placeholder="Nhập gì đó để tìm kiếm ..." />
                         <button type="submit">Tìm kiếm</button>
                     </form>
                 </div>
@@ -25,13 +26,17 @@
                 </div>
                 <?php
 
-                use Illuminate\Support\Facades\Session;
+                    use Illuminate\Support\Facades\Session;
 
-                $message = Session::get('message');
-                if ($message) {
-                    echo '<span style="font-size:25px ; color : green;"> ' . $message . '</span>';
+                    $message = Session::get('message');
+                    $error = Session::get('error');
+                    if($error){
+                        echo '<span style="font-size:25px ; color : red;"> '.$error.'</span>';
+                        Session::put('error', null);
+                    }elseif($message){
+                    echo '<span style="font-size:25px ; color : green;"> '.$message.'</span>';
                     Session::put('message', null);
-                }
+                    }
                 ?>
                 <div class="admin__data">
                     <table>
@@ -59,14 +64,15 @@
                                     <?php
                                     if ($tt->trangthai == 0) {
                                     ?>
-                                        <a style="color:red;" href="{{URL::to('/unactiveUser/'.$tt->id)}}">Ngừng hoạt động</a>
+                                    <a style="color:red;" href="{{URL::to('/unactiveUser/'.$tt->id)}}">Ngừng hoạt
+                                        động</a>
                                     <?php
                                     } else {
 
 
 
                                     ?>
-                                        <a href="{{URL::to('/activeUser/'.$tt->id)}}">Hoạt động</a>
+                                    <a href="{{URL::to('/activeUser/'.$tt->id)}}">Hoạt động</a>
 
                                     <?php
 
@@ -75,7 +81,8 @@
 
                                 </td>
                                 <td>
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa user này?')" href="{{URL::to('/xoauser'.$tt->id)}}">
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa user này?')"
+                                        href="{{URL::to('/xoauser'.$tt->id)}}">
                                         <button class="btn-6 custom-btn">Xóa</button>
                                 </td>
                                 </a>

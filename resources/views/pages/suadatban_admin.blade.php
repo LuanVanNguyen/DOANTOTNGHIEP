@@ -37,7 +37,7 @@
               <a href="{{URL::to('/trangchu')}}" class="logo">
                 <img srcset="public/front/images/logo-vmms.png" alt="logo" />
               </a>
-              <h1 class="header-title">ĐẶT BÀN</h1>
+              <h1 class="header-title">SỬA ĐẶT BÀN</h1>
               <div class="header-contact">0962.180.180</div>
               <span class="menu-search">
                 <i class="fas fa-search icon-search"></i>
@@ -57,41 +57,68 @@
         </div>
       </header>
       <main class="main">
-        <?php
-                use Illuminate\Support\Facades\Session;
+        <?php 
+          use Illuminate\Support\Facades\Session;
+        ?>
+          <div class="booking-form">
+            <div class="booking-form-heading">SỬA THÔNG TIN ĐẶT BÀN</div>
+            <?php
                 $message = Session::get('message');
                 if ($message) {
-                    echo '<span style="font-size:18px ; color : green; display:flex;justify-content: center; margin: 16px 0;"> ' . $message . '</span>';
+                    echo '<span style="font-size:18px ; color : red; display:flex;justify-content: center; margin: 16px 0;"> ' . $message . '</span>';
                     Session::put('message', null);
                 }
-        ?>
-        <div class="booking">
-        @foreach($datban as $item)
-          <div class="booking-form" style="margin-bottom: 4rem;">
-            <div class="booking-form-heading">BÀN ĐANG ĐẶT</div>
-            <span>Họ tên khách hàng :</span> <strong>{{$item->name}}</strong>
-            <span>Thời gian :</span> <strong>{{ date('M d, Y h:s',strtotime($item->thoigian)) }}</strong>
-            <span>Số khách :</span> <strong>{{$item->songuoi}}</strong>
-            <span>Cơ sở :</span> <strong>{{$item->coso}}</strong>
-            <p style="margin-top: 3rem;">Chú ý : quý khách vui lòng thông báo trước nếu muốn hủy đặt bàn ít nhất 24h trước lịch đặt bàn. Và thông tin đặt bàn sẽ khó có thể thay đổi vào những ngày lễ tết, giờ cao điểm. Để được tư vấn hỗ trợ vui liên hệ nhân viên chăm sóc khách hàng, đường dây nóng 099896354.</p>
-            <div class="booking-form-item required"
-                style="display: flex; justify-content: space-between; margin-top: 10px;"
-            >
-              <div style="width: 45%;">
-              <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" href="{{URL::to('/huydatban'.$item->id)}}" class="btn btn-primary btn-submit">
-                  HỦY ĐẶT BÀN
-                </a>
-              </div>
-              <div style="width: 45%;">
-              <a href="{{URL::to('/suadatban'.$item->id)}}" class="btn btn-primary btn-submit">
-                  SỬA ĐẶT BÀN
-                </a>
-              </div>
-
+            ?>
+            <form action="{{URL::to('/update-datban-admin'.$datban->id)}}" method="post" id="form-2">
+            @csrf
+            <div class="booking-form-item required form-group">
+              <label>Họ và tên</label>
+              <input id="fullname" type="text" name="name" class="input form-control"  placeholder="Nhập họ tên" value="{{$datban->name}}" />
+              <span class="form-message"></span>
+              <input type="hidden" name="userid" value="{{$datban->users_id}}">
+              <input type="hidden" name="trangthai" value="1">
             </div>
+            <div class="booking-form-item required form-group">
+              <label>Email</label>
+              <input id="email" type="email" name="email" class="input form-control" placeholder="Nhập email" value="{{$datban->email}}"/>
+              <span class="form-message"></span>
+            </div>
+            <div class="booking-form-item required form-group">
+              <label>Số điện thoại</label>
+                <input id="phone" name="sdt" type="tel" class="input form-control" pattern="[0-9]{10,12}" placeholder="+84"  value="{{$datban->sdt}}"/>
+                <span class="form-message"></span>
+            </div>
+            <div class="booking-form-item required form-group">
+              <label>Số khách</label>
+              <input id="number" name="songuoi" type="text" class="input form-control" placeholder="Nhập số người " pattern="[0-9]{1,3}" value="{{$datban->songuoi}}"/>
+              <span class="form-message"></span>
+            </div>
+            <div class="booking-form-item required form-group">
+              <label>Thời gian</label>
+              <input id="time" name="thoigian" type="datetime-local" class="input form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" value="{{$datban->thoigian}}"/>
+              <span class="form-message"></span>
+            </div>
+            <div class="booking-form-item required form-group">
+              <label>Nhà hàng</label>
+              <select id="coso" name="coso" class="form-control">
+                <option {{ $datban->coso == "Cơ sở 1" ? "selected" : "" }} value="Cơ sở 1">Cơ sở 1</option>
+                <option {{ $datban->coso == "Cơ sở 2" ? "selected" : "" }} value="Cơ sở 2">Cơ sở 2</option>
+                <option {{ $datban->coso == "Cơ sở 3" ? "selected" : "" }} value="Cơ sở 3">Cơ sở 3</option>
+              </select>
+              <span class="form-message"></span>
+            </div>
+            <div class="booking-form-item required">
+              <label>Ghi chú</label>
+              <textarea name="ghichu" id="" placeholder="Aa" value="{{$datban->ghichu}}"></textarea>
+            </div>
+
+            <div class="booking-form-item required">
+              <button type="submit" class="btn btn-primary btn-submit">
+                Cập nhật
+              </button>
+            </div>
+          </form>
           </div>
-        @endforeach
-        </div>
       </main>
       <footer class="footer">
       <div class="container footer--top">

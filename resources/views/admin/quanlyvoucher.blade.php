@@ -8,16 +8,17 @@
           <div class="content">
             <div class="admin">
               <div class="admin__control__search">
-                <form action="" class="form-search">
-                  <input type="text" placeholder="Nhập gì đó để tìm kiếm ..."/>
-                  <button type="submit">Tìm kiếm</button>
-                </form>
+              <form action="{{URL::to('/timkiem-voucher')}}" method="POST" class="form-search">
+                        @csrf
+                        <input type="search" name="inputSearch" placeholder="Nhập gì đó để tìm kiếm ..." />
+                        <button type="submit">Tìm kiếm</button>
+                    </form>
               </div>
             </div>
               <div class="admin__control">
                 <div class="admin__control__text">
                   <span>
-                    <a href="#" class="link_add">Tất cả</a>
+                    <a href="{{URL::to('/quanlyvoucher')}}" class="link_add">Tất cả</a>
                   </span>
                   <span>
                     <a href="{{URL::to('/themvoucher')}}" class="link_add">Thêm mới</a>
@@ -27,9 +28,13 @@
                   use Illuminate\Support\Facades\Session;
 
                   $message = Session::get('message');
-                  if($message){
-                      echo '<span style="font-size:25px ; color : green;"> '.$message.'</span>';
-                      Session::put('message', null);
+                  $error = Session::get('error');
+                  if($error){
+                      echo '<span style="font-size:25px ; color : red;"> '.$error.'</span>';
+                      Session::put('error', null);
+                  }elseif($message){
+                    echo '<span style="font-size:25px ; color : green;"> '.$message.'</span>';
+                    Session::put('message', null);
                   }
                 ?>
                 <div class="admin__data">

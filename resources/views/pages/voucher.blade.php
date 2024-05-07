@@ -76,7 +76,7 @@
               <br><span class="promotion">MÃ : <strong id="promotion_text" class="promotion-code">{{$vc->ma}}</strong></span>
               <br><span class="promotion">Hạn SD : <strong class="promotion-expiry">{{$vc->hsd}}</strong></span>
               <br><span class="promotion">Lưu ý :<strong class="item-note">Chỉ áp dụng cho sản phẩm của VMMS cung cấp</strong></span>
-              <br><button class="promotion-btn" onclick="copyCouponCode(event, 'COSLUX05', 'https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.vn%2Fsearch%3FpromotionId%3D613398027468800%26signature%3D9da90109160ec2cee32ac6c0e9a1ae26f3cb73cc7049d622bf0418649854febb&amp;affiliate_id=17310730002&amp;sub_id=SL_1----', true)">copy</button>
+              <br><button class="promotion-btn" onclick="copyCouponCode(event, 'COSLUX05', 'https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.vn%2Fsearch%3FpromotionId%3D613398027468800%26signature%3D9da90109160ec2cee32ac6c0e9a1ae26f3cb73cc7049d622bf0418649854febb&amp;affiliate_id=17310730002&amp;sub_id=SL_1----', true)">Nhận</button>
             </div>
           </div>
           @endforeach

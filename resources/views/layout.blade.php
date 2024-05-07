@@ -51,9 +51,11 @@
                   <li class="menu-item">
                     <a href="{{URL::to('/thucdon')}}" class="menu-link">Thực đơn</a>
                   </li>
+
                   <li class="menu-item.html">
-                    <a href="{{URL::to('/vanchuyen')}}" class="menu-link">Delivery</a>
+                      <a href="{{URL::to('/vanchuyen')}}" class="menu-link">Delivery</a>
                   </li>
+
                   <li class="menu-item.html">
                     <a href="{{URL::to('/tintuc')}}" class="menu-link">Tin tức - Sự kiện</a>
                   </li>
@@ -73,16 +75,14 @@
                     hiện thông tin tên người dùng còn nếu nó null thì tức là chưa
                     đăng nhập và di chuyển sang đăng nhập-->
                     <?php
-
-                    use Illuminate\Support\Facades\Session;
-
-                    $username = Session::get('username');
+                      use Illuminate\Support\Facades\Session;
+                      $username = Session::get('username');
                     if ($username) {
                     ?>
                       <a href="{{URL::to('/profile')}}" class="menu-link">
                         <?php
                         echo $username
-                        ?>
+                    ?>
                       </a>
                     <?php
                     } else {

@@ -12,22 +12,33 @@ use Illuminate\Support\Facades\Hash;
 
 class TaiKhoanController extends Controller
 {
-    public function login_user()
+    public function login_user(Request $request)
     {
-        return view('user_login');
+        if ($request->has('notlogin')) {
+            // Xử lý khi không đăng nhập
+            Session::put('notlogin','Bạn cần đăng nhập trước khi gửi đăng ký tư vấn!');
+            return view('user_login');
+        } elseif(($request->has('notlogin_datban'))){
+            Session::put('notlogin_datban','Bạn cần đăng nhập trước khi đặt bàn!');
+            return view('user_login');
+        }else{
+            // Xử lý khi đã đăng nhập
+            return view('user_login');
+        }
+
     }
     public function logintrangchu(Request $request)
     {
 
         $email = $request->email;
         $password = $request->password;
-        $result = DB::table('users')->where('email', $email)->where('password', $password)->first();
-        if ($result) {
+        $result = DB::table('users')->where('email', $email)->first();
+        if ($result && password_verify($password,$result->password)) {
             Session::put('username', $result->name);
             Session::put('userid', $result->id);
             return Redirect::to('/trangchu');
         } else {
-            Session::put('message', 'Mật khẩu hoặc tài khoản của bạn không đúng. Nhập lại !');
+            Session::put('error', 'Mật khẩu hoặc tài khoản của bạn không đúng. Nhập lại !');
             return Redirect::to('/dangnhap');
         }
     }
@@ -40,24 +51,28 @@ class TaiKhoanController extends Controller
 
     public function checkdky(Request $request)
     {
-
-        if ($request->password != $request->password_confirmation) {
-            return back()->with('message', 'Mật khẩu không trùng khớp !');
+        if($request->name==""||$request->email==""||$request->password==""){
+            return back()->with('error', 'Bạn cần điền đầy đủ thông tin trước khi đăng ký!');
+        }
+        elseif($request->password != $request->password_confirmation) {
+            return back()->with('error', 'Mật khẩu nhập lại không trùng khớp !');
         }
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
+            'trangthai'=>$request->trangthai,
         ];
-        DB::table('users')->insert($data);
+        $result=  DB::table('users')->where('email',$request->email)->first();
+        if($result){
+            return back()->with('error', 'Email đã được đăng ký. Vui lòng chọn email khác!');
+        }else{
+            DB::table('users')->insert($data);
+            Session::put('message', 'Tạo tài khoản thành công');
+            return Redirect::to('/dangnhap');
+        }
 
-
-        Session::put('message', 'Thêm Admin thành công');
-
-
-        return Redirect::to('/dangnhap');
     }
-
 
     public function showProfile()
     {

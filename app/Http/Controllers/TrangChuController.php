@@ -12,7 +12,7 @@ class TrangChuController extends Controller
 {
     public function index()
     {
-        $sanphamnoibat = sanpham::where('featured', 0)->get();
+        $sanphamnoibat = sanpham::where('featured', 1)->limit(4)->get();
         // $danhgia = danhgia::orderBy('id', 'desc')->limit(3)->get();
         $danhgia = danhgia::where('trangthai', 1)
         ->orderBy('id', 'desc')

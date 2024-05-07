@@ -24,18 +24,20 @@ class QuanLyTuVanController extends Controller
     }
     public function guituvan(Request $request)
     {
-        $data =array();
-        $data['hoten']= $request->hoten;
-        $data['users_id']= $request->users_id;
-        $data['sdt']= $request->sdt;
-        $data['diachi']= $request->diachi;
-        $data['noidung']= $request->noidung;
+        if($request->hoten==""||$request->sdt==""||$request->diachi==""||$request->noidung==""){
+            Session::put('error','Bạn cần điền đầy đủ thông tin trước khi gửi!');
+            return Redirect::to('/thucdon#dangkytuvan');
+        }else{
+            $data =array();
+            $data['hoten']= $request->hoten;
+            $data['users_id']= $request->users_id;
+            $data['sdt']= $request->sdt;
+            $data['diachi']= $request->diachi;
+            $data['noidung']= $request->noidung;   
+            DB::table('tuvan')->insert($data);
+            return Redirect::to('/trangchu');
+        }
 
-        DB::table('tuvan')->insert($data);
-        Session::put('message','Bạn đã gửi tư vấn đến nhà hàng. Chúng tôi sẽ giải đáp sớm nhất có thể ');
-    
-
-        return Redirect::to('/trangchu');
     }
     public function del($id)
     {

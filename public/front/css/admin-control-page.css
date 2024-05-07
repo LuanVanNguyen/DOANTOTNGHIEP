@@ -560,7 +560,20 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 .icon_menu__show:active .navigation_mobile{
   display: block;
 }
+.form-group.invalid .form-control {
+  border-color: #f33a58;
+}
 
+.form-group.invalid .form-message {
+  color: #f33a58;
+}
+
+.form-message {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  padding: 4px 0 0;
+  display:block;
+}
 @media (max-width: 820px) {
   .icon_menu__show{
     display: block;

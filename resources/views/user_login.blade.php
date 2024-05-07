@@ -11,7 +11,7 @@
 
 <body>
     <div class="main">
-        <form action="logintrangchu" method="post" class="form" id="form-2">
+        <form action="{{URL::to('/logintrangchu')}}" method="post" class="form" id="form-2">
             @csrf
             <h3 class="heading">Đăng nhập</h3>
             <br>
@@ -22,9 +22,21 @@
             use Illuminate\Support\Facades\Session;
 
             $message = Session::get('message');
+            $error = Session::get('error');
+            $notlogin = Session::get('notlogin');
+            $notlogin_datban = Session::get('notlogin_datban');
             if ($message) {
-                echo '<span style="font-size:15px ; color : red;"> ' . $message . '</span>';
+                echo '<span style="font-size:15px ; color : green;"> ' . $message . '</span>';
                 Session::put('message', null);
+            }elseif($notlogin){
+                echo '<span style="font-size:15px ; color : red;"> ' . $notlogin . '</span>';
+                Session::put('notlogin', null);
+            }elseif($notlogin_datban){
+                echo '<span style="font-size:15px ; color : red;"> ' . $notlogin_datban . '</span>';
+                Session::put('notlogin_datban', null);
+            }elseif($error){
+                echo '<span style="font-size:15px ; color : red;"> ' . $error . '</span>';
+                Session::put('error', null);
             }
             ?>
 

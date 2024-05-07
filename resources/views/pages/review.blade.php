@@ -45,19 +45,24 @@
       <div class="booking">
         <div class="booking-form">
           <div class="booking-form-heading">Đánh giá của bạn về sản phẩm và dịch vụ của chúng tôi</div>
+          <?php
+            use Illuminate\Support\Facades\Session;
+            $error = Session::get('error');
+              if ($error) {
+                echo '<span style="font-size:15px ; color : red;display:flex;justify-content: center;
+                padding-bottom: 3rem;"> ' . $error . '</span>';
+                Session::put('error', null);
+              }
+          ?>
           <form action="{{URL::to('/luureview')}}" method="post">
             @csrf
             <div class="booking-form-item required">
               <label>Họ và tên</label>
 
               <input type="text" name="hoten" class="input" value="<?php
-
-                                                                    use Illuminate\Support\Facades\Session;
-
-                                                                    $username = Session::get('username');
-                                                                    echo $username;
-
-                                                                    ?>" placeholder="Nhập họ tên của bạn" />
+                  $username = Session::get('username');
+                  echo $username;
+                  ?>" placeholder="Nhập họ tên của bạn" />
             </div>
 
             <div class="booking-form-item required">

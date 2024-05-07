@@ -8,16 +8,17 @@
     <div class="content">
       <div class="admin">
         <div class="admin__control__search">
-          <form action="" class="form-search">
-            <input type="text" placeholder="Nhập gì đó để tìm kiếm ..." />
-            <button type="submit">Tìm kiếm</button>
-          </form>
+        <form action="{{URL::to('/timkiem-datban')}}" method="POST" class="form-search">
+          @csrf
+          <input type="search" name="inputSearch" placeholder="Nhập gì đó để tìm kiếm ..." />
+          <button type="submit">Tìm kiếm</button>
+        </form>
         </div>
       </div>
       <div class="admin__control">
         <div class="admin__control__text">
           <span>
-            <a href="#" class="link_add">Tất cả </a>
+            <a href="{{URL::to('/quanlydatban')}}" class="link_add">Tất cả </a>
           </span>
           <span>
             <a href="{{URL::to('/themdatban')}}" class="link_add">Thêm mới</a>
@@ -25,13 +26,17 @@
         </div>
         <?php
 
-        use Illuminate\Support\Facades\Session;
+          use Illuminate\Support\Facades\Session;
 
-        $message = Session::get('message');
-        if ($message) {
-          echo '<span style="font-size:25px ; color : green;"> ' . $message . '</span>';
+          $message = Session::get('message');
+          $error = Session::get('error');
+          if($error){
+              echo '<span style="font-size:25px ; color : red;"> '.$error.'</span>';
+              Session::put('error', null);
+          }elseif($message){
+          echo '<span style="font-size:25px ; color : green;"> '.$message.'</span>';
           Session::put('message', null);
-        }
+          }
         ?>
         <div class="admin__data">
           <table>
@@ -48,7 +53,7 @@
                 <td>cơ sở</td>
                 <td>Ghi chú</td>
                 <td>Trạng thái</td>
-                <td>chức năng</td>
+                <td colspan="2">chức năng</td>
               </tr>
             </thead>
             <tbody>
@@ -81,7 +86,11 @@
                               }
                           ?>
                         
-                        </td>          
+                </td>   
+                <td>
+                  <a href="{{URL::to('/sua-datban-admin'.$tt->id)}}">
+                    <button class="btn-6 custom-btn">Sửa</button>
+                  </a>      
                 <td>
                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" href="{{URL::to('/xoadatban'.$tt->id)}}">
                       <button class="btn-6 custom-btn">Xóa</button>

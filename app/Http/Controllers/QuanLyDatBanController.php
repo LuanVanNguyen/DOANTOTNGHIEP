@@ -124,7 +124,7 @@ class QuanLyDatBanController extends Controller
         } else {
             // insert db
             DB::table('datban')->insert($data);
-            Session::put('message', 'đặt bàn thành công thành công');
+            Session::put('message', 'Đặt bàn thành công thành công');
             
             // function get id bàn đặt on table datban
             function getIDTable($coso, $time, $userName, $sdt, $soNguoi, $email )
@@ -183,6 +183,19 @@ class QuanLyDatBanController extends Controller
             return Redirect::to('datban')->with('error', 'Không tìm thấy thông tin đặt bàn của quý khách. Vui lòng liên hệ nhân viên chăm sóc khách hàng để được hỗ trợ về thông tin bàn đặt');
         }
     }
+
+    public function sua_datban_admin($id){
+        try {
+            $adminid = Session::get('id');
+            $datban = datban::findOrFail($id);
+            return view('pages.suadatban_admin', compact('datban','adminid'));
+        } catch (ModelNotFoundException $exception) {
+            // return view('pages.chitietdatban', compact('datban'));
+            // echo '<script>alert("Không tìm thấy thông tin đặt bàn của quý khách. 
+            // vui lòng liên hệ nhân viên chăm sóc khách hàng để được hỗ trợ về thông tin bàn đặt");</script>';
+            return Redirect::to('quanlydatban')->with('error', 'Không tìm thấy thông tin đặt bàn.');
+        }
+    }
     public function unactiveDB($id)
     {
         DB::table('datban')->where('id',$id)->update(['trangthai'=>1]);
@@ -203,17 +216,16 @@ class QuanLyDatBanController extends Controller
     public function huydatban($id){
         DB::table('datban')->where('id',$id)->delete();
         Session::put('message','Hủy đặt bàn thành công');
-        return Redirect::to('/datban');
+        return Redirect::to('/chitietdatban'.$id);
     }
 
     public function update_datban(Request $request, $id){
         if($request->name==""||$request->email==""||$request->sdt==""||$request->thoigian==""){
-            Session::put('message', 'Vui lòng nhập đầy đủ thông tin trước gửi!');
+            Session::put('error', 'Vui lòng nhập đầy đủ thông tin trước gửi!');
             return Redirect::to('/datban'); 
        }else{
        $data = array();
 
-       
        $data['name'] = $request->name;
        $data['email'] = $request->email;
        $data['sdt'] = $request->sdt;
@@ -287,6 +299,91 @@ class QuanLyDatBanController extends Controller
            // function get id bàn đặt on table datban
 
            return Redirect::to('/chitietdatban' . $id);
+       }
+   }
+    }
+
+    //sua dat ban admin
+    public function update_datban_admin(Request $request, $id){
+        if($request->name==""||$request->email==""||$request->sdt==""||$request->thoigian==""){
+            Session::put('error', 'Vui lòng nhập đầy đủ thông tin trước gửi!');
+            return Redirect::to('/datban'); 
+       }else{
+       $data = array();
+
+       $data['name'] = $request->name;
+       $data['email'] = $request->email;
+       $data['sdt'] = $request->sdt;
+       $data['songuoi'] = $request->songuoi;
+       $data['thoigian'] = $request->thoigian;
+       $data['coso'] = $request->coso;
+       $data['ghichu'] = $request->ghichu;
+       $data['trangthai'] = $request->trangthai;
+       $data['users_id'] = $request->userid;
+       $data['trangthai']=$request->trangthai;
+
+       // hàm lấy ra tổng số bàn đã đặt trong database table đặt bàn
+       function soBanDaDat($date, $coso)
+       {
+           $result = DB::table('datban')
+               ->whereRaw("DATE(thoigian) = ?", [$date])
+               ->where('trangthai', 1)
+               ->where('coso', $coso)
+               ->sum('soban');
+           // Echo the sum value
+           // echo "so ban da dat : $result";
+           return $result;
+       }
+
+       // hàm lấy tổng số bàn trên đơn vị 
+
+       // so nguoi thuc te
+       $nguoi = $data['songuoi'];
+       // so ban khach dat
+       $sobandat = ceil($nguoi / 6);
+       $data['soban']=$sobandat;
+       // echo "sobanorder : $sobandat";
+       // lay ra thoi gian de truuy van du lieu so ban con lai
+       $thoigian = $data['thoigian'];
+       // lay ra ngay 
+       $date = date('Y-m-d', strtotime($thoigian));
+       // lay ra thong tin co so
+       $cosokhachdat = $data['coso'];
+       
+       // so ban con lai trang db
+       $sobanconlai = soBanDaDat($date, $cosokhachdat);
+
+       // lay ra tong so ban cua co so khach dat ban
+       function tongsobanthucte($coso)
+       {
+           $result = DB::table('coso')
+               ->where('tencoso', $coso)
+               ->value('tongsoban');
+           // Echo the sum value
+           // echo "result :$result";
+           return $result;
+       }
+
+       // tong so ban cua moi co so
+       $tongsoban = tongsobanthucte($cosokhachdat);
+       // echo "tong so ban : $tongsoban";
+
+       $something = $tongsoban - $sobandat;
+       // echo "kq : $something số bàn còn lại là : $sobanconlai, kq trừ là $something - $sobandat";
+
+       if (($tongsoban - $sobandat) <= $sobanconlai) {
+           echo '<script>alert("Rất tiếc số bàn còn lại không đủ để đặt, vui lòng liên hệ nhân viên chăm sóc khách hàng để hỗ trợ đặt bàn theo số đường dây nóng của nhà hàng.");</script>';
+           echo '<script>window.location.href = "' . url('/sua-datban-admin'.$id) . '";</script>';
+       } else {
+           // insert db
+           DB::table('datban')
+           ->where('id',$id)
+           ->update($data);
+           Session::put('message', 'Cập nhật thành công!');
+           
+           // function get id bàn đặt on table datban
+
+           return Redirect::to('/quanlydatban');
        }
    }
     }

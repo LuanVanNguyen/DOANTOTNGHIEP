@@ -75,7 +75,7 @@ Route::get('/themadmin', [Controllers\QuanLyAdminController::class,'add']);
 Route::get('/suaadmin{id}', [Controllers\QuanLyAdminController::class,'edit']);
 Route::get('/xoaadmin{id}', [Controllers\QuanLyAdminController::class,'del']);
 Route::post('/luuadmin', [Controllers\QuanLyAdminController::class,'save']);
-Route::post('/luuadmin{id}', [Controllers\QuanLyAdminController::class,'store']);  
+Route::post('/luuadmin{id}', [Controllers\QuanLyAdminController::class,'store']);
 
 //Quan ly user
 Route::get('/quanlyuser', [Controllers\QuanLyUserController::class,'all']); 
@@ -128,6 +128,8 @@ Route::get('/themdatban', [Controllers\QuanLyDatBanController::class,'add']);
 Route::post('/luudatban', [Controllers\QuanLyDatBanController::class,'save']); 
 Route::get('/xoadatban{id}', [Controllers\QuanLyDatBanController::class,'xoadatban']);
 Route::get('/huydatban{id}', [Controllers\QuanLyDatBanController::class,'huydatban']);
+Route::get('/sua-datban-admin{id}', [Controllers\QuanLyDatBanController::class,'sua_datban_admin']);
+Route::post('/update-datban-admin{id}', [Controllers\QuanLyDatBanController::class,'update_datban_admin']);
 Route::post('/update-datban{id}', [Controllers\QuanLyDatBanController::class,'update_datban']);
 Route::get('/unactiveDB/{id}', [Controllers\QuanLyDatBanController::class,'unactiveDB']); 
 Route::get('/activeDB/{id}', [Controllers\QuanLyDatBanController::class,'activeDB']);
@@ -143,6 +145,30 @@ Route::get('/activeTuVan/{id}', [Controllers\QuanLyTuVanController::class,'activ
 Route::get('/xoatuvan{id}', [Controllers\QuanLyTuVanController::class,'del']);
 
 // tim kiem
-
+//tim kiem san pham
 Route::get('/timkiem', [Controllers\TimkiemController::class,'showSearchForm']); 
 Route::post('/timkiemSP',  [Controllers\TimkiemController::class,'search']);
+//tim kiem admin
+Route::post('/timkiem-admin',  [Controllers\TimkiemController::class,'timkiem_admin']);
+Route::post('/timkiem-user',  [Controllers\TimkiemController::class,'timkiem_user']);
+//tim kiem theo thuc don
+Route::post('/timkiem-thucdon',  [Controllers\TimkiemController::class,'timkiem_thucdon']);
+//tim kiem theo do an
+Route::post('/timkiem-doan',  [Controllers\TimkiemController::class,'timkiem_doan']);
+//tim kiem tin tuc
+Route::post('/timkiem-tintuc',  [Controllers\TimkiemController::class,'timkiem_tintuc']);
+//tim kiem thu vien anh
+Route::post('/timkiem-thuvienanh',  [Controllers\TimkiemController::class,'timkiem_thuvienanh']);
+//tim kiem dat ban
+Route::post('/timkiem-datban',  [Controllers\TimkiemController::class,'timkiem_datban']);
+//tim kiem tu van
+Route::post('/timkiem-tuvan',  [Controllers\TimkiemController::class,'timkiem_tuvan']);
+//tim kiem danh gia
+Route::post('/timkiem-danhgia',  [Controllers\TimkiemController::class,'timkiem_danhgia']);
+//tim kiem voucher
+Route::post('/timkiem-voucher',  [Controllers\TimkiemController::class,'timkiem_voucher']);
+
+
+
+
+
