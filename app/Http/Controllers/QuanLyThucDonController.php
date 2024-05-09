@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Brian2694\Toastr\Facades\Toastr;
 class QuanLyThucDonController extends Controller
 {
     public function all()
@@ -29,6 +30,10 @@ class QuanLyThucDonController extends Controller
     }
     public function save(Request $request)
     {   
+        if($request->tendanhmuc==""||$request->path==""){
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
+        }else{
         // $file = $request->file('path');
         // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data = array();
@@ -43,10 +48,12 @@ class QuanLyThucDonController extends Controller
         // $data['path']= $request->file('path')->storeAs('public/images/', $filename);
         $data['trangthai']= $request->trangthai;
         DB::table('danhmucmon')->insert($data);
-        Session::put('message','Thêm danh mục sản phẩm thành công');
+        Toastr::success('Thêm danh mục sản phẩm thành công','Thành công');
+        // Session::put('message','Thêm danh mục sản phẩm thành công');
     
 
         return Redirect::to('/quanlythucdon');
+    }
     }
     public function edit($id)
     {
@@ -56,6 +63,10 @@ class QuanLyThucDonController extends Controller
     }
     public function store(Request $request,$id)
     {
+        if($request->tendanhmuc==""||$request->path==""){
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
+        }else{
         // $file = $request->file('path');
         // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data = array();
@@ -70,30 +81,33 @@ class QuanLyThucDonController extends Controller
         }
         $data['trangthai']= $request->trangthai;
         DB::table('danhmucmon')->where('id',$id)->update($data);
-        Session::put('message','Cập nhật danh mục món thành công !');
-    
+        // Session::put('message','Cập nhật danh mục món thành công !');
+        Toastr::info('Cập nhật danh mục món thành công !','Thành công');
 
         return Redirect::to('/quanlythucdon');
+    }
     }
     public function del($id)
     {
         DB::table('danhmucmon')->where('id',$id)->delete();
-        Session::put('message','Đã xóa danh mục món thành công !');
+        // Session::put('message','Đã xóa danh mục món thành công !');
     
-
+        Toastr::success('Đã xóa danh mục món thành công !','Thành công');
         return Redirect::to('/quanlythucdon');
     }
 
     public function unactive($id)
     {
         DB::table('danhmucmon')->where('id',$id)->update(['trangthai'=>1]);
-        Session::put('message','Kích hoạt bán danh mục sản phẩm thành công');
+        // Session::put('message','Kích hoạt bán danh mục sản phẩm thành công');
+        Toastr::info('Kích hoạt bán danh mục sản phẩm thành công','Thành công');
         return Redirect::to('/quanlythucdon');
     }
     public function active($id)
     {
         DB::table('danhmucmon')->where('id',$id)->update(['trangthai'=>0]);
-        Session::put('message','Kích hoạt ngừng bán danh mục sản phẩm thành công');
+        // Session::put('message','Kích hoạt ngừng bán danh mục sản phẩm thành công');
+        Toastr::info('Kích hoạt bán danh mục sản phẩm thành công','Thành công');
         return Redirect::to('/quanlythucdon');
     }
 }

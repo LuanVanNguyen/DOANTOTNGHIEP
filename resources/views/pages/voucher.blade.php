@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="public/front/css/owl.theme.default.min.css" />
   <link rel="stylesheet" href="public/front/css/booking-page.css">
   <link rel="stylesheet" href="public/front/css/promotion-page.css">
+
+  <link rel="stylesheet" href="{{asset('http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css')}}">
 </head>
 <body>
   <div class="wrapper booking-page promotion-page">
@@ -57,26 +59,52 @@
           </div>
         </div>
       </div>
+      <style>
+        .list-item{
+          justify-content: space-around;
+        }
+      </style>
     </header>
+    <?php
+      use Illuminate\Support\Facades\Session;
 
+               $user_id = Session::get('userid');
+              $message = Session::get('message');
+              $error = Session::get('error');
+              if($error){
+                  echo '<span style="font-size:25px ; color : red;"> '.$error.'</span>';
+                  Session::put('error', null);
+              }elseif($message){
+              echo '<span style="font-size:25px ; color : green;"> '.$message.'</span>';
+              Session::put('message', null);
+              }
+    ?>
     <div class="title">MÃ GIẢM GIÁ HOT</div>
     <span  style="margin :35px ">Lưu ý : các mã giảm giá này áp dụng cho tất cả các nền tảng đặt món online của VMMS bạn nhé !</span>
-    <main class="main" style="margin-left :45px ">
+    <main class="main" style=" ">
         <div class="list-item row">
             @foreach($voucher as $vc)
-          <div class="item col-sm-12 col-md-6 col-lg-4">
+          <div class="item col-sm-12 col-md-6 col-lg-3">
             <div class="left">
               <img src="https://cf.shopee.vn/file/01ad529d780769c418b225c96cb8a3d7" alt="" class="item-img">
               <strong class="item-name">Noodle</strong>
             </div>
             <div class="right">
-
+            <form action="{{URL::to('/nhan-voucher')}}" method="post">
+            @csrf
               <br><span class="promotion">Số người ăn tối thiểu : <strong class="promotion-minimum">{{$vc->toithieusonguoi}}</strong></span>
-              <br><span class="promotion">Giảm : <strong class="promotion-remaining">{{$vc->giam}}</strong> $ thực đơn</span>
+              <input type="hidden" name="songuoitoithieu" value="{{$vc->toithieusonguoi}}">
+              <br><span class="promotion">Giảm : <strong class="promotion-remaining">{{$vc->giam}}</strong> % thực đơn</span>
+              <input type="hidden" name="giam" value="{{$vc->giam}}}">
               <br><span class="promotion">MÃ : <strong id="promotion_text" class="promotion-code">{{$vc->ma}}</strong></span>
+              <input type="hidden" name="ma" value="{{$vc->ma}}}">
+              <input type="hidden" name="voucher_id" value="{{$vc->id}}">
+              <input type="hidden" name="user_id" value="{{$user_id}}">
               <br><span class="promotion">Hạn SD : <strong class="promotion-expiry">{{$vc->hsd}}</strong></span>
+              <input type="hidden" name="hsd" value="{{$vc->hsd}}}">
               <br><span class="promotion">Lưu ý :<strong class="item-note">Chỉ áp dụng cho sản phẩm của VMMS cung cấp</strong></span>
-              <br><button class="promotion-btn" onclick="copyCouponCode(event, 'COSLUX05', 'https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.vn%2Fsearch%3FpromotionId%3D613398027468800%26signature%3D9da90109160ec2cee32ac6c0e9a1ae26f3cb73cc7049d622bf0418649854febb&amp;affiliate_id=17310730002&amp;sub_id=SL_1----', true)">Nhận</button>
+              <br><button class="promotion-btn">Nhận</button>
+            </form>
             </div>
           </div>
           @endforeach
@@ -84,38 +112,8 @@
       </div>
     </main>
   </div>
-  <script>
-    function copyVourcher(){
-      let input = document.getElementById('promotion_text')
-      try {
-        let value = input.textContent;
-        if(navigator.clipboard) {   
-          navigator.clipboard.writeText(value);
-          console.log(`The text '${value}' is in the Clipboard Now!`);
-        } else {
-          console.log(`Clipboard API is Not Supported`);
-        }
-      } catch (err) {
-        console.error(`Failed to copy: ${err}`);
-      }
-    }
-
-    function pasteVourcher(){
-      try {
-        if (navigator.clipboard) {
-          const fromClipboard = navigator.clipboard.readText();
-          input.value = fromClipboard;
-          console.log(`The text '${fromClipboard}' is pasted successfully!`);
-        } else {
-          console.log(`Clipboard API is Not Supported`);
-        }
-      } catch (err) {
-        console.error(`Failed to paste: ${err}`);
-      }
-    }
-    pasteVourcher()
-    const copybtn = document.getElementById('btn_cop');
-    copybtn.onclick = copyVourcher();
-  </script>
+        <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
 </body>
 </html>

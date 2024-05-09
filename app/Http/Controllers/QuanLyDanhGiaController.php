@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\danhgia;
-
+use Brian2694\Toastr\Facades\Toastr;
 class QuanLyDanhGiaController extends Controller{
     public function all()
 
@@ -39,8 +39,8 @@ class QuanLyDanhGiaController extends Controller{
             $data['noidung'] = $request->noidung;
     
             DB::table('danhgia')->insert($data);
-            Session::put('message', 'Chúng tôi đã nhận được đánh giá của bạn về nhà hàng chúng tôi. Cảm ơn bạn ');
-    
+            // Session::put('message', 'Chúng tôi đã nhận được đánh giá của bạn về nhà hàng chúng tôi. Cảm ơn bạn ');
+            Toastr::success('Cảm ơn về đánh giá của bạn! ','Gửi thành công');
             return Redirect::to('/profile');
         }
     }
@@ -48,20 +48,23 @@ class QuanLyDanhGiaController extends Controller{
     public function del($id)
     {
         DB::table('danhgia')->where('id', $id)->delete();
-        Session::put('message', 'Đã xóa đánh giá thành công !');
+        // Session::put('message', 'Đã xóa đánh giá thành công !');
+        Toastr::success('Đã xóa đánh giá thành công !','Thành công');
         return Redirect::to('/quanlydanhgia');
     }
 
     public function unactiveReview($id)
     {
         DB::table('danhgia')->where('id', $id)->update(['trangthai' => 1]);
-        Session::put('message', 'Hiện đánh giá thành công');
+        // Session::put('message', 'Hiện đánh giá thành công');
+        Toastr::info('Hiện đánh giá','Thành công');
         return Redirect::to('/quanlydanhgia');
     }
     public function activeReview($id)
     {
         DB::table('danhgia')->where('id', $id)->update(['trangthai' => 0]);
-        Session::put('message', 'Đã ẩn đánh giá thành công');
+        // Session::put('message', 'Đã ẩn đánh giá thành công');
+        Toastr::info('Ẩn đánh giá','Thành công');
         return Redirect::to('/quanlydanhgia');
     }
 }

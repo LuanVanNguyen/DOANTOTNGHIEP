@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="public/front/css/owl.carousel.min.css" />
   <link rel="stylesheet" href="public/front/css/owl.theme.default.min.css" />
   <link rel="stylesheet" href="public/front/css/booking-page.css" />
+
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 </head>
 
 <body>
@@ -805,6 +807,10 @@
             this.submit(); // Gửi biểu mẫu bằng phương thức POST
         });
     </script>
+
+        <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
   </body>
 
 </html>

@@ -122,6 +122,7 @@ Route::post('/luuvoucher{id}', [Controllers\QuanLyVoucherController::class,'stor
 Route::get('/unactiveVoucher/{id}', [Controllers\QuanLyVoucherController::class,'unactiveVoucher']); 
 Route::get('/activeVoucher/{id}', [Controllers\QuanLyVoucherController::class,'activeVoucher']);
 
+Route::post('/nhan-voucher', [Controllers\QuanLyVoucherController::class,'nhan_voucher']); 
 //QuanLyDatban
 Route::get('/quanlydatban', [Controllers\QuanLyDatBanController::class,'all']); 
 Route::get('/themdatban', [Controllers\QuanLyDatBanController::class,'add']); 

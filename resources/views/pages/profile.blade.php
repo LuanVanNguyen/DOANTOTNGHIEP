@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Session;
   <link rel="stylesheet" href="public/front/css/owl.theme.default.min.css" />
   <link rel="stylesheet" href="public/front/css/booking-page.css">
   <link rel="stylesheet" href="public/front/css/profile-user-page.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
@@ -318,6 +319,10 @@ use Illuminate\Support\Facades\Session;
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="public/front/js/owl.carousel.min.js"></script>
   <script type="text/javascript" src="public/front/js/script.js"></script>
+
+  <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
 </body>
 
 </html>

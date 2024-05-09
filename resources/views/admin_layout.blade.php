@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="public/front/css/home-page.css" />
     <link rel="stylesheet" href="public/front/css/admin-home-page.css">
     <link rel="stylesheet" href="{{asset('public/front/css/admin-control-page.css')}}">
+
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <style>
       .header{
         justify-content: center;
@@ -297,5 +299,8 @@
     <script type="text/javascript" src="public/front/js/owl.carousel.min.js"></script>
     <script type="text/javascript" src="public/front/js/home-page.js"></script>
     <script type="text/javascript" src="public/front/js/script.js"></script>
+
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
   </body>
 </html>

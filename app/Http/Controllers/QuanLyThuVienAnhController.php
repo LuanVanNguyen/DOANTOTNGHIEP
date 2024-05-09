@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-
+use Brian2694\Toastr\Facades\Toastr;
 class QuanLyThuVienAnhController extends Controller
 {
     public function all()
@@ -30,6 +30,10 @@ class QuanLyThuVienAnhController extends Controller
     }
     public function save(Request $request)
     {
+        if($request->tieude==""||$request->anhdaidien==""){
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
+        }else{
         // Sửa
         // $file = $request->file('path');
         // $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -49,9 +53,10 @@ class QuanLyThuVienAnhController extends Controller
 
         $data['trangthai']= $request->trangthai;
         DB::table('thuvienanh')->insert($data);
-        Session::put('message','Thêm danh mục sản phẩm thành công');
-
+        // Session::put('message','Thêm danh mục sản phẩm thành công');
+        Toastr::success('Thêm mới ảnh thành công!','Thành công');
         return Redirect::to('/quanlythuvienanh');
+    }
     }
     public function edit($id)
     {
@@ -61,6 +66,10 @@ class QuanLyThuVienAnhController extends Controller
     }
     public function store(Request $request,$id)
     {
+        if($request->tieude==""||$request->path==""){
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
+        }else{
         // $file = $request->file('path');
         // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data =array();
@@ -75,15 +84,16 @@ class QuanLyThuVienAnhController extends Controller
         }
         $data['trangthai']= $request->trangthai;
         DB::table('thuvienanh')->where('id',$id)->update($data);
-        Session::put('message','Cập nhật ảnh thành công !');
-    
-
+        // Session::put('message','Cập nhật ảnh thành công !');
+        Toastr::info('Cập nhật ảnh thành công!','Thành công');
         return Redirect::to('/quanlythuvienanh');
+    }
     }
     public function del($id)
     {
         DB::table('thuvienanh')->where('id',$id)->delete();
-        Session::put('message','Xóa ảnh thành công !');
+        // Session::put('message','Xóa ảnh thành công !');
+        Toastr::success('Xóa ảnh thành công!','Thành công');
     
 
         return Redirect::to('/quanlythuvienanh');
@@ -91,13 +101,15 @@ class QuanLyThuVienAnhController extends Controller
     public function unactiveImages($id)
     {
         DB::table('thuvienanh')->where('id',$id)->update(['trangthai'=>1]);
-        Session::put('message','Đã đổi sang trạng thái hiển thị ');
+        // Session::put('message','Đã đổi sang trạng thái hiển thị ');
+        Toastr::info('Đã đổi sang trạng thái hiển thị','Thành công');
         return Redirect::to('/quanlythuvienanh');
     }
     public function activeImages($id)
     {
         DB::table('thuvienanh')->where('id',$id)->update(['trangthai'=>0]);
-        Session::put('message','Đã đổi sang trạng thái ngừng hiển thị');
+        // Session::put('message','Đã đổi sang trạng thái ngừng hiển thị');
+        Toastr::info('Đã đổi sang trạng thái hiển thị','Thành công');
         return Redirect::to('/quanlythuvienanh');
     }
 }

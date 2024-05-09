@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Brian2694\Toastr\Facades\Toastr;
 
 class QuanLyTinTucController extends Controller
 {
@@ -31,7 +32,10 @@ class QuanLyTinTucController extends Controller
     
     public function save(Request $request)
     {
-
+        if($request->tieude==""||$request->anh==""||$request->thoigian==""||$request->noidung==""){
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
+        }else{
         $file = $request->file('anh');
         $filename = time() . '.' . $file->getClientOriginalExtension();
         $data = array();
@@ -42,9 +46,10 @@ class QuanLyTinTucController extends Controller
         $data['ghichu'] = $request->ghichu;
         $data['trangthai'] = $request->trangthai;
         DB::table('tintuc')->insert($data);
-        Session::put('message', 'Thêm danh mục sản phẩm thành công');
-
+        // Session::put('message', 'Thêm danh mục sản phẩm thành công');
+        Toastr::success('Thêm tin tức thành công','Thành công');
         return Redirect::to('/quanlytintuc');
+        }
     }
 
     public function edit($id)
@@ -55,7 +60,10 @@ class QuanLyTinTucController extends Controller
 
     public function store(Request $request, $id)
     {
-
+        if($request->tieude==""||$request->anh==""||$request->thoigian==""||$request->noidung==""){
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
+        }else{
         $data = array();
         $data['tieude'] = $request->tieude;
         if($request ->hasFile('anh')){
@@ -71,15 +79,18 @@ class QuanLyTinTucController extends Controller
         $data['ghichu'] = $request->ghichu;
         $data['trangthai'] = $request->trangthai;
         DB::table('tintuc')->where('id', $id)->update($data);
-        Session::put('message', 'Cập nhật tin tức thành công !');
+        // Session::put('message', 'Cập nhật tin tức thành công !');
+        Toastr::info('Cập nhật tin tức thành công!','Thành công');
 
         return Redirect::to('/quanlytintuc');
+    }
     }
 
     public function del($id)
     {
         DB::table('tintuc')->where('id', $id)->delete();
-        Session::put('message', 'Đã xóa tin tức thành công !');
+        // Session::put('message', 'Đã xóa tin tức thành công !');
+        Toastr::success('Đã xóa tin tức thành công !','Thành công');
 
         return Redirect::to('/quanlytintuc');
     }
@@ -87,14 +98,17 @@ class QuanLyTinTucController extends Controller
     public function unactiveNew($id)
     {
         DB::table('tintuc')->where('id', $id)->update(['trangthai' => 1]);
-        Session::put('message', 'Kích hoạt hiển thị tin tức thành công !');
+        // Session::put('message', 'Kích hoạt hiển thị tin tức thành công !');
+        Toastr::success('Kích hoạt hiển thị tin tức thành công !','Thành công');
+        
         return Redirect::to('/quanlytintuc');
     }
 
     public function activeNew($id)
     {
         DB::table('tintuc')->where('id', $id)->update(['trangthai' => 0]);
-        Session::put('message', 'Kích hoạt ẩn tin tức thành công !');
+        // Session::put('message', 'Kích hoạt ẩn tin tức thành công !');
+        Toastr::success('Kích hoạt hiển thị tin tức thành công !','Thành công');
         return Redirect::to('/quanlytintuc');
     }
 }

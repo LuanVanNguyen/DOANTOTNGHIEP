@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\tuvan;
+use Brian2694\Toastr\Facades\Toastr;
 
 
 class QuanLyTuVanController extends Controller
@@ -35,15 +36,18 @@ class QuanLyTuVanController extends Controller
             $data['diachi']= $request->diachi;
             $data['noidung']= $request->noidung;   
             DB::table('tuvan')->insert($data);
-            return Redirect::to('/trangchu');
+            // return Redirect::to('/trangchu');
+            Toastr::success('Gửi thành công!','Thành công');
+            return redirect()->back();
         }
 
     }
     public function del($id)
     {
         DB::table('tuvan')->where('id',$id)->delete();
-        Session::put('message','Đã xóa tư vấn thành công !');
+        // Session::put('message','Đã xóa tư vấn thành công !');
     
+        Toastr::success('Xóa tư vấn thành công!','Thành công');
 
         return Redirect::to('/quanlytuvan');
     }
@@ -51,13 +55,16 @@ class QuanLyTuVanController extends Controller
     public function unactiveTuVan($id)
     {
         DB::table('tuvan')->where('id',$id)->update(['trangthai'=>1]);
-        Session::put('message','Chuyển sang trạng thái chưa xử lý!');
+        // Session::put('message','Chuyển sang trạng thái chưa xử lý!');
+        Toastr::info('Chuyển sang trạng thái chưa xử lý!','Thành công');
         return Redirect::to('/quanlytuvan');
     }
     public function activeTuVan($id)
     {
         DB::table('tuvan')->where('id',$id)->update(['trangthai'=>0]);
-        Session::put('message','Chuyển sang trạng thái đã duyệt!');
+        // Session::put('message','Chuyển sang trạng thái đã duyệt!');
+        Toastr::info('Chuyển sang trạng thái đã duyệt!','Thành công');
+
         return Redirect::to('/quanlytuvan');
     }
 

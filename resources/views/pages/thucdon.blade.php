@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="public/front/css/owl.carousel.min.css" />
     <link rel="stylesheet" href="public/front/css/owl.theme.default.min.css" />
     <link rel="stylesheet" href="public/front/css/menu-page.css" />
+    
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
   </head>
 
   <body>
@@ -449,6 +451,9 @@
     ></script>
     <script type="text/javascript" src="public/front/js/owl.carousel.min.js"></script>
     <script type="text/javascript" src="public/front/js/script.js"></script>
+
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
   </body>
 </html>
 </html>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Brian2694\Toastr\Facades\Toastr;
 
 class QuanLyDatBanController extends Controller
 {
@@ -35,6 +36,10 @@ class QuanLyDatBanController extends Controller
     }
 
     public function save(Request $request){
+        if($request->name==""||$request->email==""||$request->sdt==""||$request->thoigian==""){
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
+        }else{
         $data = array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
@@ -45,15 +50,16 @@ class QuanLyDatBanController extends Controller
         $data['ghichu'] = $request->ghichu;
         $data['trangthai'] = $request->trangthai;
         DB::table('datban')->insert($data);
-        Session::put('message', 'Thêm đặt bàn thành công');
-
+        // Session::put('message', 'Thêm đặt bàn thành công');
+        Toastr::success('Thêm đặt bàn thành công!','Thành công');
         return Redirect::to('/quanlydatban');
+        }
     }
 
     public function save_user(Request $request){
         if($request->name==""||$request->email==""||$request->sdt==""||$request->thoigian==""){
-             Session::put('message', 'Vui lòng nhập đầy đủ thông tin trước khi đặt bàn!');
-             return Redirect::to('/datban'); 
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
         }else{
         $data = array();
 
@@ -124,8 +130,7 @@ class QuanLyDatBanController extends Controller
         } else {
             // insert db
             DB::table('datban')->insert($data);
-            Session::put('message', 'Đặt bàn thành công thành công');
-            
+            // Session::put('message', 'Đặt bàn thành công');
             // function get id bàn đặt on table datban
             function getIDTable($coso, $time, $userName, $sdt, $soNguoi, $email )
             {
@@ -142,7 +147,7 @@ class QuanLyDatBanController extends Controller
             }
 
             $id = getIDTable($request->coso, $thoigian, $request->name, $request->sdt, $request->songuoi, $request->email);
-
+            Toastr::success('Cảm ơn bạn đã đặt bàn tại VMMS!','Thành công');
             return Redirect::to('/chitietdatban' . $id);
         }
     }
@@ -162,6 +167,8 @@ class QuanLyDatBanController extends Controller
             // echo "<pre>";
             // print_r($datban);
             // echo "</pre>";
+            // Toastr::success('Gửi thành công!','Thành công');
+            // Toastr::success('Đặt bàn thành công!','Thành công');
             return view('pages.chitietdatban', compact('datban','userid'));
         } catch (ModelNotFoundException $exception) {
             // return view('pages.chitietdatban', compact('datban'));
@@ -199,30 +206,37 @@ class QuanLyDatBanController extends Controller
     public function unactiveDB($id)
     {
         DB::table('datban')->where('id',$id)->update(['trangthai'=>1]);
-        Session::put('message','Đã đổi sang trạng thái đã ăn ');
+        // Session::put('message','Đã đổi sang trạng thái đã ăn ');
+        Toastr::info('Đã đổi sang trạng thái đã ăn!','Thành công');
+
         return Redirect::to('/quanlydatban');
     }
     public function activeDB($id)
     {
         DB::table('datban')->where('id',$id)->update(['trangthai'=>0]);
-        Session::put('message','Đã đổi sang trạng thái chưa ăn');
+        // Session::put('message','Đã đổi sang trạng thái chưa ăn');
+        Toastr::info('Đã đổi sang trạng thái chưa ăn!','Thành công');
+
         return Redirect::to('/quanlydatban');
     }
     public function xoadatban($id){
         DB::table('datban')->where('id',$id)->delete();
-        Session::put('message','Xóa thành công !');
+        Toastr::success('Xóa thành công!','Thành công');
+
+        // Session::put('message','Xóa thành công !');
         return Redirect::to('/quanlydatban');
     }
     public function huydatban($id){
         DB::table('datban')->where('id',$id)->delete();
-        Session::put('message','Hủy đặt bàn thành công');
+        // Session::put('message','Hủy đặt bàn thành công');
+        Toastr::success('Hủy đặt bàn thành công!','Thành công');
         return Redirect::to('/chitietdatban'.$id);
     }
 
     public function update_datban(Request $request, $id){
         if($request->name==""||$request->email==""||$request->sdt==""||$request->thoigian==""){
-            Session::put('error', 'Vui lòng nhập đầy đủ thông tin trước gửi!');
-            return Redirect::to('/datban'); 
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
        }else{
        $data = array();
 
@@ -294,7 +308,8 @@ class QuanLyDatBanController extends Controller
            DB::table('datban')
            ->where('id',$id)
            ->update($data);
-           Session::put('message', 'Cập nhật thành công!');
+        //    Session::put('message', 'Cập nhật thành công!');
+           Toastr::info('Cập nhật thành công!','Thành công');
            
            // function get id bàn đặt on table datban
 
@@ -306,8 +321,8 @@ class QuanLyDatBanController extends Controller
     //sua dat ban admin
     public function update_datban_admin(Request $request, $id){
         if($request->name==""||$request->email==""||$request->sdt==""||$request->thoigian==""){
-            Session::put('error', 'Vui lòng nhập đầy đủ thông tin trước gửi!');
-            return Redirect::to('/datban'); 
+            Toastr::error('Vui lòng nhập đầy đủ thông tin', 'Thất bại', ["positionClass" => "toast-top-center toast-margin-top"]);
+            return redirect()->back();
        }else{
        $data = array();
 
@@ -379,10 +394,10 @@ class QuanLyDatBanController extends Controller
            DB::table('datban')
            ->where('id',$id)
            ->update($data);
-           Session::put('message', 'Cập nhật thành công!');
+        //    Session::put('message', 'Cập nhật thành công!');
            
            // function get id bàn đặt on table datban
-
+           Toastr::info('Cập nhật thành công!','Thành công');
            return Redirect::to('/quanlydatban');
        }
    }

@@ -1141,4 +1141,12 @@ a:hover {
   line-height: 1.6rem;
   padding: 4px 0 0;
 }
+
+.toast-margin-top{
+  margin-top: 15rem !important;
+}
+.toast{
+  font-size: 16px;
+  padding: 10px;
+}
 /*# sourceMappingURL=booking-page.css.map */

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\danhmucmon;
 
 use Illuminate\Support\Facades\Redirect;
+use Brian2694\Toastr\Facades\Toastr;
 
 class QuanLyDoAnController extends Controller
 {
@@ -30,6 +31,11 @@ class QuanLyDoAnController extends Controller
     }
     public function save(Request $request)
     {
+        if($request->tensp==""||$request->gia==""){
+            // Session::put('message', 'Vui lòng nhập đầy đủ thông tin trước khi thêm mới!');
+            Toastr::error('Vui lòng nhập đầy đủ thông tin trước khi thêm mới!','Thất bại',["positionClass" => "toast-top-center toast-margin-top"]);
+            return Redirect::to('/themdoan'); 
+       }else{
         // $file = $request->file('anh');
         // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data = array();
@@ -49,10 +55,11 @@ class QuanLyDoAnController extends Controller
 
         $data['featured'] = $request->featured;
         DB::table('sampham')->insert($data);
-        Session::put('message', 'Thêm thực đơn thành công');
-
+        // Session::put('message', 'Thêm thực đơn thành công');
+        Toastr::success('Thêm thực đơn thành công !','Thành công');
 
         return Redirect::to('/quanlydoan');
+    }
     }
 
   public function edit($id)
@@ -63,6 +70,11 @@ class QuanLyDoAnController extends Controller
     }
     public function store(Request $request,$id)
     {
+        if($request->tensp==""||$request->gia==""){
+            // Session::put('message', 'Vui lòng nhập đầy đủ thông tin trước khi thêm mới!');
+            Toastr::error('Vui lòng nhập đầy đủ thông tin trước khi thêm mới!','Thất bại',["positionClass" => "toast-top-center toast-margin-top"]);
+            return Redirect::to('/themdoan'); 
+       }else{
         // $file = $request->file('anh');
         // $filename = time() . '.' . $file->getClientOriginalExtension();
         $data = array();
@@ -81,16 +93,18 @@ class QuanLyDoAnController extends Controller
         $data['danhmucmon_id'] = $request->danhmucmon_id;
         $data['featured'] = $request->featured;
         DB::table('sampham')->where('id',$id)->update($data);
-        Session::put('message','Cập nhật thực đơn thành công !');
-    
+        // Session::put('message','Cập nhật thực đơn thành công !');
+        Toastr::info('Cập nhật thực đơn thành công !','Thành công');
+
 
         return Redirect::to('/quanlydoan');
+    }
     }
     public function del($id)
     {
         DB::table('sampham')->where('id',$id)->delete();
-        Session::put('message','Đã xóa thực đơn thành công !');
-    
+        // Session::put('message','Đã xóa thực đơn thành công !');
+        Toastr::success('Xóa thành công!','Thành công');
 
         return Redirect::to('/quanlydoan');
     }
@@ -98,13 +112,15 @@ class QuanLyDoAnController extends Controller
     public function unactiveFood($id)
     {
         DB::table('sampham')->where('id',$id)->update(['featured'=>1]);
-        Session::put('message','Kích hoạt kinh doanh cho thực đơn thành công');
+        // Session::put('message','Kích hoạt kinh doanh cho thực đơn thành công');
+        Toastr::success('Kích hoạt kinh doanh cho thực đơn thành công!','Thành công');
         return Redirect::to('/quanlydoan');
     }
     public function activeFood($id)
     {
         DB::table('sampham')->where('id',$id)->update(['featured'=>0]);
-        Session::put('message','Kích hoạt ngừng ngừng kinh doanh cho thực đơn thành công');
+        // Session::put('message','Kích hoạt ngừng ngừng kinh doanh cho thực đơn thành công');
+        Toastr::success('Kích hoạt kinh doanh cho thực đơn thành công!','Thành công');
         return Redirect::to('/quanlydoan');
     }
 }

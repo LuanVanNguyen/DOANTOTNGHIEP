@@ -22,10 +22,14 @@
                 <label class="form_text" for="min">Tối thiểu số người</label> <br>
                 <input class="form_add__input" type="text" name="toithieusonguoi" placeholder="Nhập tối thiểu">
               </div>
-              <div class="form_add__name">
-                <br><label class="form_text" for="date">HSD</label> <br>
+              <!-- <div class="form_add__name">
+                <br><label class="form_text" for="date">Tho</label> <br>
                 <input class="form_add__input" type="datetime" name="hsd" placeholder="Nhập hạn sử dụng mã voucher">
-              </div>
+              </div> -->
+              <div class="form_add__name">
+                <label class="form_text" for="mail">HSD</label> <br>
+                <input class="form_add__input" type="datetime" name="hsd" placeholder="Nhập hạn sử dụng mã voucher">
+            </div>
               <div  style="margin-top : 90px;"  class="form_add__name padding_y">
                 <label  style="padding-bottom : 25px; " class="form_text" for="name">Trạng thái</label> <br>
                 <select style="margin-left : 15px; "name="trangthai" id="">

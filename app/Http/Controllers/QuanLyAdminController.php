@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-
+use Brian2694\Toastr\Facades\Toastr;
 class QuanLyAdminController extends Controller
 {
     public function all()
@@ -39,6 +39,7 @@ class QuanLyAdminController extends Controller
         // Lưu trữ ảnh trong file storage
         // $path = $file->storeAs('public/images', $filename);
         if($request->name_admin==""||$request->email_admin==""||$request->password_admin==""||$request->phone_admin==""){
+            // Toastr::error('Vui lòng nhập đầy đủ thông tin!','Thất bại');
             Session::put('message','Vui lòng nhập đủ thông tin!');
             return Redirect::to('/themadmin');
         }else{
@@ -63,7 +64,8 @@ class QuanLyAdminController extends Controller
                 return Redirect::to('/themadmin');
             }else{
                 DB::table('admin')->insert($data);
-                Session::put('message','Thêm Admin thành công');
+                // Session::put('message','Thêm Admin thành công');
+                Toastr::success('Thêm Admin thành công!','Thành công');
                 return Redirect::to('/quanlyadmin');
             }
         }
@@ -100,16 +102,17 @@ class QuanLyAdminController extends Controller
         $data['phone_admin']= $request->phone_admin;
         $data['created_at']= date('Y-m-d H:i:s', strtotime($request->created_at));
         DB::table('admin')->where('id',$id)->update($data);
-        Session::put('message','Cập nhật Admin thành công !');
-    
+        // Session::put('message','Cập nhật Admin thành công !');
+        Toastr::info('Cập nhật Admin thành công !','Thành công');
+
 
         return Redirect::to('/quanlyadmin');
     }
     public function del($id)
     {
         DB::table('admin')->where('id',$id)->delete();
-        Session::put('message','Xóa Admin thành công !');
-    
+        // Session::put('message','Xóa Admin thành công !');
+        Toastr::success('Xóa Admin thành công !','Thành công');
 
         return Redirect::to('/quanlyadmin');
     }

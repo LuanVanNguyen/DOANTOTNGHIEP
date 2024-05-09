@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\voucher;
-
+use Brian2694\Toastr\Facades\Toastr;
 class VoucherController extends Controller
 {
     public function voucher()

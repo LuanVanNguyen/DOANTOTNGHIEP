@@ -5,8 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VMMS2</title>
-
+  <title>@yield('title') | VMMS2</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.3/css/all.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
@@ -14,7 +13,6 @@
   <link rel="stylesheet" href="{{asset('public/front/css/owl.carousel.min.css')}}" />
   <link rel="stylesheet" href="{{asset('public/front/css/owl.theme.default.min.css')}}" />
   <link rel="stylesheet" href="{{asset('public/front/css/home-page.css')}}" />
-
 </head>
 
 <body>
