@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class TaiKhoanController extends Controller
 {
@@ -34,10 +36,16 @@ class TaiKhoanController extends Controller
         $password = $request->password;
         $result = DB::table('users')->where('email', $email)->first();
         if ($result && password_verify($password,$result->password)) {
-            Session::put('username', $result->name);
-            Session::put('userid', $result->id);
-            return Redirect::to('/trangchu');
-        } else {
+            if($result->status===0){
+                Session::put('error', 'Tài khoản của bạn chưa được kích hoạt, vui lòng click vào <a href="'.url('/get-active').'">đây để tiến hành kích hoạt</a>');
+                return Redirect::to('/dangnhap');
+            }else{
+                Session::put('username', $result->name);
+                Session::put('userid', $result->id);
+                return Redirect::to('/trangchu');
+            }
+        }
+        else {
             Session::put('error', 'Mật khẩu hoặc tài khoản của bạn không đúng. Nhập lại !');
             return Redirect::to('/dangnhap');
         }
@@ -57,19 +65,38 @@ class TaiKhoanController extends Controller
         elseif($request->password != $request->password_confirmation) {
             return back()->with('error', 'Mật khẩu nhập lại không trùng khớp !');
         }
+        $token =strtoupper(Str::random(10));
         $data = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'trangthai'=>$request->trangthai,
+            'token'=> $token,
         ];
         $result=  DB::table('users')->where('email',$request->email)->first();
         if($result){
             return back()->with('error', 'Email đã được đăng ký. Vui lòng chọn email khác!');
         }else{
-            DB::table('users')->insert($data);
-            Session::put('message', 'Tạo tài khoản thành công');
+            $customerId = DB::table('users')->insertGetId($data);
+            $customer = DB::table('users')->find($customerId);
+            Mail::send('emails.active_account',compact('customer'),function($email) use($customer){
+                $email->subject('Nhà hàng VMMS - Xác nhận tài khoản');
+                $email->to($customer->email,$customer->name);
+            });
+            Session::put('message', 'Đăng ký thành công vui lòng xác nhận tài khoản qua email của bạn!');
             return Redirect::to('/dangnhap');
+        }
+
+    }
+    public function active_account($user_id, $token){
+        $result = DB::table('users')->where('id',$user_id)->first();
+        if($result->token === $token){
+            DB::table('users')
+            ->where('id',$user_id)
+            ->update(['status' => 1,'token'=>'null']);
+            return Redirect::to('/dangnhap')->with('message','Xác nhận tài khoản thành công, bạn có thể đăng nhập');
+        }else{
+            return Redirect::to('/dangnhap')->with('error','Mã xác nhận bạn gửi không hợp lệ! Vui lòng thử lại!');
         }
 
     }
@@ -132,5 +159,80 @@ class TaiKhoanController extends Controller
          }
 
 
+    }
+
+    public function test_mail(){
+        $name = 'Nguyen Van Luan';
+        Mail::send('emails.test',compact('name'),function($email) use($name){
+            $email->subject('Demo mail');
+            $email->to('nguyenluan200502@gmail.com',$name);
+        });
+    }
+
+    //Quen mat khau
+    public function quen_matkhau(){
+        return view('pages.quenmatkhau');
+    }
+
+    public function post_quen_matkhau(Request $request){
+        $email = $request->email;
+        $user = DB::table('users')->where('email',$email)->first();
+        if($user){
+            $token =strtoupper(Str::random(10));
+            $user->token = $token;
+            DB::table('users')->where('email',$email)
+            ->update(['token'=>$token]);
+            Mail::send('emails.check_email_forget',compact('user'),function($email) use($user){
+                $email->subject('Nhà hàng VMMS - Lấy lại mật khẩu của tài khoản');
+                $email->to($user->email,$user->name);
+            });
+            return Redirect::to('/dangnhap')->with('message','Vui lòng check email để thực hiện thay đổi mật khẩu');
+        }else{
+            return Redirect::to('/quen-matkhau')->with('error','Email này không tồn tại trong hệ thống!');
+        }
+    }
+
+    public function lay_matkhau($user_id, $token){
+        $user = DB::table('users')->where('id',$user_id)->first();
+        if($user->token === $token){
+            return view('pages.getpass',compact('user'));
+        }
+        return abort(404);
+
+    }
+
+    public function post_lay_matkhau(Request $request, $user_id, $token){
+        $newpassword = bcrypt($request->new_password);
+        $result = DB::table('users')->where('id',$user_id)->first();
+        if($result->token === $token){
+            DB::table('users')
+            ->where('id',$user_id)
+            ->update(['password'=>$newpassword,'token'=>'null']);
+            return Redirect::to('/dangnhap')->with('message','Đặt lại mật khẩu thành công, bạn có thể đăng nhập');
+        }else{
+            return Redirect::to('/dangnhap')->with('error','Mã xác nhận bạn gửi không hợp lệ! Vui lòng thử lại!');
+        }
+    }
+
+    public function get_active(){
+        return view('pages.getactive');
+    }
+
+    public function post_active(Request $request){
+        $email = $request->email;
+        $customer = DB::table('users')->where('email',$email)->first();
+        if($customer){
+            $token =strtoupper(Str::random(10));
+            $customer->token = $token;
+            DB::table('users')->where('email',$email)
+            ->update(['token'=>$token]);
+            Mail::send('emails.active_account',compact('customer'),function($email) use($customer){
+                $email->subject('Nhà hàng VMMS - Xác nhận tài khoản');
+                $email->to($customer->email,$customer->name);
+            });
+            return Redirect::to('/dangnhap')->with('message','Vui lòng check email để kích hoạt tài khoản!');
+        }else{
+            return Redirect::to('/quen-matkhau')->with('error','Email này không tồn tại trong hệ thống!');
+        }
     }
 }

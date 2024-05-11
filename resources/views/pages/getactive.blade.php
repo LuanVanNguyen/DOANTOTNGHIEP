@@ -11,9 +11,9 @@
 
 <body>
     <div class="main">
-        <form action="{{URL::to('/logintrangchu')}}" method="post" class="form" id="form-2">
+        <form action="{{URL::to('/post-active')}}" method="post" class="form" id="form-2">
             @csrf
-            <h3 class="heading">Đăng nhập</h3>
+            <h3 class="heading">Kích hoạt tài khoản</h3>
             <br>
 
 
@@ -41,7 +41,7 @@
             ?>
 
 
-            <p class="desc">Nhà hàng VMMS foods chào mừng</p>
+            <p class="desc">Vui lòng nhập email mà bạn đã đăng ký tại hệ thống của chúng tôi</p>
 
             <div class="spacer"></div>
 
@@ -50,20 +50,7 @@
                 <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
                 <span class="form-message"></span>
             </div>
-
-            <div class="form-group">
-                <label for="password" class="form-label">Mật khẩu</label>
-                <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                <span class="form-message"></span>
-            </div>
-            <div>
-                <a style="font-size: 15px;" href="{{URL::to('/dangky')}}">Tạo tài khoản</a>
-
-                <a style="font-size: 15px;" href="{{URL::to('/quen-matkhau')}}">Quên mật khẩu?</a>
-            </div>
-
-
-            <input type="submit" name="login" class="form-submit" value="Đăng nhập" />
+            <input type="submit" name="login" class="form-submit" value="Gửi email xác nhận" />
         </form>
 
     </div>

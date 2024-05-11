@@ -54,6 +54,19 @@ Route::post('/checkdky', [Controllers\TaiKhoanController::class,'checkdky']);
 Route::get('/dangxuatuser', [Controllers\TaiKhoanController::class,'logout']);
 Route::get('/doimatkhau', [Controllers\TaiKhoanController::class,'changepass']);
 Route::post('/luuthaydoi', [Controllers\TaiKhoanController::class,'savechangepass']);
+//Quen mat khau
+Route::get('/quen-matkhau', [Controllers\TaiKhoanController::class,'quen_matkhau']);
+Route::post('/quen-matkhau', [Controllers\TaiKhoanController::class,'post_quen_matkhau']);
+Route::get('/lay-matkhau/{customer}/{token}', [Controllers\TaiKhoanController::class,'lay_matkhau']);
+Route::post('/lay-matkhau/{customer}/{token}', [Controllers\TaiKhoanController::class,'post_lay_matkhau']);
+
+//Check dk bang gmail
+Route::get('/get-active', [Controllers\TaiKhoanController::class,'get_active']);
+Route::post('/post-active', [Controllers\TaiKhoanController::class,'post_active']);
+
+Route::get('/active-account/{customer}/{token}', [Controllers\TaiKhoanController::class,'active_account']);
+Route::get('/test-mail', [Controllers\TaiKhoanController::class,'test_mail']);
+
 
 
 //Profile
