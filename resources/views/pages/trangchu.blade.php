@@ -203,33 +203,81 @@
                   ĐĂNG KÝ TƯ VẤN THỰC ĐƠN
                 </div>
            
-                <form action="{{URL::to('/guituvan')}}" method="post" class="form-home" id="form-3">
-                  @csrf
-                  <input type="hidden" name="id" value="">
-                  <div class="form-home__item required">
-                    <label for="">Họ và tên</label>
-                    <input type="text"name ="hoten" />
-                  </div>
+                <?php
 
-                  <input type="hidden" name ="users_id" value="
-                      " />
-                  <div class="form-home__item required">
-                    <label for="">Số điện thoại</label>
-                    <input type="text" name="sdt" />
-                  </div>
-                  <div class="form-home__item required">
-                    <label for="">Địa chỉ</label>
-                    <input type="text" name="diachi" />
-                  </div>
-                  <div class="form-home__item required">
-                    <label for="">Nội dung</label>
-                    <input type="text" name="noidung" />
-                  </div>
+                    use Illuminate\Support\Facades\Session;
+                    $username = Session::get('username');
+                    $error = Session::get('error');
+                    if ($error) {
+                        echo '<span style="font-size:15px ; color : red; text-align:center; display:flex;justify-content: center; margin: 16px 0;"> ' . $error . '</span>';
+                        Session::put('error', null);
+                    }
+                    if ($username) {
+                        // Người dùng đã đăng nhập
+                        ?>
+                          <form action="{{URL::to('/guituvan')}}" method="post" class="form-home" id="form-3">
+                            @csrf
+                            <input type="hidden" name="id" value="">
+                            <div class="form-home__item required">
+                              <label for="">Họ và tên</label>
+                              <input type="text"name ="hoten" />
+                            </div>
 
-                  <div class="form-home__item required">
-                    <input type="submit" class="submit" value="Đăng ký ngay" />
-                  </div>
-                </form>
+                            <input type="hidden" name ="users_id" value="
+                                " />
+                            <div class="form-home__item required">
+                              <label for="">Số điện thoại</label>
+                              <input type="text" name="sdt" />
+                            </div>
+                            <div class="form-home__item required">
+                              <label for="">Địa chỉ</label>
+                              <input type="text" name="diachi" />
+                            </div>
+                            <div class="form-home__item required">
+                              <label for="">Nội dung</label>
+                              <input type="text" name="noidung" />
+                              <input type="hidden" name="trangthai" />
+                            </div>
+
+                            <div class="form-home__item required">
+                              <input type="submit" class="submit" value="Đăng ký ngay" />
+                            </div>
+                          </form>
+                        <?php
+                    } else {
+                        // Người dùng chưa đăng nhập
+                        ?>
+                          <form action="{{URL::to('/dangnhap')}}" method="get" class="form-home" id="form-3">
+                            @csrf
+                            <input type="hidden" name="id" value="">
+                            <div class="form-home__item required">
+                              <label for="">Họ và tên</label>
+                              <input type="text"name ="hoten" />
+                              <input type="hidden" name="notlogin" />
+                            </div>
+
+                            <input type="hidden" name ="users_id" value="
+                                " />
+                            <div class="form-home__item required">
+                              <label for="">Số điện thoại</label>
+                              <input type="text" name="sdt" />
+                            </div>
+                            <div class="form-home__item required">
+                              <label for="">Địa chỉ</label>
+                              <input type="text" name="diachi" />
+                            </div>
+                            <div class="form-home__item required">
+                              <label for="">Nội dung</label>
+                              <input type="text" name="noidung" />
+                            </div>
+
+                            <div class="form-home__item required">
+                              <input type="submit" class="submit" value="Đăng ký ngay" />
+                            </div>
+                          </form>
+                        <?php
+                    }
+                ?>
               </div>
               <div class="col-sm-12 col-md-12 col-lg-6">
                 <div class="form-consultation__image">

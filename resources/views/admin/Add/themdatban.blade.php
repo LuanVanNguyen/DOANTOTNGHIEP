@@ -31,8 +31,8 @@
           <label class="form_text" for="mail">Thời gian</label> <br>
           <input class="form_add__input" type="datetime-local" class="input" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" name="thoigian" s>
         </div>
-        <div style="margin-top : 90px;" class="form_add__name padding_y">
-          <label style="padding-bottom : 25px; " class="form_text" for="name">Cơ sở</label> <br>
+        <div class="form_add__name padding_y">
+          <label style="padding-bottom : 1rem; " class="form_text" for="name">Cơ sở</label> <br>
           <i class="far fa-chevron-down droparrItem"></i>
           <select style="margin-left : 15px; " name="coso" id="" class="select_item">
             <option value="Cơ sở 1">Cơ sở 1</option>
@@ -40,8 +40,8 @@
             <option value="Cơ sở 3">Cơ sở 3</option>
           </select>
         </div>
-        <div style="margin-top : 20px;" class="form_add__name padding_y">
-          <label style="padding-bottom : 25px; " class="form_text" for="name">Trạng thái</label> <br>
+        <div class="form_add__name padding_y">
+          <label style="padding-bottom : 1rem; " class="form_text" for="name">Trạng thái</label> <br>
           <i class="far fa-chevron-down droparrItem"></i>
           <select style="margin-left : 15px; " name="trangthai" id="" class="select_item">
             <option value="0">Đã ăn</option>

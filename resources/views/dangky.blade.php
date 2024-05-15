@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="public/front/css/login-page.css">
+    <link rel="stylesheet" href="{{asset('public/front/css/login-page.css')}}">
 </head>
 
 <body>
@@ -26,18 +26,25 @@
                 echo '<span style="font-size:15px ; color : red; text-align:center; display:flex;justify-content: center; margin: 16px 0;"> ' . $error . '</span>';
                 Session::put('error', null);
             }
+            
             ?>
             <div class="form-group">
                 <label for="fullname" class="form-label">Tên đầy đủ</label>
-                <input id="fullname" name="name" type="text" placeholder="VD: Nguyễn Văn Luận" class="form-control">
-                <span class="form-message"></span>
+                <input id="fullname" name="name" value="{{ old('name') }}" type="text" placeholder="VD: Nguyễn Văn Luận" class="form-control">
+                <!-- <span class="form-message"></span> -->
+                @error('name')
+                    <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                @enderror
                 <input name="trangthai" value="1" type="hidden">
             </div>
 
             <div class="form-group">
                 <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="text" placeholder="VD: nguyenluan@gmail.com" class="form-control">
-                <span class="form-message"></span>
+                <input id="email" name="email" value="{{ old('email') }}" type="text" placeholder="VD: nguyenluan@gmail.com" class="form-control">
+                <!-- <span class="form-message"></span> -->
+                @error('email')
+                    <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                @enderror
             </div>
             <!-- <div class="form-group">
             </div>  <label for="email" class="form-label">Avaterar<label>
@@ -46,14 +53,20 @@
 
             <div class="form-group">
                 <label for="password" class="form-label">Mật khẩu</label>
-                <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                <span class="form-message"></span>
+                <input id="password" name="password" value="{{ old('password') }}" type="password" placeholder="Nhập mật khẩu" class="form-control" >
+                <!-- <span class="form-message"></span> -->
+                @error('password')
+                    <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
-                <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
-                <span class="form-message"></span>
+                <input id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+                <!-- <span class="form-message"></span> -->
+                @error('password_confirmation')
+                    <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                @enderror
             </div>
 
             <button class="form-submit">Đăng ký</button>
@@ -283,6 +296,24 @@
         document.getElementById('form-1').addEventListener('submit', function(e) {
             e.preventDefault(); // Ngăn chặn hành vi mặc định của trình duyệt
             this.submit(); // Gửi biểu mẫu bằng phương thức POST
+        });
+    </script>
+    <script>
+        const formGroups = document.querySelectorAll('.form-group');
+
+        formGroups.forEach(formGroup => {
+            const errorMessage = formGroup.querySelector('.error-message');
+            const formControls = formGroup.querySelectorAll('.form-control');
+
+            if (errorMessage) {
+                formControls.forEach(formControl => {
+                    formControl.classList.add('error');
+                });
+            } else {
+                formControls.forEach(formControl => {
+                    formControl.classList.remove('error');
+                });
+            }
         });
     </script>
 </body>

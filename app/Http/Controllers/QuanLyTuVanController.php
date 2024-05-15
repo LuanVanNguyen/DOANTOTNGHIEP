@@ -34,10 +34,11 @@ class QuanLyTuVanController extends Controller
             $data['users_id']= $request->users_id;
             $data['sdt']= $request->sdt;
             $data['diachi']= $request->diachi;
-            $data['noidung']= $request->noidung;   
+            $data['noidung']= $request->noidung;  
+            $data['trangthai']="1"; 
             DB::table('tuvan')->insert($data);
             // return Redirect::to('/trangchu');
-            Toastr::success('Gửi thành công!','Thành công');
+            Toastr::success('Chúng tôi sẽ liên hệ bạn sớm nhất có thể!','Gửi thành công!');
             return redirect()->back();
         }
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\LoginGoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,8 @@ Route::post('/checkdky', [Controllers\TaiKhoanController::class,'checkdky']);
 Route::get('/dangxuatuser', [Controllers\TaiKhoanController::class,'logout']);
 Route::get('/doimatkhau', [Controllers\TaiKhoanController::class,'changepass']);
 Route::post('/luuthaydoi', [Controllers\TaiKhoanController::class,'savechangepass']);
+
+
 //Quen mat khau
 Route::get('/quen-matkhau', [Controllers\TaiKhoanController::class,'quen_matkhau']);
 Route::post('/quen-matkhau', [Controllers\TaiKhoanController::class,'post_quen_matkhau']);

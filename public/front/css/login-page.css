@@ -85,6 +85,10 @@ html {
   padding: 4px 0 0;
 }
 
+.form-control.error {
+  border-color: red;
+}
+
 .form-submit {
   outline: none;
   background-color: #1dbfaf;

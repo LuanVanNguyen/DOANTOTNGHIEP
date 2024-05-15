@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{{asset('public/front/css/owl.carousel.min.css')}}" />
   <link rel="stylesheet" href="{{asset('public/front/css/owl.theme.default.min.css')}}" />
   <link rel="stylesheet" href="{{asset('public/front/css/home-page.css')}}" />
+<!--Start of Fchat.vn--><script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=66421019e2cec44e572aa820" async="async"></script><!--End of Fchat.vn-->
 </head>
 
 <body>
@@ -118,7 +119,7 @@
         <div class="row">
           <div class="footer-col footer-col-1 col">
             <div class="footer-col-content footer-info">
-              <a href="home-page.html" class="footer-logo"><img src="public/front//images/logo-vmms.png" alt="Logo" /></a>
+              <a href="{{URL::to('/trangchu')}}" class="footer-logo"><img src="public/front//images/logo-vmms.png" alt="Logo" /></a>
               <p class="footer-info__address">
                 Tầng 3 số 14 Pháo Đài Láng, Đống Đa, Hà Nội
               </p>
@@ -135,7 +136,7 @@
                   <a href="{{URL::to('/trangchu')}}">Trang chủ</a>
                 </li>
                 <li class="menu-footer__link">
-                  <a href="aboutus section-py">Giới thiệu</a>
+                  <a href="#">Giới thiệu</a>
                 </li>
                 <li class="menu-footer__link">
                   <a href="{{URL::to('/tintuc')}}">Tin tức</a>
@@ -214,7 +215,7 @@
     </footer>
     <div class="mobile-sidebar d-lg-none">
       <div class="mobile-sidebar--top">
-        <a href="https://www.facebook.com/" class="mobile-sidebar-logo"><img src="public/front/images/logo-vmms.png" alt="Logo" /></a>
+        <a href="{{URL::to('/trangchu')}}" class="mobile-sidebar-logo"><img src="public/front/images/logo-vmms.png" alt="Logo" /></a>
         <i class="mobile-sidebar-close"></i>
       </div>
       <div class="mobile-sidebar--bottom">

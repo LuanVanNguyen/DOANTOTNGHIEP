@@ -27,19 +27,23 @@ class QuanLyUserController extends Controller
     public function unactive($id)
     {
         DB::table('users')->where('id',$id)->update(['trangthai'=>1]);
-        Session::put('message','Đã kích hoạt User hoạt động ! ');
+        Toastr::info('Đã kích hoạt User hoạt động','Thành công');
+        // Session::put('message','Đã kích hoạt User hoạt động ! ');
         return Redirect::to('/quanlyuser');
     }
     public function active($id)
     {
         DB::table('users')->where('id',$id)->update(['trangthai'=>0]);
-        Session::put('message','Đã kích hoạt User ngừng hoạt động !');
+        Toastr::info('Đã kích hoạt User ngừng hoạt động','Thành công');
+        // Session::put('message','Đã kích hoạt User ngừng hoạt động !');
         return Redirect::to('/quanlyuser');
     }
     public function del($id)
     {
         DB::table('users')->where('id',$id)->delete();
-        Session::put('message','Xóa user thành công !');
+        Toastr::success('Xóa user thành công!','Thành công');
+
+        // Session::put('message','Xóa user thành công !');
     
 
         return Redirect::to('/quanlyuser');

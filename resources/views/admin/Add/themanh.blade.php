@@ -29,7 +29,7 @@
                 </div>
               </div>
       
-              <div  style="margin-top : 90px;"  class="form_add__name padding_y">
+              <div  class="form_add__name padding_y">
                 <label  style="padding-bottom : 25px; " class="form_text" for="name">Trạng thái</label> <br>
                 <select style="margin-left : 15px; "name="trangthai" id="">
                     <option value="0">Ngừng kinh doanh</option>

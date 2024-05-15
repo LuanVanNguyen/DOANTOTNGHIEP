@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
 
 class TaiKhoanController extends Controller
 {
@@ -34,7 +37,11 @@ class TaiKhoanController extends Controller
 
         $email = $request->email;
         $password = $request->password;
+        $remember = $request->remember;
         $result = DB::table('users')->where('email', $email)->first();
+        if($remember){
+            DB::table('users')->where('email', $email)->update(['remember_token' => true]);
+        }
         if ($result && password_verify($password,$result->password)) {
             if($result->status===0){
                 Session::put('error', 'Tài khoản của bạn chưa được kích hoạt, vui lòng click vào <a href="'.url('/get-active').'">đây để tiến hành kích hoạt</a>');
@@ -42,11 +49,16 @@ class TaiKhoanController extends Controller
             }else{
                 Session::put('username', $result->name);
                 Session::put('userid', $result->id);
+                if ($remember) {
+                    $rememberToken = strtoupper(Str::random(10));
+                    DB::table('users')->where('email', $email)->update(['remember_token' => $rememberToken]);
+                    Cookie::queue('remember_token', $rememberToken, 60 * 24 * 30); // Ghi nhớ đăng nhập trong 30 ngày
+                }
                 return Redirect::to('/trangchu');
             }
         }
         else {
-            Session::put('error', 'Mật khẩu hoặc tài khoản của bạn không đúng. Nhập lại !');
+            Session::put('error', 'Mật khẩu hoặc tài khoản của bạn không đúng!');
             return Redirect::to('/dangnhap');
         }
     }
@@ -59,32 +71,62 @@ class TaiKhoanController extends Controller
 
     public function checkdky(Request $request)
     {
-        if($request->name==""||$request->email==""||$request->password==""){
-            return back()->with('error', 'Bạn cần điền đầy đủ thông tin trước khi đăng ký!');
-        }
-        elseif($request->password != $request->password_confirmation) {
-            return back()->with('error', 'Mật khẩu nhập lại không trùng khớp !');
-        }
-        $token =strtoupper(Str::random(10));
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'trangthai'=>$request->trangthai,
-            'token'=> $token,
+        // if($request->name==""||$request->email==""||$request->password==""){
+        //     return back()->with('error', 'Bạn cần điền đầy đủ thông tin trước khi đăng ký!');
+        // }
+        // elseif($request->password != $request->password_confirmation) {
+        //     return back()->with('error', 'Mật khẩu nhập lại không trùng khớp !');
+        // }
+        $errorMessages = [
+            'name.required' => 'Vui lòng nhập đầy đủ tên của bạn.',
+            'name.alpha' => 'Tên không hợp lệ.',
+            'email.required' => 'Vui lòng nhập email của bạn.',
+            'email.email' => 'Email không hợp lệ.',
+            'password.required' => 'Vui lòng nhập mật khẩu.',
+            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
+            'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+            'password_confirmation.required' => 'Vui lòng nhập lại mật khẩu.',
+            'password_confirmation.same' => 'Xác nhận mật khẩu không khớp.'
         ];
-        $result=  DB::table('users')->where('email',$request->email)->first();
-        if($result){
-            return back()->with('error', 'Email đã được đăng ký. Vui lòng chọn email khác!');
+        
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'alpha'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:6', 'confirmed'],
+            'password_confirmation' => ['required', 'same:password'],
+        ], $errorMessages);
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }else{
-            $customerId = DB::table('users')->insertGetId($data);
-            $customer = DB::table('users')->find($customerId);
-            Mail::send('emails.active_account',compact('customer'),function($email) use($customer){
-                $email->subject('Nhà hàng VMMS - Xác nhận tài khoản');
-                $email->to($customer->email,$customer->name);
-            });
-            Session::put('message', 'Đăng ký thành công vui lòng xác nhận tài khoản qua email của bạn!');
-            return Redirect::to('/dangnhap');
+            if($request->password != $request->password_confirmation) {
+                return back()->with('error', 'Mật khẩu nhập lại không trùng khớp !');
+            }else{
+
+                $token =strtoupper(Str::random(10));
+                $data = [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                    'trangthai'=>$request->trangthai,
+                    'token'=> $token,
+                ];
+                $result=  DB::table('users')->where('email',$request->email)->first();
+                if($result){
+                    return back()->with('error', 'Email đã được đăng ký. Vui lòng chọn email khác!');
+                }else{
+                    $customerId = DB::table('users')->insertGetId($data);
+                    $customer = DB::table('users')->find($customerId);
+                    Mail::send('emails.active_account',compact('customer'),function($email) use($customer){
+                        $email->subject('Nhà hàng VMMS - Xác nhận tài khoản');
+                        $email->to($customer->email,$customer->name);
+                    });
+                    Session::put('message', 'Đăng ký thành công vui lòng xác nhận tài khoản qua email của bạn!');
+                    return Redirect::to('/dangnhap');
+                }
+            }
         }
 
     }
@@ -119,7 +161,11 @@ class TaiKhoanController extends Controller
         $request->session()->invalidate(); // Vô hiệu hóa phiên hiện tại
         $request->session()->regenerateToken(); // Tạo lại mã thông báo phiên mới
         Session::forget('username', 'userid');
-
+        if (Cookie::has('remember_token')) {
+            $rememberToken = Cookie::get('remember_token');
+            DB::table('users')->where('remember_token', $rememberToken)->update(['remember_token' => null]);
+            Cookie::forget('remember_token');
+        }
         return redirect('/dangnhap'); // Chuyển hướng người dùng đến trang đăng nhập
     }
 
@@ -127,7 +173,11 @@ class TaiKhoanController extends Controller
     //đổi mật khẩu
     public function changepass()
     {
-        return view('doimatkhau');
+        $userid = Session::get('userid'); // Đây chỉ là ví dụ, bạn cần xác định ID người dùng thực tế
+        // Lấy thông tin người dùng từ CSDL
+        $user = User::findOrFail($userid);
+
+        return view('doimatkhau',compact('user'));
     }
     public function savechangepass(Request $request)
 
@@ -140,17 +190,25 @@ class TaiKhoanController extends Controller
          // Lấy thông tin người dùng từ CSDL
          $user = User::findOrFail($userid);
 
-
-         if ($password == $user->password) {
+        // echo 'password: '.$password;
+        // echo '<br>';
+        // echo 'newpassword: '.$newpassword;
+        // echo '<br>';
+        // echo $user->password;
+        // echo '<br>';
+        // if (password_verify($password, $hashedPassword)) {
+        //     echo 'True';
+        // }
+        $hashedPassword = $user->password;
+         if (password_verify($password, $hashedPassword)) {
              $user->password =$newpassword;
              $data = array();
              $data['name']= $request->fullname;
              $data['email']= $request->email;
-             $data['password']= $newpassword;
+             $data['password']= bcrypt($newpassword);
 
              DB::table('users')->where('id',$userid)->update($data);
-            
-           
+            Toastr::success('Thay đổi mật khẩu thành công!','Thành công');
              return redirect('/profile'); 
            
          } else {

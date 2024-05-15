@@ -33,14 +33,14 @@
             <div class="spacer"></div>
 
             <div class="form-group">
-                <label for="fullname" class="form-label">Tên đăng nhập</label>
-                <input id="fullname" name="fullname" type="text" class="form-control" value="<?php $username = Session::get('username'); echo $username ?>">
+                <!-- <label for="fullname" class="form-label">Tên đăng nhập</label> -->
+                <input id="fullname" name="fullname" type="hidden" class="form-control" value="<?php $username = Session::get('username'); echo $username ?>">
                 <span class="form-message"></span>
             </div>
 
             <div class="form-group">
-                <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+                <!-- <label for="email" class="form-label">Email</label> -->
+                <input id="email" name="email" type="hidden" placeholder="VD: email@domain.com" class="form-control" value="{{$user->email}}">
                 <span class="form-message"></span>
             </div>
 
@@ -62,7 +62,7 @@
                 <span class="form-message"></span>
             </div>
 
-            <input type="submit" name="login" class="form-submit" value="Đăng nhập" />
+            <input type="submit" name="login" class="form-submit" value="Xác nhận" />
         </form>
 
     </div>

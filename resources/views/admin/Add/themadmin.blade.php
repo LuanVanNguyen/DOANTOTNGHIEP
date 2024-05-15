@@ -22,7 +22,7 @@
               <input style="height : 50px;" class="form_add__input" type="text" id="name_admin" name="name_admin" placeholder="Nhập tên tài khoản">
               <span class="form-message"></span>
               </div>
-              <div class="form_add__name first_add_item form-group" style="margin-top : 50px;" >
+              <div class="form_add__name first_add_item form-group" >
               <label class="form_text" for="name">Email</label> <br>
               <input style="height : 50px;" id="email_admin" class="form_add__input form-control" type="text" name="email_admin" placeholder="Nhập email">
               <span class="form-message"></span>

@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="public/front/css/owl.carousel.min.css" />
     <link rel="stylesheet" href="public/front/css/owl.theme.default.min.css" />
     <link rel="stylesheet" href="public/front/css/guide-page.css" />
+<!--Start of Fchat.vn--><script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=66421019e2cec44e572aa820" async="async"></script><!--End of Fchat.vn-->
+
   </head>
 
   <body>

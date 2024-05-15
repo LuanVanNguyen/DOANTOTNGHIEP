@@ -428,11 +428,17 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 }
 
 .form_add__name{
-  width: inherit;
+  /* width: inherit;
   height: 4rem;
   padding-top: 1.5rem;
   margin-left: 1rem;
-  margin-top: 7rem;
+  margin-top: 7rem; */
+
+  width: inherit;
+  height: 10rem;
+  padding-top: 4rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
 
 .form_text{

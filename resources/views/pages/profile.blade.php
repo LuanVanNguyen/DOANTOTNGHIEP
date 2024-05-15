@@ -26,6 +26,8 @@ use Illuminate\Support\Facades\Session;
   <link rel="stylesheet" href="public/front/css/profile-user-page.css">
   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
+<!--Start of Fchat.vn--><script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=66421019e2cec44e572aa820" async="async"></script><!--End of Fchat.vn-->
+
 </head>
 
 <body>

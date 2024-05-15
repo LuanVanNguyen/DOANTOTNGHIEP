@@ -2,15 +2,6 @@
 @section('title','Sửa tài khoản')
 @section('menu-name','Cập nhật admin')
 @section('body')
-<style>
-  .form_add__name {
-    width: inherit;
-    height: 6rem;
-    padding-top: 10rem;
-    margin-left: 1rem;
-    margin-top: 1rem;
-}
-</style>
 <main class="main">
         <div class="container_body">
                 @foreach($all as $tt)

@@ -11,17 +11,23 @@ class TimkiemController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->input('inputSearch');
-        // Truy vấn bảng sanpham để tìm kiếm theo từ khóa
-        $results = DB::table('sampham')
-            ->where('tensp', 'LIKE', '%' . $keyword . '%')
-            ->orWhere('tag', 'LIKE', '%' . $keyword . '%')
-            ->orWhere('gia', 'LIKE', '%' . $keyword . '%')
-            ->get();
-        if($results->count() > 0){
-            return view('pages.ketquatimkiem', compact('results'));
+        if($keyword==""){
+            $results = [];
+            Session::put('message','Xin lỗi VMMS không tìm thấy kết quả cho từ khoá của bạn');
+            return view('pages.ketquatimkiem',compact('results'));
         }else{
-            Session::put('message','Không có kết quả nào phù hợp với mong muốn của bạn');
-            return view('pages.ketquatimkiem', compact('results'));
+            // Truy vấn bảng sanpham để tìm kiếm theo từ khóa
+            $results = DB::table('sampham')
+                ->where('tensp', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('tag', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('gia', 'LIKE', '%' . $keyword . '%')
+                ->get();
+            if($results->count() > 0){
+                return view('pages.ketquatimkiem', compact('results'));
+            }else{
+                Session::put('message','Xin lỗi VMMS không tìm thấy kết quả cho từ khoá của bạn');
+                return view('pages.ketquatimkiem', compact('results'));
+            }
         }
     }
 

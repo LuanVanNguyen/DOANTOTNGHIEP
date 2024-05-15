@@ -56,6 +56,9 @@
                 <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
                 <span class="form-message"></span>
             </div>
+            <div style="font-size: 15px;text-align: left; padding-bottom:10px;">
+                <input id="remember" name="remember" type="checkbox"/> Ghi nhớ đăng nhập
+            </div>
             <div>
                 <a style="font-size: 15px;" href="{{URL::to('/dangky')}}">Tạo tài khoản</a>
 
