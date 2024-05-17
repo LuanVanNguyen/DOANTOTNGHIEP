@@ -39,10 +39,16 @@ class TaiKhoanController extends Controller
         $password = $request->password;
         $remember = $request->remember;
         $result = DB::table('users')->where('email', $email)->first();
+        
         if($remember){
             DB::table('users')->where('email', $email)->update(['remember_token' => true]);
+            $remember = true;
+        }else{
+            DB::table('users')->where('email', $email)->update(['remember_token' => false]);
         }
-        if ($result && password_verify($password,$result->password)) {
+        
+        if ($remember? $result && password_verify($password,$result->password) && $remember : $result && password_verify($password,$result->password)) {
+            echo "HELLO";
             if($result->status===0){
                 Session::put('error', 'Tài khoản của bạn chưa được kích hoạt, vui lòng click vào <a href="'.url('/get-active').'">đây để tiến hành kích hoạt</a>');
                 return Redirect::to('/dangnhap');
@@ -54,10 +60,14 @@ class TaiKhoanController extends Controller
                     DB::table('users')->where('email', $email)->update(['remember_token' => $rememberToken]);
                     Cookie::queue('remember_token', $rememberToken, 60 * 24 * 30); // Ghi nhớ đăng nhập trong 30 ngày
                 }
-                return Redirect::to('/trangchu');
+                $remember_token = $result->remember_token;
+                // if(!$remember_token) echo "Hello";
+                return Redirect::to('/trangchu')->with('remember_token',$remember_token);
+
             }
         }
         else {
+            echo "SAI";
             Session::put('error', 'Mật khẩu hoặc tài khoản của bạn không đúng!');
             return Redirect::to('/dangnhap');
         }
@@ -79,7 +89,7 @@ class TaiKhoanController extends Controller
         // }
         $errorMessages = [
             'name.required' => 'Vui lòng nhập đầy đủ tên của bạn.',
-            'name.alpha' => 'Tên không hợp lệ.',
+            'name.regex' => 'Tên không hợp lệ.',
             'email.required' => 'Vui lòng nhập email của bạn.',
             'email.email' => 'Email không hợp lệ.',
             'password.required' => 'Vui lòng nhập mật khẩu.',
@@ -90,7 +100,7 @@ class TaiKhoanController extends Controller
         ];
         
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'alpha'],
+            'name' => ['required', 'regex:/^[\p{L} ]+$/u'],
             'email' => ['required', 'email'],
             'password' => ['required', 'min:6', 'confirmed'],
             'password_confirmation' => ['required', 'same:password'],

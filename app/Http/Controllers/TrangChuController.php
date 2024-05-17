@@ -10,7 +10,7 @@ use App\Models\tuvan;
 
 class TrangChuController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $sanphamnoibat = sanpham::where('featured', 1)->limit(4)->get();
         // $danhgia = danhgia::orderBy('id', 'desc')->limit(3)->get();
@@ -19,8 +19,8 @@ class TrangChuController extends Controller
         ->limit(3)
         ->get();
         $tintuc = tintuc::orderBy('id', 'desc')->limit(6)->get();
-
-        return view('pages.trangchu', compact('sanphamnoibat', 'danhgia', 'tintuc'));
+        $remember_token =  request()->session()->get('remember_token');
+        return view('pages.trangchu', compact('sanphamnoibat', 'danhgia', 'tintuc','remember_token'));
     }
 
     public function guituvan(Request $request)

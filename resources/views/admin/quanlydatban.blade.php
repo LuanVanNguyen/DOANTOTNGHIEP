@@ -21,7 +21,7 @@
             <a href="{{URL::to('/quanlydatban')}}" class="link_add">Tất cả </a>
           </span>
           <span>
-            <a href="{{URL::to('/themdatban')}}" class="link_add">Thêm mới</a>
+            <a href="{{URL::to('/datban')}}" class="link_add">Thêm mới</a>
           </span>
         </div>
         <?php

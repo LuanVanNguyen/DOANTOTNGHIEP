@@ -11,11 +11,11 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
   <link rel="stylesheet" href="public/front/css/owl.carousel.min.css" />
   <link rel="stylesheet" href="public/front/css/owl.theme.default.min.css" />
-  <link rel="stylesheet" href="public/front/css/booking-page.css" />
+  <link rel="stylesheet" href="{{asset('public/front/css/booking-page.css')}}" />
 
   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-<!--Start of Fchat.vn--><script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=66421019e2cec44e572aa820" async="async"></script><!--End of Fchat.vn-->
 
+</style>
 </head>
 
 <body>
@@ -61,6 +61,7 @@
           ?>
           <?php
               $username = Session::get('username');
+              $adminname = Session::get('name_admin');
               if ($username) {
                   // Người dùng đã đăng nhập
                   ?>
@@ -68,30 +69,46 @@
                       @csrf
                       <div class="booking-form-item form-group">
                         <label>Họ và tên</label>
-                        <input id="fullname" type="text" name="name" class="input form-control"  placeholder="Nhập họ tên"/>
-                        <span class="form-message"></span>
+                        <input id="fullname" type="text" value="{{ old('name') }}" name="name" class="input form-control"  placeholder="Nhập họ tên"/>
+                        <!-- <span class="form-message"></span> -->
+                        @error('name')
+                            <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                        @else
+                        @enderror
                         <input type="hidden" name="userid" value="{{$userid}}">
                         <input type="hidden" name="trangthai" value="1">
                       </div>
-                      <div class="booking-form-item required form-group">
+                      <div class="booking-form-item  form-group">
                         <label>Email</label>
-                        <input id="email" type="email" name="email" class="input form-control" placeholder="Nhập email" />
-                        <span class="form-message"></span>
+                        <input id="email" type="text" name="email" value="{{ old('email') }}" class="input form-control" placeholder="Nhập email" />
+                        <!-- <span class="form-message"></span> -->
+                        @error('email')
+                            <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                        @enderror
                       </div>
                       <div class="booking-form-item required form-group">
                         <label>Số điện thoại</label>
-                          <input id="phone" name="sdt" type="tel" class="input form-control" pattern="[0-9]{10,12}" placeholder="+84"  />
-                          <span class="form-message"></span>
+                          <input id="phone" name="sdt" type="tel" value="{{ old('sdt') }}" class="input form-control" placeholder="+84"  />
+                          <!-- <span class="form-message"></span> -->
+                          @error('sdt')
+                            <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                        @enderror
                       </div>
                       <div class="booking-form-item required form-group">
                         <label>Số khách</label>
-                        <input id="number" name="songuoi" type="text" class="input form-control" placeholder="Nhập số người " pattern="[0-9]{1,3}" />
-                        <span class="form-message"></span>
+                        <input id="number" name="songuoi" type="text" value="{{ old('songuoi') }}" class="input form-control" placeholder="Nhập số người " />
+                        <!-- <span class="form-message"></span> -->
+                        @error('songuoi')
+                            <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                        @enderror
                       </div>
                       <div class="booking-form-item required form-group">
                         <label>Thời gian</label>
                         <input id="time" name="thoigian" type="datetime-local" class="input form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" />
-                        <span class="form-message"></span>
+                        <!-- <span class="form-message"></span> -->
+                        @error('thoigian')
+                            <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                        @enderror
                       </div>
                       <div class="booking-form-item required form-group">
                         <label>Nhà hàng</label>
@@ -114,14 +131,86 @@
                       </div>
                     </form>
                   <?php
-              } else {
+              }
+              elseif ($adminname) {
+                // Admin đã đăng nhập
+                ?>
+                  <form action="{{URL::to('/luudatban')}}" method="post" id="form-2">
+                    @csrf
+                    <div class="booking-form-item form-group">
+                      <label>Họ và tên</label>
+                      <input id="fullname" type="text" value="{{ old('name') }}" name="name" class="input form-control"  placeholder="Nhập họ tên"/>
+                      <!-- <span class="form-message"></span> -->
+                      @error('name')
+                          <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                      @else
+                      @enderror
+                      <input type="hidden" name="userid" value="00">
+                      <input type="hidden" name="trangthai" value="1">
+                    </div>
+                    <div class="booking-form-item  form-group">
+                      <label>Email</label>
+                      <input id="email" type="text" name="email" value="{{ old('email') }}" class="input form-control" placeholder="Nhập email" />
+                      <!-- <span class="form-message"></span> -->
+                      @error('email')
+                          <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                      @enderror
+                    </div>
+                    <div class="booking-form-item required form-group">
+                      <label>Số điện thoại</label>
+                        <input id="phone" name="sdt" type="tel" value="{{ old('sdt') }}" class="input form-control" placeholder="+84"  />
+                        <!-- <span class="form-message"></span> -->
+                        @error('sdt')
+                          <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                      @enderror
+                    </div>
+                    <div class="booking-form-item required form-group">
+                      <label>Số khách</label>
+                      <input id="number" name="songuoi" type="text" value="{{ old('songuoi') }}" class="input form-control" placeholder="Nhập số người " />
+                      <!-- <span class="form-message"></span> -->
+                      @error('songuoi')
+                          <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                      @enderror
+                    </div>
+                    <div class="booking-form-item required form-group">
+                      <label>Thời gian</label>
+                      <input id="time" name="thoigian" type="datetime-local" class="input form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" />
+                      <!-- <span class="form-message"></span> -->
+                      @error('thoigian')
+                          <span style="color:red;" class="form-message error-message">{{ $message }}</span>
+                      @enderror
+                    </div>
+                    <div class="booking-form-item required form-group">
+                      <label>Nhà hàng</label>
+                      <select id="coso" name="coso" class="form-control">
+                        <option value="Cơ sở 1">Cơ sở 1</option>
+                        <option value="Cơ sở 2">Cơ sở 2</option>
+                        <option value="Cơ sở 3">Cơ sở 3</option>
+                      </select>
+                      <span class="form-message"></span>
+                    </div>
+                    <div class="booking-form-item required">
+                      <label>Ghi chú</label>
+                      <textarea name="ghichu" id="" placeholder="Aa"></textarea>
+                    </div>
+
+                    <div class="booking-form-item required">
+                      <button type="submit" class="btn btn-primary btn-submit">
+                        Đặt bàn ngay
+                      </button>
+                    </div>
+                  </form>
+                <?php
+            }
+              
+              else {
                   // Người dùng chưa đăng nhập
                   ?>
                     <form action="{{URL::to('/dangnhap')}}" method="get" id="form-2">
                       @csrf
                       <div class="booking-form-item form-group">
                         <label>Họ và tên</label>
-                        <input id="fullname" type="text" name="name" class="input form-control"  placeholder="Nhập họ tên"/>
+                        <input id="fullname" type="text" name="name" class="form-control"  placeholder="Nhập họ tên"/>
                         <input name="notlogin_datban" type="hidden"/>
                         <span class="form-message"></span>
                         <input type="hidden" name="userid" value="{{$userid}}">
@@ -129,22 +218,22 @@
                       </div>
                       <div class="booking-form-item required form-group">
                         <label>Email</label>
-                        <input id="email" type="email" name="email" class="input form-control" placeholder="Nhập email" />
+                        <input id="email" type="email" name="email" class="form-control" placeholder="Nhập email" />
                         <span class="form-message"></span>
                       </div>
                       <div class="booking-form-item required form-group">
                         <label>Số điện thoại</label>
-                          <input id="phone" name="sdt" type="tel" class="input form-control" pattern="[0-9]{10,12}" placeholder="+84"  />
+                          <input id="phone" name="sdt" type="tel" class="form-control" pattern="[0-9]{10,12}" placeholder="+84"  />
                           <span class="form-message"></span>
                       </div>
                       <div class="booking-form-item required form-group">
                         <label>Số khách</label>
-                        <input id="number" name="songuoi" type="text" class="input form-control" placeholder="Nhập số người " pattern="[0-9]{1,3}" />
+                        <input id="number" name="songuoi" type="text" class="form-control" placeholder="Nhập số người " pattern="[0-9]{1,3}" />
                         <span class="form-message"></span>
                       </div>
                       <div class="booking-form-item required form-group">
                         <label>Thời gian</label>
-                        <input id="time" name="thoigian" type="datetime-local" class="input form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" />
+                        <input id="time" name="thoigian" type="datetime-local" class="form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" placeholder="00:00 - dd/mm/yyyy" />
                         <span class="form-message"></span>
                       </div>
                       <div class="booking-form-item required form-group">
@@ -154,7 +243,7 @@
                           <option value="Cơ sở 2">Cơ sở 2</option>
                           <option value="Cơ sở 3">Cơ sở 3</option>
                         </select>
-                        <span class="form-message"></span>
+                        
                       </div>
                       <div class="booking-form-item required">
                         <label>Ghi chú</label>
@@ -318,254 +407,22 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="public/front/js/owl.carousel.min.js"></script>
   <script type="text/javascript" src="public/front/js/script.js"></script>
-  <!-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mong muốn của chúng ta
-            Validator({
-                form: '#form-1',
-                formGroupSelector: '.form-group',
-                errorSelector: '.form-message',
-                rules: [
-                    Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-                    Validator.isRequired('#time'),
-                    Validator.isRequired('#restaurant'),
-                    Validator.isRequired('#coso'),
-                    Validator.isEmail('#email'),
-                    Validator.minLength('#phone', 10),
-                    Validator.isNumber("#number"),
-                    Validator.isSelected('#coso', 'Vui lòng chọn một tùy chọn'),
-                    Validator.isRequired('#password_confirmation'),
-                    Validator.isConfirmed('#password_confirmation', function() {
-                        return document.querySelector('#form-1 #password').value;
-                    }, 'Mật khẩu nhập lại không chính xác')
-                ],
-                onSubmit: function(data) {
-                    // Call API
-                    console.log(data);
-                }
-            });
-
-
-            Validator({
-                form: '#form-2',
-                formGroupSelector: '.form-group',
-                errorSelector: '.form-message',
-                rules: [
-                    Validator.isEmail('#email'),
-                    Validator.minLength('#password', 6),
-                ],
-                onSubmit: function(data) {
-                    // Call API
-                    console.log(data);
-                }
-            });
-        });
-
-        // Đối tượng `Validator`
-        function Validator(options) {
-            function getParent(element, selector) {
-                while (element.parentElement) {
-                    if (element.parentElement.matches(selector)) {
-                        return element.parentElement;
-                    }
-                    element = element.parentElement;
-                }
-            }
-
-            var selectorRules = {};
-
-            // Hàm thực hiện validate
-            function validate(inputElement, rule) {
-                var errorElement = getParent(inputElement, options.formGroupSelector).querySelector(options.errorSelector);
-                var errorMessage;
-
-                // Lấy ra các rules của selector
-                var rules = selectorRules[rule.selector];
-
-                // Lặp qua từng rule & kiểm tra
-                // Nếu có lỗi thì dừng việc kiểm
-                for (var i = 0; i < rules.length; ++i) {
-                    switch (inputElement.type) {
-                        case 'radio':
-                        case 'checkbox':
-                            errorMessage = rules[i](
-                                formElement.querySelector(rule.selector + ':checked')
-                            );
-                            break;
-                        default:
-                            errorMessage = rules[i](inputElement.value);
-                    }
-                    if (errorMessage) break;
-                }
-
-                if (errorMessage) {
-                    errorElement.innerText = errorMessage;
-                    getParent(inputElement, options.formGroupSelector).classList.add('invalid');
-                } else {
-                    errorElement.innerText = '';
-                    getParent(inputElement, options.formGroupSelector).classList.remove('invalid');
-                }
-
-                return !errorMessage;
-            }
-
-            // Lấy element của form cần validate
-            var formElement = document.querySelector(options.form);
-            if (formElement) {
-                // Khi submit form
-                formElement.onsubmit = function(e) {
-                    e.preventDefault();
-
-                    var isFormValid = true;
-
-                    // Lặp qua từng rules và validate
-                    options.rules.forEach(function(rule) {
-                        var inputElement = formElement.querySelector(rule.selector);
-                        var isValid = validate(inputElement, rule);
-                        if (!isValid) {
-                            isFormValid = false;
-                        }
-                    });
-
-                    if (isFormValid) {
-                        // Trường hợp submit với javascript
-                        if (typeof options.onSubmit === 'function') {
-                            var enableInputs = formElement.querySelectorAll('[name]');
-                            var formValues = Array.from(enableInputs).reduce(function(values, input) {
-
-                                switch (input.type) {
-                                    case 'radio':
-                                        values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
-                                        break;
-                                    case 'checkbox':
-                                        if (!input.matches(':checked')) {
-                                            values[input.name] = '';
-                                            return values;
-                                        }
-                                        if (!Array.isArray(values[input.name])) {
-                                            values[input.name] = [];
-                                        }
-                                        values[input.name].push(input.value);
-                                        break;
-                                    case 'file':
-                                        values[input.name] = input.files;
-                                        break;
-                                    default:
-                                        values[input.name] = input.value;
-                                }
-
-                                return values;
-                            }, {});
-                            options.onSubmit(formValues);
-                        }
-                        // Trường hợp submit với hành vi mặc định
-                        else {
-                            formElement.submit();
-                        }
-                    }
-                }
-
-                // Lặp qua mỗi rule và xử lý (lắng nghe sự kiện blur, input, ...)
-                options.rules.forEach(function(rule) {
-
-                    // Lưu lại các rules cho mỗi input
-                    if (Array.isArray(selectorRules[rule.selector])) {
-                        selectorRules[rule.selector].push(rule.test);
-                    } else {
-                        selectorRules[rule.selector] = [rule.test];
-                    }
-
-                    var inputElements = formElement.querySelectorAll(rule.selector);
-
-                    Array.from(inputElements).forEach(function(inputElement) {
-                        // Xử lý trường hợp blur khỏi input
-                        inputElement.onblur = function() {
-                            validate(inputElement, rule);
-                        }
-
-                        // Xử lý mỗi khi người dùng nhập vào input
-                        inputElement.oninput = function() {
-                            var errorElement = getParent(inputElement, options.formGroupSelector).querySelector(options.errorSelector);
-                            errorElement.innerText = '';
-                            getParent(inputElement, options.formGroupSelector).classList.remove('invalid');
-                        }
-                    });
-                });
-            }
-
-        }
-
-
-
-        // Định nghĩa rules
-        // Nguyên tắc của các rules:
-        // 1. Khi có lỗi => Trả ra message lỗi
-        // 2. Khi hợp lệ => Không trả ra cái gì cả (undefined)
-        Validator.isRequired = function(selector, message) {
-            return {
-                selector: selector,
-                test: function(value) {
-                    return value ? undefined : message || 'Vui lòng nhập trường này'
-                }
-            };
-        }
-
-        Validator.isEmail = function(selector, message) {
-            return {
-                selector: selector,
-                test: function(value) {
-                    var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                    return regex.test(value) ? undefined : message || 'Trường này phải là email';
-                }
-            };
-        }
-
-        Validator.isNumber = function(selector, message) {
-            return {
-                selector: selector,
-                test: function(value) {
-                    var regex = /^\d+$/;
-                    return regex.test(value) ? undefined : message || 'Trường này phải là số';
-                }
-            };
-        }
-
-        Validator.minLength = function(selector, min, message) {
-            return {
-                selector: selector,
-                test: function(value) {
-                    return value.length >= min ? undefined : message || `Số điện thoại không hợp lệ`;
-                }
-            };
-        }
-
-        Validator.isConfirmed = function(selector, getConfirmValue, message) {
-            return {
-                selector: selector,
-                test: function(value) {
-                    return value === getConfirmValue() ? undefined : message || 'Giá trị nhập vào không chính xác';
-                }
-            }
-        }
-        
-        Validator.isSelected = function(selector, message) {
-            return {
-              selector: selector,
-              test: function(value) {
-                return value !== '' ? undefined : message || 'Vui lòng chọn một tùy chọn';
-              }
-            }
-        }
-
-
-    </script>
-
     <script>
-        document.getElementById('form-2').addEventListener('submit', function(e) {
-            e.preventDefault(); // Ngăn chặn hành vi mặc định của trình duyệt
-            this.submit(); // Gửi biểu mẫu bằng phương thức POST
+        const formGroups = document.querySelectorAll('.form-group');
+        console.log('hjhjhjhjhjhjhjhjjjjhj',formGroups) 
+
+        formGroups.forEach((formGroup) => {
+            const errorMessage = formGroup.querySelector('.error-message');
+            const formControls = formGroup.querySelector('.form-control');
+            // const errorSpans = formGroup.querySelectorAll('.error-message');   
+            console.log('formGroupformGroupformGroupformGroup',formControls)
+            if (errorMessage) {
+              // console.log('vao day')
+              errorMessage.classList.add('active');
+              formControls.classList.add('error');
+            } 
         });
-    </script> -->
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Mong muốn của chúng ta
@@ -601,7 +458,9 @@
                     Validator.minLength('#repassword',6),
                     Validator.minLength('#phone',10,'Số điện thoại không hợp lệ'),
                     Validator.isNumber('#number','Số người không hợp lệ'),
-                    Validator.isRequired('#time', 'Vui lòng nhập thời gian'),
+                    Validator.isRequired('#phone', 'Vui lòng nhập số điện thoại'),
+                    Validator.isRequired('#number', 'Vui lòng nhập số khách'),
+                    Validator.isRequired('#email', 'Vui lòng nhập email'),
                     Validator.isConfirmed('#repassword', function() {
                         return document.querySelector('#form-2 #newpassword').value;
                     }, 'Mật khẩu nhập lại không chính xác'),
@@ -813,6 +672,7 @@
         <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
         <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
         {!! Toastr::message() !!}
+
   </body>
 
 </html>
