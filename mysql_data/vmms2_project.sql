@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1:4306
--- Thời gian đã tạo: Th4 25, 2024 lúc 11:02 AM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.1.25
+-- Host: 127.0.0.1:4306
+-- Generation Time: May 17, 2024 at 02:21 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `vmms2_projec`
+-- Database: `vmms2_projec`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -40,17 +40,18 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `name_admin`, `email_admin`, `avatar_admin`, `email_verified_at`, `password_admin`, `phone_admin`, `created_at`, `updated_at`) VALUES
-(24, 'Tung Duc', 'admin@gmail.com', 'public/storage/images/1713599600.jpg', NULL, '123456', '0365048804', '2024-04-19 17:00:00', NULL),
-(25, 'Luan', 'nguyenluan200502@gmail.com', 'public/storage/images/1713599873.png', NULL, '123456', '0964156867', '2024-04-19 17:00:00', NULL);
+(28, 'Admin', 'admin@gmail.com', 'public/storage/images/1714638275.png', NULL, '$2y$10$w7IasTBRMLtBUX88KIEs1eZkOm3F3lflLcx9kHCLMZhRzU3quJVaC', '0964156867', '2024-05-02 01:24:35', NULL),
+(33, 'Tung Duc', 'tungduc@gmail.com', 'public/storage/images/1715261362.jpg', NULL, '$2y$10$feS/qz/CNPymGQ6hLkmvheROCXui5hDeatA0XtwWmzRE1upgp7g7y', '0365048804', '2024-05-09 06:29:22', NULL),
+(34, 'Nguyễn Văn Luận', 'nguyenluan200502@gmail.com', 'public/storage/images/1715791803.png', NULL, '$2y$10$isaCGGpyAH7tnv/eXUR/8.Zl5v2kDep9xt.aQlkmGmPwl49kmvqLq', '0964156867', '2024-05-15 09:50:03', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `coso`
+-- Table structure for table `coso`
 --
 
 CREATE TABLE `coso` (
@@ -63,7 +64,7 @@ CREATE TABLE `coso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `coso`
+-- Dumping data for table `coso`
 --
 
 INSERT INTO `coso` (`id`, `tencoso`, `diachi`, `dienthoai`, `tongsoban`, `trangthai`) VALUES
@@ -74,7 +75,7 @@ INSERT INTO `coso` (`id`, `tencoso`, `diachi`, `dienthoai`, `tongsoban`, `trangt
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `danhgia`
+-- Table structure for table `danhgia`
 --
 
 CREATE TABLE `danhgia` (
@@ -91,18 +92,19 @@ CREATE TABLE `danhgia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `danhgia`
+-- Dumping data for table `danhgia`
 --
 
 INSERT INTO `danhgia` (`id`, `users_id`, `hoten`, `sdt`, `ghichu`, `noidung`, `thoigian`, `trangthai`, `created_at`, `updated_at`) VALUES
 (44, 22, 'Luan', '0964156877', NULL, 'Nhân viên phục vụ nhiệt tình, tôi rất hài hòng , món ăn thì ngon vô địch !!!', NULL, 1, NULL, NULL),
 (45, 22, 'Tùng Đức', '0964156877', NULL, '\'Nhân viên phục vụ nhiệt tình, món ăn thì ngon bổ rẻ !!!\'', NULL, 1, NULL, NULL),
-(46, 22, 'Phương Thảo', '0964156877', NULL, '\'Nhân viên phục vụ nhiệt tình, món ăn thì ngon bổ rẻ !!!\'', NULL, 1, NULL, NULL);
+(46, 22, 'Phương Thảo', '0964156877', NULL, '\'Nhân viên phục vụ nhiệt tình, món ăn thì ngon bổ rẻ !!!\'', NULL, 1, NULL, NULL),
+(51, 24, 'Tạ Văn Tú', '0964156877', NULL, 'test thông báo', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `danhmucmon`
+-- Table structure for table `danhmucmon`
 --
 
 CREATE TABLE `danhmucmon` (
@@ -115,7 +117,7 @@ CREATE TABLE `danhmucmon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `danhmucmon`
+-- Dumping data for table `danhmucmon`
 --
 
 INSERT INTO `danhmucmon` (`id`, `tendanhmuc`, `path`, `trangthai`, `created_at`, `updated_at`) VALUES
@@ -126,7 +128,7 @@ INSERT INTO `danhmucmon` (`id`, `tendanhmuc`, `path`, `trangthai`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `datban`
+-- Table structure for table `datban`
 --
 
 CREATE TABLE `datban` (
@@ -146,11 +148,11 @@ CREATE TABLE `datban` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `datban`
+-- Dumping data for table `datban`
 --
 
 INSERT INTO `datban` (`id`, `users_id`, `name`, `email`, `sdt`, `songuoi`, `thoigian`, `coso`, `ghichu`, `trangthai`, `soban`, `created_at`, `updated_at`) VALUES
-(72, 21, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 5, '2024-04-25T23:01', 'Cơ sở 2', 'test1', 1, NULL, NULL, NULL),
+(72, 21, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 10, '2024-04-25T23:01', 'Cơ sở 1', NULL, 1, 2, NULL, NULL),
 (73, 22, 'Ta Van Tu', 'nhuthaophap2248@gmail.com', '0346504990', 4, '2024-04-24T22:36', 'Cơ sở 1', NULL, 1, 1, NULL, NULL),
 (74, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 2, '2024-04-25T22:43', 'Cơ sở 2', 'aaa', 1, NULL, NULL, NULL),
 (75, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 2, '2024-04-25T22:43', 'Cơ sở 2', 'aaa', 1, NULL, NULL, NULL),
@@ -162,12 +164,21 @@ INSERT INTO `datban` (`id`, `users_id`, `name`, `email`, `sdt`, `songuoi`, `thoi
 (82, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-05-09T00:29', 'Cơ sở 1', 'aaa', 1, 3, NULL, NULL),
 (84, 22, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-26T00:44', 'Cơ sở 1', NULL, 1, 3, NULL, NULL),
 (85, 22, 'Nguyen Van Tu', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-25T01:04', 'Cơ sở 1', NULL, 1, 3, NULL, NULL),
-(86, 22, 'Nguyen Van Hieu', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-25T01:04', 'Cơ sở 1', NULL, 1, 3, NULL, NULL);
+(86, 22, 'Nguyen Van Hieu', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-04-25T01:04', 'Cơ sở 1', NULL, 1, 3, NULL, NULL),
+(87, 25, 'Nguyen Thi Ly', 'nguyenthily@gmail.com', '0968156869', 14, '2024-05-03T15:05', 'Cơ sở 1', 'Không gian yên tĩnh', 1, 3, NULL, NULL),
+(88, 25, 'Nguyen Thi Ly', 'nguyenthily@gmail.com', '0346504990', 103, '2024-05-10T15:06', 'Cơ sở 1', 'Cần không gian yên tĩnh', 1, 18, NULL, NULL),
+(95, NULL, 'Nguyễn Văn Luận', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-05-23T15:49', 'Cơ sở 1', NULL, 1, 3, NULL, NULL),
+(96, 24, 'Tạ Văn Tú', 'tavantu@gmail.com', '0346504990', 14, '2024-05-31T16:40', 'Cơ sở 1', NULL, 1, 3, NULL, NULL),
+(102, 24, 'Nguyễn Văn Luận', 'tavantu@gmail.com', '0346504990', 10, '2024-05-24T14:36', 'Cơ sở 2', 'abc', 1, 2, NULL, NULL),
+(110, 37, 'Nguyễn Văn Luận', 'anhluan2k2z04@gmail.com', '0346504990', 10, '2024-05-15T15:03', 'Cơ sở 1', 'Không gian yên tĩnh', 1, 2, NULL, NULL),
+(114, 37, 'NguyenVanLuan', 'anhluan2k2z04@gmail.com', '0964156877', 10, '2024-05-23T11:44', 'Cơ sở 1', NULL, 1, 2, NULL, NULL),
+(118, 0, 'Nguyễn Văn Luận', 'anhluan2k2z04@gmail.com', '0964156877', 10, '2024-05-15T17:59', 'Cơ sở 1', NULL, 1, 2, NULL, NULL),
+(119, 0, 'Nguyễn Văn Luận', 'nguyenluan200502@gmail.com', '0964156877', 14, '2024-05-15T18:01', 'Cơ sở 1', NULL, 1, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `lienhe`
+-- Table structure for table `lienhe`
 --
 
 CREATE TABLE `lienhe` (
@@ -181,7 +192,7 @@ CREATE TABLE `lienhe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `lienhe`
+-- Dumping data for table `lienhe`
 --
 
 INSERT INTO `lienhe` (`id`, `tieude`, `diachi`, `giomo`, `dienthoai`, `created_at`, `updated_at`) VALUES
@@ -198,7 +209,7 @@ INSERT INTO `lienhe` (`id`, `tieude`, `diachi`, `giomo`, `dienthoai`, `created_a
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -208,7 +219,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -229,7 +240,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -241,7 +252,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sampham`
+-- Table structure for table `sampham`
 --
 
 CREATE TABLE `sampham` (
@@ -258,7 +269,7 @@ CREATE TABLE `sampham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `sampham`
+-- Dumping data for table `sampham`
 --
 
 INSERT INTO `sampham` (`id`, `danhmucmon_id`, `tensp`, `gia`, `mieuta`, `anh`, `tag`, `featured`, `created_at`, `updated_at`) VALUES
@@ -291,8 +302,6 @@ INSERT INTO `sampham` (`id`, `danhmucmon_id`, `tensp`, `gia`, `mieuta`, `anh`, `
 (27, 3, 'Trà long cúc', 40, 'Hoa cúc, linh chi, sâm Hàn', 'public/storage/sanphams/1713622476.jpg', 'Đồ Nóng', 1, NULL, NULL),
 (28, 3, 'Trà nhài long nhãn', 45, 'Hoa nhài, hoa đậu biếc sấy khô, nhãn long hàm', 'public/storage/sanphams/1713622491.jpg', 'Đồ Nóng', 1, NULL, NULL),
 (125, 2, 'Thịt ba chỉ luộc', 60, 'Thịt đều lạc mỡ', '', 'Heo', 1, NULL, NULL),
-(126, 2, 'Thịt heo giả cầy', 100, 'Thịt hầm nước 10h', '', 'Heo', 1, NULL, NULL),
-(128, 2, 'Bò Bít Tết', 189, 'Grilled marinated beef wrapped lalot leaves, herbs', '', 'Bò', 1, NULL, NULL),
 (130, 2, 'Bún đâu mắm tôm', 50, 'Bún, chả cốm, chân giò, đậu phụ rán', '', 'Bún/Phở', 1, NULL, NULL),
 (131, 2, 'Phở gà', 189, 'Sợi phở, quế, rau mùi, ức gà', '', 'Bún/Phở', 1, NULL, NULL),
 (132, 2, 'Phở/Bún Mọc', 189, 'Thịt băm mọc nhĩ, rau sống', '', 'Bún/Phở', 1, NULL, NULL),
@@ -305,18 +314,19 @@ INSERT INTO `sampham` (`id`, `danhmucmon_id`, `tensp`, `gia`, `mieuta`, `anh`, `
 (139, 3, 'Concha y Toro', 30, 'Reservado Cabernet Sauvignon - Chile', '', 'Đồ Nóng', 1, NULL, NULL),
 (140, 3, 'Trà hoa nhài nóng', 30, 'Hoa nhài, long cúc, nhân sâm Trung', '', 'Đồ Nóng', 1, NULL, NULL),
 (141, 3, 'Trà long cúc', 40, 'Hoa cúc, linh chi, sâm Hàn', '', 'Đồ Nóng', 1, NULL, NULL),
-(143, 1, 'Cánh gà sốt me', 98, 'Fried chicken wings, tamarind sauce', '', '', 1, NULL, NULL),
 (144, 1, 'Cánh gà sóc tỏi ớt', 98, 'Fried chiken wings, chili, garlic', '', '', 1, NULL, NULL),
 (145, 1, 'Bò lá lốt', 108, 'Grilled marinated beef wrapped lalot leaves, herbs', '', '', 1, NULL, NULL),
 (146, 1, 'Chạo tôm bó mía', 118, 'Homemade sugarcane shrimps skewers, herbs', '', '', 1, NULL, NULL),
 (147, 2, 'Gà hấp mắm nhĩ', 98, 'Steamed chicken with fish, sauce, mung bean sticky rice', '', 'Gà', 1, NULL, NULL),
 (148, 2, 'Cánh gà sốt me', 549, 'Fried chicken wings, tamarind sauce', '', 'Gà', 1, NULL, NULL),
-(149, 2, 'Gà lên mâm', 300, 'Shredded chicken with herbs, spicy grilled chicken', '', 'Gà', 1, NULL, NULL);
+(149, 2, 'Gà lên mâm', 300, 'Shredded chicken with herbs, spicy grilled chicken', '', 'Gà', 1, NULL, NULL),
+(172, 1, 'Cánh gà sốt tỏi ớt', 1000, 'gà', 'public/storage/sanphams/1715240782.png', 'Gà', 1, NULL, NULL),
+(173, 2, 'Cánh gà sốt tỏi ớt', 1000, 'gà', 'public/storage/sanphams/1715241677.png', 'Gà', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `thuvienanh`
+-- Table structure for table `thuvienanh`
 --
 
 CREATE TABLE `thuvienanh` (
@@ -329,7 +339,7 @@ CREATE TABLE `thuvienanh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `thuvienanh`
+-- Dumping data for table `thuvienanh`
 --
 
 INSERT INTO `thuvienanh` (`id`, `tieude`, `path`, `trangthai`, `created_at`, `updated_at`) VALUES
@@ -338,12 +348,12 @@ INSERT INTO `thuvienanh` (`id`, `tieude`, `path`, `trangthai`, `created_at`, `up
 (51, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1713510682.jpg', 1, NULL, NULL),
 (52, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1713510694.jpg', 1, NULL, NULL),
 (53, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1713510711.jpg', 1, NULL, NULL),
-(54, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1713510730.jpg', 0, NULL, NULL);
+(54, 'KHÔNG GIAN', 'public/storage/thuvienanhs/1715262575.jpg', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tintuc`
+-- Table structure for table `tintuc`
 --
 
 CREATE TABLE `tintuc` (
@@ -359,7 +369,7 @@ CREATE TABLE `tintuc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tintuc`
+-- Dumping data for table `tintuc`
 --
 
 INSERT INTO `tintuc` (`id`, `tieude`, `anh`, `thoigian`, `noidung`, `ghichu`, `trangthai`, `created_at`, `updated_at`) VALUES
@@ -373,7 +383,7 @@ INSERT INTO `tintuc` (`id`, `tieude`, `anh`, `thoigian`, `noidung`, `ghichu`, `t
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tuvan`
+-- Table structure for table `tuvan`
 --
 
 CREATE TABLE `tuvan` (
@@ -389,16 +399,27 @@ CREATE TABLE `tuvan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tuvan`
+-- Dumping data for table `tuvan`
 --
 
 INSERT INTO `tuvan` (`id`, `users_id`, `hoten`, `sdt`, `diachi`, `noidung`, `trangthai`, `created_at`, `updated_at`) VALUES
-(2, NULL, 'nguyen van luan', '0964156877', 'ha noi', 'dat', 1, NULL, NULL);
+(3, NULL, 'Nguyễn Văn Luận', '0964156877', 'ha noi', 'hay dat ban an', NULL, NULL, NULL),
+(4, NULL, 'nguyen van luan', '0964156877', 'ha noi', 'hay dat ban an', NULL, NULL, NULL),
+(5, NULL, 'Tú', '0964156877', 'ha noi', 'hay dat ban an', NULL, NULL, NULL),
+(6, NULL, 'nguyen van luan', '0964156877', 'ha noi', 'test', NULL, NULL, NULL),
+(7, NULL, 'thuongthuong', '0346504990', 'ha noi', 'hay dat ban an', NULL, NULL, NULL),
+(8, NULL, 'Tú', '0964156877', 'ha noi', 'Hien thi thong bao', NULL, NULL, NULL),
+(9, NULL, 'nguyen van luan', '0964156877', 'ha noi', 'hay dat ban an', NULL, NULL, NULL),
+(10, NULL, 'nguyen van luan', '0964156877', 'ha noi', 'hay dat ban an', NULL, NULL, NULL),
+(11, NULL, 'nguyen van luan', '0964156877', 'ha noi', 'Hien thi thong bao', NULL, NULL, NULL),
+(12, NULL, 'thuongthuong', '0964156877', 'ha noi', 'test', 1, NULL, NULL),
+(13, NULL, 'thuongthuong', '0346504990', 'ha noi', 'dat', 1, NULL, NULL),
+(14, NULL, 'nguyen van luan', '0964156877', 'ha noi', 'ádfa', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -409,23 +430,84 @@ CREATE TABLE `users` (
   `trangthai` tinyint(10) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `token` varchar(20) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `avatar`, `trangthai`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(21, 'Nguyen Van Luan', 'nguyenluan2kk2@gmail.com', NULL, 1, NULL, '1234567', NULL, NULL, NULL),
-(22, 'Luan', 'nguyenluan200502@gmail.com', NULL, 1, NULL, '12345678', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `avatar`, `trangthai`, `email_verified_at`, `password`, `status`, `token`, `remember_token`, `created_at`, `updated_at`) VALUES
+(23, 'Nguyễn Tài Huy', 'nguyenhuy@gmail.com', NULL, 1, NULL, '$2y$10$X.ud8DMBmhxwjI579leO7eZ7yGydIc/2YTEIBFLhzIvnYMDHeWMfK', 1, 'null', NULL, NULL, NULL),
+(24, 'Tạ Văn Tú', 'tavantu@gmail.com', NULL, 1, NULL, '$2y$10$ozxgVqIEiBzLPCu7n2GpguCfnYAKRPeA5Hsn.49im37bYfIUtg3CO', 1, 'null', NULL, NULL, NULL),
+(26, 'Nguyen Phuong Thao', 'phuongthao@gmail.com', NULL, 1, NULL, '$2y$10$j..4o.2eG34WuDE/dCWez.cW8oZ5YVhaO8A9UudDvOEuqgzzw/3rK', 1, 'null', NULL, NULL, NULL),
+(28, 'Hoang Cong Hien', 'conghien@gmail.com', NULL, 1, NULL, '$2y$10$26hqSxGwJOVyUaKlBw8YdeUS1xmHZw9aN2UFECpMKu.z/0.kayqzC', 1, 'null', NULL, NULL, NULL),
+(30, 'Nguyen Van Luan', 'luan@gmail.com', NULL, 1, NULL, '$2y$10$sQ0mqijATSwm/WhLj.bDiOfXrsFdWzC9y/EzA2HuoREV2OKQRpGsi', 1, 'null', NULL, NULL, NULL),
+(35, 'Nguyen Van Luan', 'luanvan@gmail.com', NULL, 1, NULL, '$2y$10$5au93xGEjuM1AxK6TKVh5eRhgQCTBkqLZmgLgrLQ2/XsGP5nFNIxy', 0, 'OXX0VPCMMI', NULL, NULL, NULL),
+(37, 'Nguyen Van Luan', 'anhluan2k2z04@gmail.com', NULL, 1, NULL, '$2y$10$O9KPjzZOhPMkVbOQicaMBOgiCgf94nnhinywHKeB5VAOMzGc04ZVC', 1, 'null', '4MAV3QDUXM', NULL, NULL),
+(38, 'Nguyen Van Luan', 'nguyenluan200502@gmail.com', NULL, 1, NULL, '$2y$10$CheBu63Ii2/Knx6o9jpwPOm9lCCdGndTMdobJIvIy29.m1PIVnZQK', 0, '1TOQOJUXSS', NULL, NULL, NULL),
+(39, 'Nguyen Van Luan', 'abcd@gmail.com', NULL, 1, NULL, '$2y$10$9kJeC2ernODHBP7b/BSzsOxH/vAXx33jJC/iBrbiUeA9oHA7BZ.zi', 0, 'AE2USZLNOY', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `voucher`
+-- Table structure for table `user_voucher`
+--
+
+CREATE TABLE `user_voucher` (
+  `id` tinyint(20) NOT NULL,
+  `user_id` int(20) NOT NULL,
+  `voucher_id` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_voucher`
+--
+
+INSERT INTO `user_voucher` (`id`, `user_id`, `voucher_id`) VALUES
+(1, 24, 3),
+(2, 24, 2),
+(3, 24, 1),
+(4, 24, 1),
+(5, 24, 1),
+(6, 24, 3),
+(7, 24, 3),
+(8, 24, 2),
+(9, 24, 1),
+(10, 24, 3),
+(11, 24, 3),
+(12, 24, 2),
+(13, 24, 3),
+(14, 24, 3),
+(15, 24, 3),
+(16, 24, 3),
+(17, 24, 3),
+(18, 24, 3),
+(19, 24, 3),
+(20, 24, 3),
+(21, 24, 3),
+(22, 24, 3),
+(23, 24, 3),
+(24, 24, 3),
+(25, 24, 3),
+(26, 24, 3),
+(27, 24, 3),
+(28, 24, 2),
+(29, 23, 3),
+(30, 23, 2),
+(31, 23, 1),
+(32, 37, 3),
+(33, 37, 2),
+(34, 37, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voucher`
 --
 
 CREATE TABLE `voucher` (
@@ -439,175 +521,189 @@ CREATE TABLE `voucher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `voucher`
+-- Dumping data for table `voucher`
 --
 
 INSERT INTO `voucher` (`id`, `ma`, `giam`, `toithieusonguoi`, `hsd`, `trangthai`, `ghichu`) VALUES
-(1, 'SIEUNGON', 5, 4, '2023-09-09 00:25:00', 1, NULL);
+(1, 'SIEUSIEUNGON', 10, 10, '2023-09-09 00:25:00', 0, NULL),
+(2, 'SIEUSIEUNGON', 10, 10, '2023-09-09 00:25:00', 1, NULL),
+(3, 'SIEUSIEUNGON', 10, 10, '2023-09-09 00:25:00', 1, NULL);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `coso`
+-- Indexes for table `coso`
 --
 ALTER TABLE `coso`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `danhgia`
+-- Indexes for table `danhgia`
 --
 ALTER TABLE `danhgia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `danhmucmon`
+-- Indexes for table `danhmucmon`
 --
 ALTER TABLE `danhmucmon`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `datban`
+-- Indexes for table `datban`
 --
 ALTER TABLE `datban`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `lienhe`
+-- Indexes for table `lienhe`
 --
 ALTER TABLE `lienhe`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `sampham`
+-- Indexes for table `sampham`
 --
 ALTER TABLE `sampham`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `thuvienanh`
+-- Indexes for table `thuvienanh`
 --
 ALTER TABLE `thuvienanh`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `tintuc`
+-- Indexes for table `tintuc`
 --
 ALTER TABLE `tintuc`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `tuvan`
+-- Indexes for table `tuvan`
 --
 ALTER TABLE `tuvan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `voucher`
+-- Indexes for table `user_voucher`
+--
+ALTER TABLE `user_voucher`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `voucher`
 --
 ALTER TABLE `voucher`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT cho bảng `coso`
+-- AUTO_INCREMENT for table `coso`
 --
 ALTER TABLE `coso`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `danhgia`
+-- AUTO_INCREMENT for table `danhgia`
 --
 ALTER TABLE `danhgia`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- AUTO_INCREMENT cho bảng `danhmucmon`
+-- AUTO_INCREMENT for table `danhmucmon`
 --
 ALTER TABLE `danhmucmon`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT cho bảng `datban`
+-- AUTO_INCREMENT for table `datban`
 --
 ALTER TABLE `datban`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
--- AUTO_INCREMENT cho bảng `lienhe`
+-- AUTO_INCREMENT for table `lienhe`
 --
 ALTER TABLE `lienhe`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT cho bảng `sampham`
+-- AUTO_INCREMENT for table `sampham`
 --
 ALTER TABLE `sampham`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
--- AUTO_INCREMENT cho bảng `thuvienanh`
+-- AUTO_INCREMENT for table `thuvienanh`
 --
 ALTER TABLE `thuvienanh`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
--- AUTO_INCREMENT cho bảng `tintuc`
+-- AUTO_INCREMENT for table `tintuc`
 --
 ALTER TABLE `tintuc`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT cho bảng `tuvan`
+-- AUTO_INCREMENT for table `tuvan`
 --
 ALTER TABLE `tuvan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT cho bảng `voucher`
+-- AUTO_INCREMENT for table `user_voucher`
+--
+ALTER TABLE `user_voucher`
+  MODIFY `id` tinyint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `voucher`
 --
 ALTER TABLE `voucher`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
